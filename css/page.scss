@@ -5,18 +5,75 @@ $main_color_light: #fffadf;
 $sub_color:#3a3967;
 $point_color:#6ac8d8;
 
+.main-wrap {
+    background-color: #fffdfc;
+}
 #main {
     width: 100%;
     overflow: hidden;
+    position: relative;
+    .main-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        .wave_wrap {
+            position: relative;
+            width: 450px;
+            aspect-ratio: 375 / 400;
+            overflow: hidden;
+        }
+        .wave {
+            opacity: 1;
+            position: absolute;
+            top: -253px;
+            left: -77px;
+            z-index: 3;
+            background: $sub_color;
+            width: 600px;
+            height: 600px;
+            margin-left: 0;
+            margin-top: 0px;
+            border-radius: 43%;
+            animation: drift 7000ms infinite linear;
+
+            @media(max-width:399px) {
+                top: -270px;
+                left: -112px;
+            }
+
+            @media(max-width:340px) {
+                top: -294px;
+            }
+        }
+        .wave2 {
+            animation: drift 3000ms infinite linear;
+            opacity: 0.1;
+            background: black;
+            z-index: 2;
+        }
+        .wave3 {
+            animation: drift 7500ms infinite linear;
+            background-color: #ffee9b;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        @keyframes drift {
+            from { transform: rotate(0deg); }
+            from { transform: rotate(360deg); }
+        }
+    }
     .slider_wrap {
+        position: relative;
+        z-index: 5;
         width: 100%;
         height: auto;
-        padding: 50px 15px 0;
-        aspect-ratio: 375 / 260;
+        padding: 60px 15px 0;
+        aspect-ratio: 375 / 280;
         padding-bottom: 5rem;
-        background-color: #e0e0e0;
         .slider_top_text {
             font-size: 2.1rem;
+            color: #fff;
             #user_name {
                 font-size: 2.8rem;
                 vertical-align: middle;
@@ -45,7 +102,7 @@ $point_color:#6ac8d8;
 
     /* section1 */
     #section1 {
-        padding-top: 50px;
+        padding-top: 60px;
         .my_reading_state, .my_reading_history {
             text-align: center;
             padding: 15px;
@@ -504,6 +561,105 @@ header {
         z-index: -1;
     }
 }
+
+/* 마이페이지 */
+.mypage-head {
+    justify-content: start !important;
+}
+.my-page-wrap {
+    .my-profile-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: #fffdfc;
+        border-radius: 12px;
+        padding: 20px 15px;
+        box-shadow: 0 2px 13px rgba(0,0,0,0.15);
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #e0e0e0;
+        }
+        .profile-cont {
+            #user-name {
+                font-size: 2rem;
+                font-weight: 800;
+            }
+            .user-mail {
+                font-size: 1.6rem;
+                color: #424242;
+                text-decoration: underline;
+            }
+        }
+    }
+    .my-total-active {
+        position: relative;
+        margin: 25px 0;
+        border-radius: 12px;
+        padding: 20px 15px 40px 15px;
+        background-color: #fffdfc;
+        box-shadow: 0 2px 13px rgba(0,0,0,0.15);
+        > p {
+            position: relative;
+            top: 10px;
+            font-size: 2.1rem;
+            line-height: 1.6 !important;
+            span {
+                position: relative;
+                font-size: 2.4rem;
+                display: inline-block;
+                background: linear-gradient(to top, $main_color 50%, transparent 50%);
+            }
+        }
+        > img {
+            max-width: 100px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            opacity: 0.9;
+        }
+    }
+    .my-menu-box {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #fffdfc;
+        border-radius: 12px;
+        box-shadow: 0 2px 13px rgba(0,0,0,0.15);
+        .menu-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 17px;
+        }
+        .menu-depth {
+            .menu-list a {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: 500;
+                font-size: 1.8rem;
+                margin-bottom: 7px;
+                span {
+                    position: relative;
+                    top: 2px;
+                }
+                img {
+                    max-width: 20px;
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+}
+
 
 /* 하단 네비게이션 */
 #bottom_navigator {
