@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 @font-face {
     font-family: 'AppleSDGothicNeoT';
     src: url('../fonts/AppleSDGothicNeoT.ttf') format('truetype');
@@ -8,6 +10,13 @@
 @font-face {
     font-family: 'AppleSDGothicNeoL';
     src: url('../fonts/AppleSDGothicNeoL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AppleSDGothicNeoR';
+    src: url('../fonts/AppleSDGothicNeoR.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -33,25 +42,57 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+*{
+    font-family: 'AppleSDGothicNeoR', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
 
 .sd-t {
-    font-family: 'AppleSDGothicNeoT', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'AppleSDGothicNeoT', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 .sd-l {
-    font-family: 'AppleSDGothicNeoL', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'AppleSDGothicNeoL', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 .sd-m {
-    font-family: 'AppleSDGothicNeoM', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'AppleSDGothicNeoM', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 .sd-b {
-    font-family: 'AppleSDGothicNeoB', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'AppleSDGothicNeoB', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 .sd-bb {
-    font-family: 'AppleSDGothicNeoEB', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'AppleSDGothicNeoEB', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
-* {  }
+
+.red-n {
+  font-family: "Red Hat Display", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.red-m {
+  font-family: "Red Hat Display", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.red-b {
+  font-family: "Red Hat Display", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.red-bb {
+  font-family: "Red Hat Display", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}

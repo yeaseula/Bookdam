@@ -4,19 +4,197 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>책담-책에 담긴 당신만의 이야기</title>
+
+        <!--css-->
         <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" type="text/css" href="css/page.css">
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" href="js/page">
+        
+        <!--cdn-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+
+        <!--javascript-->
+        <script src="js/page.js"></script>
     </head>
     <body>
-        <div id="index">
+        <div class="common-wrap">
             <header></header>
-            <div id="main">
-             
+            <div class="main-wrap">
+                <div id="main">
+                    <div class="slider_wrap">
+                        <p class="slider_top_text sd-b">
+                            <span id="user_name" class="sd-bb">모카</span>님,<br>
+                            오늘도 당신의 이야기를 들려주실래요?
+                        </p>
+                        <div class="my_book_list">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">Slide 1</div>
+                                <div class="swiper-slide">Slide 2</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 1</div>
+                                <div class="swiper-slide">Slide 2</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 3</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main_contents">
+                        <section id="section1" class="section">
+                            <div class="my_reading_state">
+                                <img src="/assets/img/bulb.png" alt="bulb">
+                                <p>현재 <span class="reading_name sd-bb">사피엔스</span>를 읽고 계시네요!<br>
+                                <span class="reading_page sd-bb">100페이지</span>까지 읽었어요.</p>
+                            </div>
+                            <div class="my_reading_history">
+                                <p>지금까지 <span class="reading_book sd-bb">N권</span>의 책을 읽었어요!</p>
+                            </div>
+                        </section>
+                        <section id="section2" class="section">
+                            <div id="calendar"></div>
+                        </section>
+                        <section id="section3" class="section">
+                            <div class="title_section">
+                                <img src="assets/img/bubble-chat.png" alt="chat">
+                                <p class="sec3_title sd-m">
+                                <span ic="user_name" class="sd-bb">모카</span>님을 위해<br>
+                                AI가 추천해드려요!
+                            </p>
+                            </div>
+
+
+                            <div class="my_recomand_book">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide recomand_slide">
+                                        <div class="swiper_depth">
+                                            <div class="book_cover"></div>
+                                            <div class="book_desc">
+                                                <p class="book_title sd-b">책제목입니다.책제목</p>
+                                                <p class="book_intro">
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.책소개입니다.책소개입니다.
+                                                </p>
+                                                <div class="button_wrap">
+                                                    <button class="wish common_btn red-n">Wish</button>
+                                                    <button class="common_btn red-n">More View</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="swiper-slide recomand_slide">
+                                        <div class="swiper_depth">
+                                            <div class="book_cover"></div>
+                                            <div class="book_desc">
+                                                <p class="book_title sd-b">책제목입니다.책제목</p>
+                                                <p class="book_intro">
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.책소개입니다.책소개입니다.
+                                                </p>
+                                                <div class="button_wrap">
+                                                    <button class="wish common_btn red-n">Wish</button>
+                                                    <button class="common_btn red-n">More View</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="swiper-slide recomand_slide">
+                                        <div class="swiper_depth">
+                                            <div class="book_cover"></div>
+                                            <div class="book_desc">
+                                                <p class="book_title sd-b">책제목입니다.책제목</p>
+                                                <p class="book_intro">
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.
+                                                    책소개입니다.책소개입니다.책소개입니다.책소개입니다.책소개입니다.
+                                                </p>
+                                                <div class="button_wrap">
+                                                    <button class="wish common_btn red-n">Wish</button>
+                                                    <button class="common_btn red-n">More View</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </div>
-            <footer></footer>
+            <footer>
+                <div class="logo-box">
+
+                </div>
+
+                <ul class="footer-menu">
+                    <li>
+                        <a href=""><span>이용약관</span></a>
+                    </li>
+                    <li><span class="bar"></span></li>
+                    <li>
+                        <a href=""><span>개인정보처리방침</span></a>
+                    </li>
+                </ul>
+
+                <p id="footer-toggle">개발자 정보</p>
+
+                <div class="copyright-dropdown">
+                    <p class="copy-depth">
+                        <span>이름</span> <span class="bar"></span> <span>000</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>git hub</span> <span class="bar"></span> <span>www.github/yeaseula</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>Email</span> <span class="bar"></span> <span>kminea@naver.com</span>
+                    </p>
+                </div>
+
+                <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
+        
+            </footer>
+        </div>
+        <nav id="bottom_navigator">
+            <div class="navigator_wrap">
+                <div class="navigator_cont active">
+                    <img src="/assets/img/home-active-icon.svg" alt="home">
+                    <p class="red-l">Home</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/book-icon.svg" alt="book">
+                    <p class="red-l">Review</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/search-icon.svg" alt="search">
+                    <p class="red-l">Search</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/bookmark-icon.svg" alt="bookmark">
+                    <p class="red-l">Reading</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/mypage-icon.svg" alt="mypage">
+                    <p class="red-l">My Page</p>
+                </div>
+
+            </div>
+        </nav>
+        <div id="write_floating">
+            <a href="https://www.naver.com">
+                <img src="assets/img/write-icon.svg" alt="pen">
+                <p>Write</p>
+            </a>
         </div>
     </body>
 </html>
