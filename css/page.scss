@@ -71,6 +71,7 @@ $point_color:#6ac8d8;
         #calendar {
             padding: 15px 15px 10px 15px;
             border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
             border: 1px solid #e0e0e0;
         }
 
@@ -186,6 +187,7 @@ $point_color:#6ac8d8;
                     background-color: #fff;
                     border: 1px solid #e0e0e0;
                     border-radius: 15px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
                     .book_cover {
                         width: 100px;
                         aspect-ratio: 3 / 4;
@@ -225,19 +227,94 @@ $point_color:#6ac8d8;
                             height: 24px;
                             line-height: 24px;
                             border-radius: 150px;
-                            background-color: $point_color;
-                            border: 1px solid $point_color;
+                            background-color: #e6e6e8;
+                            border: 1px solid #e6e6e8;
                             text-align: center;
-                            color: #fff;
+                            color: #424242;
                             font-size: 1.3rem;
                             &.wish {
                                 background-color: $sub_color;
                                 border-color: $sub_color;
+                                color: #fff;
                             }
                         }
                     }
                 }
             }
+        }
+    }
+}
+
+/* header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 18px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 0 16px rgba(0,0,0,0.15);
+    .header-depth {
+        width: 100%;
+        position: relative;
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+        }
+        a {
+        display: inline-block;
+        height: 24px;
+        }
+        .page-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 3;
+            transform: translate(-50%,-50%);
+            font-size: 2rem;
+        }
+        .icon-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    }
+
+    .search-box {
+        position: relative;
+        width: 93%;
+        input {
+            width: 100%;
+            height: 37px;
+            border-radius: 30px;
+            border: 1px solid #e0e0e0;
+            padding: 1px 15px 0 40px;
+            font-size: 1.6rem;
+        }
+        .submit-btn,.reset-btn {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            margin: 0;
+            padding: 0;
+            height: 20px;
+            border: unset;
+            background-color: #fff;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        .reset-btn {
+            left: unset;
+            right: 15px;
         }
     }
 }
@@ -270,10 +347,11 @@ $point_color:#6ac8d8;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 7px;
+            margin-bottom: 13px;
             padding: 7px;
             background-color: $sub_color;
             border-radius: 150px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.35);
             > a {
                 position: absolute;
                 top: 0;
@@ -314,7 +392,6 @@ $point_color:#6ac8d8;
 
 /* 검색 */
 .serach-wrap {
-
     //여백, 제목 공통
     .search-depth {
         margin-bottom: 30px;
@@ -403,6 +480,30 @@ $point_color:#6ac8d8;
     }
 }
 
+/* 차트 */
+.chart-head {
+    justify-content: end !important;
+}
+
+.my-chart-wrap {
+    position: relative;
+    .my-chart-title {
+        text-align: center;
+        font-size: 3rem;
+        #user_name {
+            font-size: 3.6rem;
+        }
+    }
+    .background {
+        position: absolute;
+        top: -30px;
+        left: -15px;
+        width: calc(100% + 30px);
+        height: calc(100vh - 60px);
+        background:linear-gradient(to bottom, #fff, #fafafa);
+        z-index: -1;
+    }
+}
 
 /* 하단 네비게이션 */
 #bottom_navigator {
@@ -419,6 +520,8 @@ $point_color:#6ac8d8;
         flex-wrap: wrap;
         background-color: #fafafa;
         border-top: 1px solid #fafafa;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
         .navigator_cont {
             flex: 1 1 20%;
             text-align: center;
@@ -438,79 +541,7 @@ $point_color:#6ac8d8;
     }
 }
 
-/* header */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    padding: 18px 0;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 0 16px rgba(0,0,0,0.15);
-    .header-depth {
-        width: 100%;
-        position: relative;
-        padding: 0 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        img {
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-        }
-        a {
-        display: inline-block;
-        height: 24px;
-        }
-        .page-title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 3;
-            transform: translate(-50%,-50%);
-            font-size: 2rem;
-        }
-        .icon-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-    }
 
-    .search-box {
-        position: relative;
-        width: 93%;
-        input {
-            width: 100%;
-            height: 37px;
-            border-radius: 30px;
-            border: 1px solid #e0e0e0;
-            padding: 1px 15px 0 40px;
-            font-size: 1.6rem;
-        }
-        .submit-btn,.reset-btn {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            margin: 0;
-            padding: 0;
-            height: 20px;
-            border: unset;
-            background-color: #fff;
-            img {
-                width: 20px;
-                height: 20px;
-            }
-        }
-        .reset-btn {
-            left: unset;
-            right: 15px;
-        }
-    }
-}
 
 /* footer */
 footer {
