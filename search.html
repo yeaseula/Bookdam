@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>책담-책에 담긴 당신만의 이야기</title>
+
+        <!--css-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/page.css">
+        
+        <!--cdn-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+        <!--javascript-->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    </head>
+    <body>
+        <div class="common-wrap">
+            <header>
+                <div class="header-depth">
+                    <div class="search-box">
+                        <form action="/search" method="GET">
+                            <input type="text" name="search" placeholder="검색어를 입력해주세요..">
+                            <button type="submit" class="submit-btn"><img src="assets/img/search-icon.svg" alt="search"></button>
+                            <button type="reset" class="reset-btn"><img src="assets/img/reset-icon.svg" alt="re"></button>
+                        </form>
+                    </div>
+                    <div class="icon-box">
+                        <a href=""><img src="assets/img/close-icon.svg" alt="close"></a>
+                    </div>
+                </div>
+            </header>
+            <div class="sub-wrap">
+                <div class="serach-wrap">
+                    <div class="search-depth">
+                        <p class="search-page-title">
+                            카테고리 선택
+                        </p>
+                        <div class="category-wrap depth-wrap">
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_0" value="소설">
+                                <label for="cate_0"><span>소설</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_1" value="에세이">
+                                <label for="cate_1"><span>에세이</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_2" value="인문/사회">
+                                <label for="cate_2"><span>인문/사회</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_3" value="과학">
+                                <label for="cate_3"><span>과학</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_4" value="역사">
+                                <label for="cate_4"><span>역사</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_5" value="자기계발">
+                                <label for="cate_5"><span>자기계발</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_6" value="건강">
+                                <label for="cate_6"><span>건강</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_7" value="여행">
+                                <label for="cate_7"><span>여행</span></label>
+                            </div>
+                            <div class="category-cont depth-cont">
+                                <input type="checkbox" id="cate_8" value="시">
+                                <label for="cate_8"><span>시</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-depth">
+                        <p class="search-page-title">
+                            날짜 선택
+                        </p>
+                        <div class="written-date-wrap depth-wrap">
+                            <input type="text" id="myDate" placeholder="날짜를 선택하세요">
+                            <img src="assets/img/calendar-icon.svg" alt="calendar">
+                        </div>
+                    </div>
+                    <div class="search-depth">
+                        <p class="search-page-title">
+                            최근 검색어
+                        </p>
+                        <div class="latest-wrap depth-wrap">
+                            
+                            <div class="latest-cont depth-cont">
+                                <input type="checkbox" id="latest_0" value="소설" disabled>
+                                <label for="latest_0">
+                                    <span>천선란</span>
+                                    <span class="closed"><img src="assets/img/close-icon.svg" alt="x"></span>
+                                </label>
+                                
+                            </div>
+                            <div class="latest-cont depth-cont">
+                                <input type="checkbox" id="latest_1" value="에세이" disabled>
+                                <label for="latest_1">
+                                    <span>에세이</span>
+                                    <span class="closed"><img src="assets/img/close-icon.svg" alt="x"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        
+            flatpickr("#myDate", {
+                dateFormat: "Y-m-d"
+            });
+
+
+        </script>
+    </body>
+</html>
