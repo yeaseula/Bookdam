@@ -221,6 +221,69 @@
   border-color: #3a3967;
 }
 
+/* sub */
+.sub-wrap {
+  padding: 30px 15px 65px 15px;
+  background-color: #fff;
+}
+.sub-wrap .my-review-wrap .my-review-title {
+  display: flex;
+  justify-content: space-between;
+}
+.sub-wrap .my-review-wrap .my-review-title .total-count {
+  font-size: 1.5rem;
+}
+.sub-wrap .my-review-wrap .my-review-title .go_my_librery span {
+  font-size: 1.5rem;
+}
+.sub-wrap .my-review-wrap .my-review-list {
+  margin-top: 20px;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+  padding: 7px;
+  background-color: #3a3967;
+  border-radius: 150px;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 500px;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item .list-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 500px;
+  overflow: hidden;
+  background-color: #bdbdbd;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item .list-cont {
+  width: calc(100% - 87px);
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item .list-cont .list-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6ac8d8;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item .list-cont .list-summary {
+  margin-top: 5px;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.sub-wrap .my-review-wrap .my-review-list .list-item .list-cont .list-date {
+  margin-top: 2px;
+  font-size: 1.4rem;
+  color: #e0e0e0;
+}
+
 /* 하단 네비게이션 */
 #bottom_navigator {
   max-width: 450px;
@@ -250,6 +313,42 @@
 #bottom_navigator .navigator_wrap .navigator_cont.active > p {
   color: #6ac8d8;
   font-weight: 500 !important;
+}
+
+/* header */
+header {
+  padding: 13px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+header .header-depth {
+  position: relative;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-depth img {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+header .header-depth a {
+  display: inline-block;
+  height: 24px;
+}
+header .header-depth .page-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+header .header-depth .icon-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* footer */
