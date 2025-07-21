@@ -1,5 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+    const $ = (node) => document.querySelector(node);
 
     fetch('./navigation.html')
         .then(response => response.text())
