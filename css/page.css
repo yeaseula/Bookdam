@@ -427,6 +427,87 @@ header .search-box .reset-btn {
   color: #e0e0e0;
 }
 
+/* 나의 리뷰 상세페이지 */
+.review-contents-wrap .review-head {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+.review-contents-wrap .review-head .book-cover-img {
+  width: 150px;
+  height: auto;
+  aspect-ratio: 3/4;
+  background-color: #bdbdbd;
+}
+.review-contents-wrap .review-head .book-infor {
+  width: calc(100% - 160px);
+}
+.review-contents-wrap .review-head .book-infor #book-cate {
+  font-size: 1.6rem;
+}
+.review-contents-wrap .review-head .book-infor #book-title {
+  font-size: 2rem;
+  margin-top: 5px;
+}
+.review-contents-wrap .review-head .book-infor #book-author {
+  font-size: 1.4rem;
+}
+.review-contents-wrap .review-head .book-infor .book-read-date {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+.review-contents-wrap .review-head .book-infor .book-read-date #start-date,
+.review-contents-wrap .review-head .book-infor .book-read-date #end-date {
+  background: linear-gradient(to top, #fff4ba 50%, transparent 50%);
+  font-size: 1.5rem;
+}
+.review-contents-wrap .review-head .book-infor .my-star {
+  margin: 30px 0 5px 0;
+  font-size: 1.5rem;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap {
+  display: flex;
+  align-items: center;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap > img {
+  max-width: 20px;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .point-number {
+  position: relative;
+  top: 2px;
+  font-size: 2rem;
+}
+.review-contents-wrap .review-contents {
+  width: calc(100% + 30px);
+  margin-top: 35px;
+  margin-left: -15px;
+  padding: 40px 15px 60px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  background-color: #fffdfc;
+}
+.review-contents-wrap .review-contents .contents-list {
+  margin-bottom: 17px;
+}
+.review-contents-wrap .review-contents .contents-list:last-of-type {
+  margin-bottom: 0;
+}
+.review-contents-wrap .review-contents .contents-list > p {
+  font-size: 1.6rem;
+}
+.review-contents-wrap .review-contents .contents-list > p:first-child {
+  font-size: 2rem;
+}
+.review-contents-wrap .review-contents .contents-list > p:not(:first-child) {
+  margin-bottom: 5px;
+}
+
 /* 검색 */
 .serach-wrap .search-depth {
   margin-bottom: 30px;
