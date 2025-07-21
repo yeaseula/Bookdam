@@ -950,7 +950,7 @@ header {
 }
 
 /* 글쓰기 완료 페이지 */
-.fixed-wrap {
+.done-fixed-wrap {
     position: absolute;
     top: 0;
     left: 0;
@@ -962,7 +962,6 @@ header {
     background-color: #fffdfc;
     .done-message {
         width: calc(100% - 30px);
-        margin-left: 15px;
         padding: 40px;
         background-color: $main_color;
         border-radius: 15px;
@@ -987,7 +986,12 @@ header {
         cursor: pointer;
     }
 }
-
+#lottie-animation {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /* 하단 네비게이션 */
 #bottom_navigator {
@@ -1010,10 +1014,20 @@ header {
             flex: 1 1 20%;
             text-align: center;
             position: relative;
-            > p {
-                font-size: 1.4rem;
-                color: #757575;
+            > a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .nav-icon {
+                    width: 40px;
+                    height: 40px;
+                }
+                p {
+                    font-size: 1.3rem;
+                    color: #757575;
+                }
             }
+
 
             &.active {
                 > p {

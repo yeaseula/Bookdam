@@ -932,7 +932,7 @@ header .search-box .reset-btn {
 }
 
 /* 글쓰기 완료 페이지 */
-.fixed-wrap {
+.done-fixed-wrap {
   position: absolute;
   top: 0;
   left: 0;
@@ -943,21 +943,20 @@ header .search-box .reset-btn {
   justify-content: center;
   background-color: #fffdfc;
 }
-.fixed-wrap .done-message {
+.done-fixed-wrap .done-message {
   width: calc(100% - 30px);
-  margin-left: 15px;
   padding: 40px;
   background-color: #fff4ba;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 3px 18px rgba(0, 0, 0, 0.15);
 }
-.fixed-wrap p {
+.done-fixed-wrap p {
   font-size: 2.4rem;
   margin: 10px 0 20px 0;
   color: #424242;
 }
-.fixed-wrap button {
+.done-fixed-wrap button {
   width: 100%;
   height: 40px;
   line-height: 39px !important;
@@ -967,6 +966,13 @@ header .search-box .reset-btn {
   background-color: #3a3967;
   color: #fff;
   cursor: pointer;
+}
+
+#lottie-animation {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* 하단 네비게이션 */
@@ -993,8 +999,17 @@ header .search-box .reset-btn {
   text-align: center;
   position: relative;
 }
-#bottom_navigator .navigator_wrap .navigator_cont > p {
-  font-size: 1.4rem;
+#bottom_navigator .navigator_wrap .navigator_cont > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#bottom_navigator .navigator_wrap .navigator_cont > a .nav-icon {
+  width: 40px;
+  height: 40px;
+}
+#bottom_navigator .navigator_wrap .navigator_cont > a p {
+  font-size: 1.3rem;
   color: #757575;
 }
 #bottom_navigator .navigator_wrap .navigator_cont.active > p {

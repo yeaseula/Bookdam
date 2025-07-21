@@ -12,17 +12,18 @@
         <link rel="stylesheet" type="text/css" href="css/page.css">
 
         <!--cdn-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
+        <!--javascript-->
+        <script src="js/common.js"></script>
+        <script src="js/page.js"></script>
     </head>
     <body>
         <div class="common-wrap" >
             <header>
                 <div class="header-depth mypage-head">
                     <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="back"></a>
-                    <p class="page-title sd-b">마이 페이지</p>
+                    <p class="page-title sd-b">책 제목이 노출됩니다</p>
                 </div>
             </header>
             <div class="sub-wrap" style="padding-bottom: 0;">
@@ -118,31 +119,9 @@
 
             </footer>
         </div>
-        <nav id="bottom_navigator">
-            <div class="navigator_wrap">
-                <div class="navigator_cont active">
-                    <img src="/assets/img/home-active-icon.svg" alt="home">
-                    <p class="red-l">Home</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/book-icon.svg" alt="book">
-                    <p class="red-l">Review</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/search-icon.svg" alt="search">
-                    <p class="red-l">Search</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/bookmark-icon.svg" alt="bookmark">
-                    <p class="red-l">Reading</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/mypage-icon.svg" alt="mypage">
-                    <p class="red-l">My Page</p>
-                </div>
-
-            </div>
-        </nav>
-
+        <nav id="bottom_navigator"></nav>
+        <script>
+            const currentpage = 'reviewcontent'
+        </script>
     </body>
 </html>

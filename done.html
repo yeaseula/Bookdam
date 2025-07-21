@@ -12,14 +12,14 @@
         <link rel="stylesheet" type="text/css" href="css/page.css">
 
         <!--cdn-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
+        <!--javascript-->
+        <script src="js/page.js"></script>
     </head>
   <body>
     <div class="common-wrap">
-        <div class="fixed-wrap">
+        <div class="done-fixed-wrap">
             <div class="done-message">
                 <img src="assets/img/upload.svg" alt="업로드 성공 알림 아이콘">
                 <p class="sd-b">
@@ -29,7 +29,11 @@
                 <button type="button">메인페이지로 이동</button>
             </div>
         </div>
+        <div id="lottie-animation"></div>
     </div>
 
+    <script>
+        const currentpage = 'done';
+    </script>
   </body>
 </html>

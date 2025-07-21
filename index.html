@@ -10,14 +10,17 @@
         <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" type="text/css" href="css/page.css">
-        
+
         <!--cdn-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
         <!--javascript-->
+        <script src="js/common.js"></script>
         <script src="js/page.js"></script>
+        <script src="js/main.js"></script>
+
     </head>
     <body>
         <div class="common-wrap">
@@ -93,7 +96,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="swiper-slide recomand_slide">
                                         <div class="swiper_depth">
@@ -111,7 +114,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="swiper-slide recomand_slide">
                                         <div class="swiper_depth">
@@ -129,7 +132,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                 </div>
@@ -168,39 +171,18 @@
                 </div>
 
                 <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
-        
+
             </footer>
         </div>
-        <nav id="bottom_navigator">
-            <div class="navigator_wrap">
-                <div class="navigator_cont active">
-                    <img src="/assets/img/home-active-icon.svg" alt="home">
-                    <p class="red-l">Home</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/book-icon.svg" alt="book">
-                    <p class="red-l">Review</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/search-icon.svg" alt="search">
-                    <p class="red-l">Search</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/bookmark-icon.svg" alt="bookmark">
-                    <p class="red-l">Reading</p>
-                </div>
-                <div class="navigator_cont">
-                    <img src="/assets/img/mypage-icon.svg" alt="mypage">
-                    <p class="red-l">My Page</p>
-                </div>
-
-            </div>
-        </nav>
+        <nav id="bottom_navigator"></nav>
         <div id="write_floating">
             <a href="https://www.naver.com">
                 <img src="assets/img/write-icon.svg" alt="pen">
                 <p>Write</p>
             </a>
         </div>
+        <script>
+            const currentpage = 'home';
+        </script>
     </body>
 </html>
