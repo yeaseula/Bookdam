@@ -628,6 +628,101 @@ header .search-box .reset-btn {
   transform: rotate(90deg);
 }
 
+/* 글쓰기 페이지 */
+.write-wrap .field-list {
+  margin-bottom: 20px;
+}
+.write-wrap .field-list span {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-bottom: 7px;
+}
+.write-wrap input, .write-wrap select, .write-wrap textarea {
+  width: 100%;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
+}
+.write-wrap input, .write-wrap select {
+  height: 37px;
+  line-height: 36px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 0 9px;
+}
+.write-wrap input[type=date] {
+  width: calc(50% - 5px);
+}
+.write-wrap select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url(../assets/img/arrow-down.svg);
+  background-size: 18px;
+  background-position: 98% 9px;
+  background-repeat: no-repeat;
+}
+.write-wrap textarea {
+  border-radius: 5px;
+  padding: 9px;
+  min-height: 125px;
+  border: 1px solid #e0e0e0;
+}
+.write-wrap .field-date-list > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.write-wrap button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #3a3967;
+  border: 1px solid #3a3967;
+  border-radius: 5px;
+  height: 38px !important;
+  line-height: 41px;
+  text-align: center;
+  font-size: 1.7rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 글쓰기 완료 페이지 */
+.fixed-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fffdfc;
+}
+.fixed-wrap .done-message {
+  width: calc(100% - 30px);
+  margin-left: 15px;
+  padding: 40px;
+  background-color: #fff4ba;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.15);
+}
+.fixed-wrap p {
+  font-size: 2.4rem;
+  margin: 10px 0 20px 0;
+  color: #424242;
+}
+.fixed-wrap button {
+  width: 100%;
+  height: 40px;
+  line-height: 39px !important;
+  border-radius: 6px;
+  font-size: 1.8rem;
+  border: 1px solid #3a3967;
+  background-color: #3a3967;
+  color: #fff;
+  cursor: pointer;
+}
+
 /* 하단 네비게이션 */
 #bottom_navigator {
   max-width: 450px;

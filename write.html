@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>책담-책에 담긴 당신만의 이야기</title>
+
+        <!--css-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/page.css">
+
+        <!--cdn-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+
+    </head>
+    <body>
+        <div class="common-wrap">
+            <header>
+                <div class="header-depth mypage-head">
+                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="back"></a>
+                    <p class="page-title sd-b">독서 기록 작성</p>
+                </div>
+            </header>
+            <div class="sub-wrap">
+                <div class="write-wrap">
+                    <form action="/write.html" method="GET">
+                        <div class="field-list">
+                            <span class="field-name sd-b">카테고리</span>
+                            <div>
+                                <select name="category" id="category-select">
+                                    <option value="국내소설">국내소설</option>
+                                    <option value="해외소설">해외소설</option>
+                                    <option value="에세이">에세이</option>
+                                    <option value="시">시</option>
+                                    <option value="자연/과학">자연/과학</option>
+                                    <option value="건강">건강</option>
+                                    <option value="인문">인문</option>
+                                    <option value="역사">역사</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-list">
+                            <span class="field-title sd-b">제목</span>
+                            <div>
+                                <input type="text" name="title" placeholder="책 제목을 입력해 주세요."/>
+                            </div>
+                        </div>
+                        <div class="field-list">
+                            <span class="field-author sd-b">작가명</span>
+                            <div>
+                                <input type="text" name="title" placeholder="작가 이름을 입력해 주세요."/>
+                            </div>
+                        </div>
+                        <div class="field-list field-date-list">
+                            <span class="field-date sd-b">독서 기간</span>
+                            <div>
+                                <input type="date" name="start-date"> <input type="date" name="end-date">
+                            </div>
+                        </div>
+                        <div class="field-list">
+                            <span class="field-oneline sd-b">한줄평</span>
+                            <div>
+                                <input type="text" name="oneline" placeholder="이 책을 한줄로 평가해 주세요.">
+                            </div>
+                        </div>
+                        <div class="field-list">
+                            <span class="field-content sd-b">독서 기록 내용</span>
+                            <div>
+                                <textarea name="review-content" id="review-content" placeholder="독서 리뷰를 자유롭게 작성해 주세요."></textarea>
+                            </div>
+                        </div>
+                        <div class="field-list">
+                            <span class="field-star sd-b">별점</span>
+                            <div class="star-point">
+                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                            </div>
+                        </div>
+                    </form>
+                    <button type="submit" class="sd-b">등록하기</button>
+                </div>
+            </div>
+            <footer>
+                <div class="logo-box">
+
+                </div>
+
+                <ul class="footer-menu">
+                    <li>
+                        <a href=""><span>이용약관</span></a>
+                    </li>
+                    <li><span class="bar"></span></li>
+                    <li>
+                        <a href=""><span>개인정보처리방침</span></a>
+                    </li>
+                </ul>
+
+                <p id="footer-toggle">개발자 정보</p>
+
+                <div class="copyright-dropdown">
+                    <p class="copy-depth">
+                        <span>이름</span> <span class="bar"></span> <span>000</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>git hub</span> <span class="bar"></span> <span>www.github/yeaseula</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>Email</span> <span class="bar"></span> <span>kminea@naver.com</span>
+                    </p>
+                </div>
+
+                <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
+
+            </footer>
+        </div>
+        <nav id="bottom_navigator">
+            <div class="navigator_wrap">
+                <div class="navigator_cont active">
+                    <img src="/assets/img/home-active-icon.svg" alt="home">
+                    <p class="red-l">Home</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/book-icon.svg" alt="book">
+                    <p class="red-l">Review</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/search-icon.svg" alt="search">
+                    <p class="red-l">Search</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/bookmark-icon.svg" alt="bookmark">
+                    <p class="red-l">Reading</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/mypage-icon.svg" alt="mypage">
+                    <p class="red-l">My Page</p>
+                </div>
+
+            </div>
+        </nav>
+    </body>
+</html>
