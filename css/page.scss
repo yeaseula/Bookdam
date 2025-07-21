@@ -743,6 +743,152 @@ header {
     }
 }
 
+/* 위시 리스트 - 내가 읽고싶은 책 */
+
+/* 상단 form 공통
+    라벨 스타일
+*/
+
+@mixin list-style {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+@mixin label-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgb(106, 200, 216,0.5);
+    color: #424242;
+}
+@mixin input-text-flied {
+    height: 37px;
+    line-height: 35px !important;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    padding: 0 9px;
+    font-size: 1.5rem;
+}
+@mixin input-apperance {
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+@mixin plusbtn-style {
+    display: inline-block;
+    width: 37px;
+    height: 37px;
+    line-height: 37px !important;
+    background-color: $sub_color;
+    border: unset;
+    color: #fff;
+    font-size: 2.4rem;
+    border-radius: 5px;
+}
+@mixin delete-style {
+    display: block;
+    width: 60px;
+    height: 37px;
+    line-height: 35px !important;
+    border-radius: 5px;
+    border: 1px solid $sub_color;
+    background-color: $sub_color;
+    color: #fff;
+    margin-left: auto;
+    margin-top: 50px;
+}
+.book-add-field {
+    .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    input {
+        @include input-text-flied;
+    }
+    .field-input1 {
+        width: 100%;
+    }
+    .field-input2,
+    .field-input3 {
+        width:calc((100% - 47px) / 2);
+    }
+    button {
+        @include plusbtn-style;
+    }
+}
+.my-wish-list,
+.my-reading-list {
+    .wish-book-list,
+    .reading-book-list {
+        margin-top: 35px;
+        .list-item {
+            @include list-style;
+            .check-field {
+                position: relative;
+                label {
+                    @include label-style;
+                }
+                input {
+                    @include input-apperance;
+                    &:checked+label {
+                        color: #fff;
+                        background-color: $point_color;
+                    }
+                }
+            }
+            .list-infor {
+                width: 90%;
+                padding-bottom: 10px;
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+                .book-title {
+                    font-size: 1.8rem;
+                }
+                .author-name {
+                    font-size: 1.5rem;
+                }
+                .bookprice,
+                .reading-number,
+                .total-number {
+                    font-size: 1.6rem;
+                }
+                .reading-number,
+                .total-number {
+                    span {
+                            background-image: linear-gradient(to bottom, transparent 50%, $main_color 50%);
+                        }
+                }
+                .reading-progress {
+                    text-align: right;
+                    font-size: 1.6rem;
+                }
+                img {
+                    position: relative;
+                    top: 1px;
+                    max-width: 16px
+                }
+            }
+        }
+    }
+    #delete_btn {
+        @include delete-style;
+    }
+}
+
+
+.my-reading-list {
+
+}
+
 /* 글쓰기 페이지 */
 .write-wrap {
     .field-list {

@@ -1,6 +1,9 @@
 * {
-  line-height: 1.45 !important;
   box-sizing: border-box;
+}
+
+p {
+  line-height: 1.45 !important;
 }
 
 html {
@@ -30,4 +33,8 @@ body {
 
 .section {
   padding: 5px 15px;
+}
+
+button {
+  cursor: pointer;
 }/*# sourceMappingURL=common.css.map */

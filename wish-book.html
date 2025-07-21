@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>책담-책에 담긴 당신만의 이야기</title>
+
+        <!--css-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/common.css">
+        <link rel="stylesheet" type="text/css" href="css/page.css">
+
+        <!--cdn-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    </head>
+    <body>
+        <div class="common-wrap" >
+            <header>
+                <div class="header-depth mypage-head">
+                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="back"></a>
+                    <p class="page-title sd-b">읽고싶은 책</p>
+                </div>
+            </header>
+            <div class="sub-wrap">
+                <div class="my-wish-list">
+                    <section class="book-add-field">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" name="wish-book-title" class="field-input1" placeholder="책 제목">
+                                <input type="text" name="wish-book-author" class="field-input2" placeholder="작가명">
+                                <input type="number" name="wish-book-price" class="field-input3" placeholder="가격(숫자만 입력)">
+                                <button class="btn-add" title="추가">＋</button>
+                            </div>
+                        </form>
+                    </section>
+                    <section class="wish-book-list">
+                        <div class="list-item">
+                            <div class="check-field">
+                                <input type="checkbox" name="list-check" id="list0">
+                                <label for="list0"><i class="ri-check-line"></i></label>
+                            </div>
+
+                            <div class="list-infor">
+                                <div>
+                                    <p class="book-title">책 제목</p>
+                                    <p class="author-name">작가 이름</p>
+                                </div>
+                                <p class="bookprice">19,800원</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <button type="button" id="delete_btn">삭제</button>
+                    </section>
+                </div>
+            </div>
+            <footer>
+                <div class="logo-box">
+
+                </div>
+
+                <ul class="footer-menu">
+                    <li>
+                        <a href=""><span>이용약관</span></a>
+                    </li>
+                    <li><span class="bar"></span></li>
+                    <li>
+                        <a href=""><span>개인정보처리방침</span></a>
+                    </li>
+                </ul>
+
+                <p id="footer-toggle">개발자 정보</p>
+
+                <div class="copyright-dropdown">
+                    <p class="copy-depth">
+                        <span>이름</span> <span class="bar"></span> <span>000</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>git hub</span> <span class="bar"></span> <span>www.github/yeaseula</span>
+                    </p>
+                    <p class="copy-depth">
+                        <span>Email</span> <span class="bar"></span> <span>kminea@naver.com</span>
+                    </p>
+                </div>
+
+                <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
+
+            </footer>
+        </div>
+        <nav id="bottom_navigator">
+            <div class="navigator_wrap">
+                <div class="navigator_cont active">
+                    <img src="/assets/img/home-active-icon.svg" alt="home">
+                    <p class="red-l">Home</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/book-icon.svg" alt="book">
+                    <p class="red-l">Review</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/search-icon.svg" alt="search">
+                    <p class="red-l">Search</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/bookmark-icon.svg" alt="bookmark">
+                    <p class="red-l">Reading</p>
+                </div>
+                <div class="navigator_cont">
+                    <img src="/assets/img/mypage-icon.svg" alt="mypage">
+                    <p class="red-l">My Page</p>
+                </div>
+
+            </div>
+        </nav>
+
+    </body>
+</html>

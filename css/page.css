@@ -709,6 +709,171 @@ header .search-box .reset-btn {
   transform: rotate(90deg);
 }
 
+/* 위시 리스트 - 내가 읽고싶은 책 */
+/* 상단 form 공통
+    라벨 스타일
+*/
+.book-add-field .input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.book-add-field input {
+  height: 37px;
+  line-height: 35px !important;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 0 9px;
+  font-size: 1.5rem;
+}
+.book-add-field .field-input1 {
+  width: 100%;
+}
+.book-add-field .field-input2,
+.book-add-field .field-input3 {
+  width: calc((100% - 47px) / 2);
+}
+.book-add-field button {
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  line-height: 37px !important;
+  background-color: #3a3967;
+  border: unset;
+  color: #fff;
+  font-size: 2.4rem;
+  border-radius: 5px;
+}
+
+.my-wish-list .wish-book-list,
+.my-wish-list .reading-book-list,
+.my-reading-list .wish-book-list,
+.my-reading-list .reading-book-list {
+  margin-top: 35px;
+}
+.my-wish-list .wish-book-list .list-item,
+.my-wish-list .reading-book-list .list-item,
+.my-reading-list .wish-book-list .list-item,
+.my-reading-list .reading-book-list .list-item {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.my-wish-list .wish-book-list .list-item .check-field,
+.my-wish-list .reading-book-list .list-item .check-field,
+.my-reading-list .wish-book-list .list-item .check-field,
+.my-reading-list .reading-book-list .list-item .check-field {
+  position: relative;
+}
+.my-wish-list .wish-book-list .list-item .check-field label,
+.my-wish-list .reading-book-list .list-item .check-field label,
+.my-reading-list .wish-book-list .list-item .check-field label,
+.my-reading-list .reading-book-list .list-item .check-field label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: rgba(106, 200, 216, 0.5);
+  color: #424242;
+}
+.my-wish-list .wish-book-list .list-item .check-field input,
+.my-wish-list .reading-book-list .list-item .check-field input,
+.my-reading-list .wish-book-list .list-item .check-field input,
+.my-reading-list .reading-book-list .list-item .check-field input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.my-wish-list .wish-book-list .list-item .check-field input:checked + label,
+.my-wish-list .reading-book-list .list-item .check-field input:checked + label,
+.my-reading-list .wish-book-list .list-item .check-field input:checked + label,
+.my-reading-list .reading-book-list .list-item .check-field input:checked + label {
+  color: #fff;
+  background-color: #6ac8d8;
+}
+.my-wish-list .wish-book-list .list-item .list-infor,
+.my-wish-list .reading-book-list .list-item .list-infor,
+.my-reading-list .wish-book-list .list-item .list-infor,
+.my-reading-list .reading-book-list .list-item .list-infor {
+  width: 90%;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.my-wish-list .wish-book-list .list-item .list-infor .book-title,
+.my-wish-list .reading-book-list .list-item .list-infor .book-title,
+.my-reading-list .wish-book-list .list-item .list-infor .book-title,
+.my-reading-list .reading-book-list .list-item .list-infor .book-title {
+  font-size: 1.8rem;
+}
+.my-wish-list .wish-book-list .list-item .list-infor .author-name,
+.my-wish-list .reading-book-list .list-item .list-infor .author-name,
+.my-reading-list .wish-book-list .list-item .list-infor .author-name,
+.my-reading-list .reading-book-list .list-item .list-infor .author-name {
+  font-size: 1.5rem;
+}
+.my-wish-list .wish-book-list .list-item .list-infor .bookprice,
+.my-wish-list .wish-book-list .list-item .list-infor .reading-number,
+.my-wish-list .wish-book-list .list-item .list-infor .total-number,
+.my-wish-list .reading-book-list .list-item .list-infor .bookprice,
+.my-wish-list .reading-book-list .list-item .list-infor .reading-number,
+.my-wish-list .reading-book-list .list-item .list-infor .total-number,
+.my-reading-list .wish-book-list .list-item .list-infor .bookprice,
+.my-reading-list .wish-book-list .list-item .list-infor .reading-number,
+.my-reading-list .wish-book-list .list-item .list-infor .total-number,
+.my-reading-list .reading-book-list .list-item .list-infor .bookprice,
+.my-reading-list .reading-book-list .list-item .list-infor .reading-number,
+.my-reading-list .reading-book-list .list-item .list-infor .total-number {
+  font-size: 1.6rem;
+}
+.my-wish-list .wish-book-list .list-item .list-infor .reading-number span,
+.my-wish-list .wish-book-list .list-item .list-infor .total-number span,
+.my-wish-list .reading-book-list .list-item .list-infor .reading-number span,
+.my-wish-list .reading-book-list .list-item .list-infor .total-number span,
+.my-reading-list .wish-book-list .list-item .list-infor .reading-number span,
+.my-reading-list .wish-book-list .list-item .list-infor .total-number span,
+.my-reading-list .reading-book-list .list-item .list-infor .reading-number span,
+.my-reading-list .reading-book-list .list-item .list-infor .total-number span {
+  background-image: linear-gradient(to bottom, transparent 50%, #fff4ba 50%);
+}
+.my-wish-list .wish-book-list .list-item .list-infor .reading-progress,
+.my-wish-list .reading-book-list .list-item .list-infor .reading-progress,
+.my-reading-list .wish-book-list .list-item .list-infor .reading-progress,
+.my-reading-list .reading-book-list .list-item .list-infor .reading-progress {
+  text-align: right;
+  font-size: 1.6rem;
+}
+.my-wish-list .wish-book-list .list-item .list-infor img,
+.my-wish-list .reading-book-list .list-item .list-infor img,
+.my-reading-list .wish-book-list .list-item .list-infor img,
+.my-reading-list .reading-book-list .list-item .list-infor img {
+  position: relative;
+  top: 1px;
+  max-width: 16px;
+}
+.my-wish-list #delete_btn,
+.my-reading-list #delete_btn {
+  display: block;
+  width: 60px;
+  height: 37px;
+  line-height: 35px !important;
+  border-radius: 5px;
+  border: 1px solid #3a3967;
+  background-color: #3a3967;
+  color: #fff;
+  margin-left: auto;
+  margin-top: 50px;
+}
+
 /* 글쓰기 페이지 */
 .write-wrap .field-list {
   margin-bottom: 20px;
