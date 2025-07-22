@@ -45,20 +45,26 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('파일 로딩 오류:', error);
     });
 
-    //footer my information toggle
-    const Copytogglebtn = $('#footer-toggle');
+    fetch('./footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+            //footer my information toggle
+            const Copytogglebtn = $('#footer-toggle');
 
-    Copytogglebtn.addEventListener('click',()=>{
-        const Copytogglecont = $('.copyright-dropdown');
-        const hasCont = Copytogglecont.classList.contains('active');
-
-        if(!hasCont) {
-            Copytogglecont.classList.add('active');
-        } else {
-            Copytogglecont.classList.remove('active');
-        }
-    })
-
+            Copytogglebtn.addEventListener('click',()=>{
+                const Copytogglecont = $('.copyright-dropdown');
+                const hasCont = Copytogglecont.classList.contains('is-active');
+                if(!hasCont) {
+                    Copytogglecont.classList.add('is-active');
+                } else {
+                    Copytogglecont.classList.remove('is-active');
+                }
+            })
+        })
+        .catch(error => {
+            console.error('파일 로딩 오류:', error);
+        })
 
 
 })

@@ -24,13 +24,14 @@
         <div class="common-wrap">
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="back"></a>
+                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
                     <p class="page-title sd-b">읽고있는 책</p>
                 </div>
             </header>
             <div class="sub-wrap">
-                <div class="my-reading-list">
+                <div class="my-reading-wrap">
                     <section class="book-add-field">
+                        <h2 class="sr-only">읽고있는 책 추가</h2>
                         <form action="">
                             <div class="input-group">
                                 <input type="text" name="rd-book-title" class="field-input1" placeholder="책 제목">
@@ -43,24 +44,25 @@
                         </form>
                     </section>
                     <section class="reading-book-list">
+                        <h2 class="sr-only">읽고있는 책 목록</h2>
                         <div class="list-item">
                             <div class="check-field">
-                                <input type="checkbox" name="list-check" id="list0">
-                                <label for="list0"><i class="ri-check-line"></i></label>
+                                <input type="checkbox" name="list-check" id="list0" aria-label="목록 선택">
+                                <label for="list0"><i class="ri-check-line" aria-hidden="true"></i></label>
                             </div>
 
                             <div class="list-infor">
                                 <div>
                                     <p class="book-title">책 제목입니다.</p>
                                     <p class="reading-number">
-                                        <img src="assets/img/pencil-fill.svg" alt="클릭하면 읽은 페이지 수정 가능">
+                                        <img src="assets/img/pencil-fill.svg" alt="읽은 페이지 수정">
                                         <span>123페이지 읽는 중</span>
                                     </p>
                                 </div>
                                 <div>
                                     <p class="reading-progress">60%</p>
                                     <p class="total-number">
-                                        <img src="assets/img/pencil-fill.svg" alt="클릭하면 총 페이지 수정 가능">
+                                        <img src="assets/img/pencil-fill.svg" alt="총 페이지 수정">
                                         <span>총 388페이지</span>
                                     </p>
                                 </div>
@@ -68,42 +70,12 @@
                         </div>
                     </section>
                     <section>
+                        <h2 class="sr-only">삭제 버튼</h2>
                         <button type="button" id="delete_btn">삭제</button>
                     </section>
                 </div>
             </div>
-            <footer>
-                <div class="logo-box">
-
-                </div>
-
-                <ul class="footer-menu">
-                    <li>
-                        <a href=""><span>이용약관</span></a>
-                    </li>
-                    <li><span class="bar"></span></li>
-                    <li>
-                        <a href=""><span>개인정보처리방침</span></a>
-                    </li>
-                </ul>
-
-                <p id="footer-toggle">개발자 정보</p>
-
-                <div class="copyright-dropdown">
-                    <p class="copy-depth">
-                        <span>이름</span> <span class="bar"></span> <span>000</span>
-                    </p>
-                    <p class="copy-depth">
-                        <span>git hub</span> <span class="bar"></span> <span>www.github/yeaseula</span>
-                    </p>
-                    <p class="copy-depth">
-                        <span>Email</span> <span class="bar"></span> <span>kminea@naver.com</span>
-                    </p>
-                </div>
-
-                <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
-
-            </footer>
+            <footer id="footer"></footer>
         </div>
         <nav id="bottom_navigator"></nav>
         <script>

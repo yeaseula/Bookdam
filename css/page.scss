@@ -5,13 +5,11 @@ $main_color_light: #fffadf;
 $sub_color:#3a3967;
 $point_color:#6ac8d8;
 
-.main-wrap {
-    background-color: #fffdfc;
-}
 #main {
     width: 100%;
     overflow: hidden;
     position: relative;
+    background-color: #fffdfc;
     .main-background {
         position: absolute;
         top: 0;
@@ -537,6 +535,7 @@ header {
         margin-bottom: 30px;
         .search-page-title {
             font-size: 1.5rem;
+            font-weight: 500;
             margin-bottom: 10px;
         }
     }
@@ -804,6 +803,8 @@ header {
     margin-left: auto;
     margin-top: 50px;
 }
+
+//상단 추가 필드
 .book-add-field {
     .input-group {
         display: flex;
@@ -817,17 +818,29 @@ header {
         width: 100%;
     }
     .field-input2,
-    .field-input3 {
+    .field-input3,
+    .field-input4,
+    .field-input5 {
         width:calc((100% - 47px) / 2);
+    }
+
+    .field-text {
+        width: 100%;
+        max-width: 100%;
+        height: 90px;
+        border-radius: 5px;
+        border: 1px solid #e0e0e0;
     }
     button {
         @include plusbtn-style;
     }
 }
-.my-wish-list,
-.my-reading-list {
+.my-wish-wrap,
+.my-reading-wrap,
+.my-memo-wrap {
     .wish-book-list,
-    .reading-book-list {
+    .reading-book-list,
+    .memo-book-list {
         margin-top: 35px;
         .list-item {
             @include list-style;
@@ -850,11 +863,20 @@ header {
                 display: flex;
                 align-items: end;
                 justify-content: space-between;
+                &.memo-type {
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: start;
+                }
                 .book-title {
                     font-size: 1.8rem;
                 }
                 .author-name {
                     font-size: 1.5rem;
+                }
+                .memo-contents {
+                    margin-top: 10px;
+                    font-size: 1.6rem;
                 }
                 .bookprice,
                 .reading-number,
@@ -885,18 +907,14 @@ header {
 }
 
 
-.my-reading-list {
-
-}
-
 /* 글쓰기 페이지 */
 .write-wrap {
     .field-list {
         margin-bottom: 20px;
-        span {
-            font-size: 1.6rem;
+        > h2 {
             display: inline-block;
             margin-bottom: 7px;
+            font-size: 1.6rem;
         }
     }
     //common style
@@ -934,7 +952,15 @@ header {
             align-items: center;
         }
     }
-    button {
+    .star-point {
+        button {
+            border: unset;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+        }
+    }
+    .submit-btn {
         margin-top: 20px;
         width: 100%;
         background-color: $sub_color;
@@ -1089,7 +1115,7 @@ footer {
         visibility: hidden;
         height: 0;
 
-        &.active {
+        &.is-active {
             visibility: visible;
             height: auto;
             padding-top: 15px;
@@ -1109,8 +1135,8 @@ footer {
     }
 }
 
-/* 글쓰기버튼 */
-#write_floating, #quick_up {
+/* 플로팅 버튼 */
+#quick_up {
     position: fixed;
     right: calc(((100vw - 450px) / 2) + 15px);
     bottom: 90px;

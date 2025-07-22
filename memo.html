@@ -24,36 +24,37 @@
             <header>
                 <div class="header-depth mypage-head">
                     <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
-                    <p class="page-title sd-b">읽고싶은 책</p>
+                    <p class="page-title sd-b">기억에 남는 구절</p>
                 </div>
             </header>
             <div class="sub-wrap">
-                <div class="my-wish-wrap">
+                <div class="my-memo-wrap">
                     <section class="book-add-field">
-                        <h2 class="sr-only">읽고싶은 책 추가</h2>
+                        <h2 class="sr-only">기억에 남는 구절 추가</h2>
                         <form action="">
                             <div class="input-group">
-                                <input type="text" name="wish-book-title" class="field-input1" placeholder="책 제목">
-                                <input type="text" name="wish-book-author" class="field-input2" placeholder="작가명">
-                                <input type="number" name="wish-book-price" class="field-input3" placeholder="가격(숫자만 입력)">
+                                <input type="text" name="memo-book-title" class="field-input4" placeholder="책 제목">
+                                <input type="number" name="memo-book-page" class="field-input5" placeholder="페이지">
                                 <button class="btn-add" title="추가">＋</button>
+                                <textarea name="memo-book-line" class="field-text"></textarea>
                             </div>
                         </form>
                     </section>
-                    <section class="wish-book-list">
-                        <h2 class="sr-only">읽고싶은 책 목록</h2>
+                    <section class="memo-book-list">
+                        <h2 class="sr-only">내가 추가한 구절</h2>
                         <div class="list-item">
                             <div class="check-field">
                                 <input type="checkbox" name="list-check" id="list0" aria-label="목록 선택">
                                 <label for="list0"><i class="ri-check-line" aria-hidden="true"></i></label>
                             </div>
 
-                            <div class="list-infor">
+                            <div class="list-infor memo-type">
                                 <div>
                                     <p class="book-title">책 제목</p>
-                                    <p class="author-name">작가 이름</p>
+                                    <p class="page-number">위치</p>
                                 </div>
-                                <p class="bookprice">19,800원</p>
+                                <p class="memo-contents">내가 메모한 내용은 다음입니다.내가 메모한 내용은 다음입니다.<br>
+                                    내가 메모한 내용은 다음입니다.내가 메모한 내용은 다음입니다.</p>
                             </div>
                         </div>
                     </section>
@@ -68,7 +69,7 @@
         <nav id="bottom_navigator"></nav>
 
         <script>
-            const currentpage = 'wish';
+            const currentpage = 'memo';
         </script>
     </body>
 </html>

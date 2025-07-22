@@ -23,15 +23,15 @@
         <div class="common-wrap">
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="back"></a>
+                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
                     <p class="page-title sd-b">독서 기록 작성</p>
                 </div>
             </header>
             <div class="sub-wrap">
                 <div class="write-wrap">
                     <form action="/write.html" method="GET">
-                        <div class="field-list">
-                            <span class="field-name sd-b">카테고리</span>
+                        <section class="field-list">
+                            <h2 class="field-name sd-b">카테고리</h2>
                             <div>
                                 <select name="category" id="category-select">
                                     <option value="국내소설">국내소설</option>
@@ -44,83 +44,52 @@
                                     <option value="역사">역사</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="field-list">
-                            <span class="field-title sd-b">제목</span>
+                        </section>
+                        <section class="field-list">
+                            <h2 class="field-title sd-b">제목</h2>
                             <div>
                                 <input type="text" name="title" placeholder="책 제목을 입력해 주세요."/>
                             </div>
-                        </div>
-                        <div class="field-list">
-                            <span class="field-author sd-b">작가명</span>
+                        </section>
+                        <section class="field-list">
+                            <h2 class="field-author sd-b">작가명</h2>
                             <div>
                                 <input type="text" name="title" placeholder="작가 이름을 입력해 주세요."/>
                             </div>
-                        </div>
-                        <div class="field-list field-date-list">
-                            <span class="field-date sd-b">독서 기간</span>
+                        </section>
+                        <section class="field-list field-date-list">
+                            <h2 class="field-date sd-b">독서 기간</h2>
                             <div>
                                 <input type="date" name="start-date"> <input type="date" name="end-date">
                             </div>
-                        </div>
-                        <div class="field-list">
-                            <span class="field-oneline sd-b">한줄평</span>
+                        </section>
+                        <section class="field-list">
+                            <h2 class="field-oneline sd-b">한줄평</h2>
                             <div>
                                 <input type="text" name="oneline" placeholder="이 책을 한줄로 평가해 주세요.">
                             </div>
-                        </div>
-                        <div class="field-list">
-                            <span class="field-content sd-b">독서 기록 내용</span>
+                        </section>
+                        <section class="field-list">
+                            <h2 class="field-content sd-b">독서 기록 내용</h2>
                             <div>
                                 <textarea name="review-content" id="review-content" placeholder="독서 리뷰를 자유롭게 작성해 주세요."></textarea>
                             </div>
-                        </div>
-                        <div class="field-list">
-                            <span class="field-star sd-b">별점</span>
+                        </section>
+                        <section class="field-list">
+                            <h2 class="field-star sd-b">별점</h2>
                             <div class="star-point">
-                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
-                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
-                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
-                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
-                                <img src="assets/img/star.svg" alt="별점 표시 아이콘">
+                                <button type="button" aria-label="1점"><img src="assets/img/star.svg" alt=""></button>
+                                <button type="button" aria-label="2점"><img src="assets/img/star.svg" alt=""></button>
+                                <button type="button" aria-label="3점"><img src="assets/img/star.svg" alt=""></button>
+                                <button type="button" aria-label="4점"><img src="assets/img/star.svg" alt=""></button>
+                                <button type="button" aria-label="5점"><img src="assets/img/star.svg" alt=""></button>
                             </div>
-                        </div>
+                        </section>
                     </form>
-                    <button type="submit" class="sd-b">등록하기</button>
+                    <button type="submit" class="submit-btn sd-b">등록하기</button>
                 </div>
             </div>
-            <footer>
-                <div class="logo-box">
-
-                </div>
-
-                <ul class="footer-menu">
-                    <li>
-                        <a href=""><span>이용약관</span></a>
-                    </li>
-                    <li><span class="bar"></span></li>
-                    <li>
-                        <a href=""><span>개인정보처리방침</span></a>
-                    </li>
-                </ul>
-
-                <p id="footer-toggle">개발자 정보</p>
-
-                <div class="copyright-dropdown">
-                    <p class="copy-depth">
-                        <span>이름</span> <span class="bar"></span> <span>000</span>
-                    </p>
-                    <p class="copy-depth">
-                        <span>git hub</span> <span class="bar"></span> <span>www.github/yeaseula</span>
-                    </p>
-                    <p class="copy-depth">
-                        <span>Email</span> <span class="bar"></span> <span>kminea@naver.com</span>
-                    </p>
-                </div>
-
-                <p class="copyright-text">copyright dkalsdfajksdl askdflasjd.</p>
-
-            </footer>
+            <footer id="footer"></footer>
         </div>
         <nav id="bottom_navigator"></nav>
 
