@@ -1085,6 +1085,8 @@ header .search-box .reset-btn {
   color: #424242;
 }
 .done-fixed-wrap .go-review {
+  position: relative;
+  z-index: 2;
   display: inline-block;
   width: 100%;
   height: 40px;
@@ -1102,6 +1104,7 @@ header .search-box .reset-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
 }
 
 /* 하단 네비게이션 */
