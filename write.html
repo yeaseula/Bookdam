@@ -29,11 +29,13 @@
             </header>
             <div class="sub-wrap">
                 <div class="write-wrap">
-                    <form action="/write.html" method="GET">
+                    <form id="bookForm">
                         <section class="field-list">
                             <h2 class="field-name sd-b">카테고리</h2>
                             <div>
-                                <select name="category" id="category-select">
+                                <label for="category-select" class="sr-only">도서 카테고리 선택</label>
+                                <select name="category" id="category-select" aria-required="true">
+                                    <option value="" disabled selected>카테고리를 선택해 주세요.</option>
                                     <option value="국내소설">국내소설</option>
                                     <option value="해외소설">해외소설</option>
                                     <option value="에세이">에세이</option>
@@ -42,19 +44,20 @@
                                     <option value="건강">건강</option>
                                     <option value="인문">인문</option>
                                     <option value="역사">역사</option>
+                                    <option value="만화/웹툰">만화/웹툰</option>
                                 </select>
                             </div>
                         </section>
                         <section class="field-list">
                             <h2 class="field-title sd-b">제목</h2>
                             <div>
-                                <input type="text" name="title" placeholder="책 제목을 입력해 주세요."/>
+                                <input type="text" name="book-title" placeholder="책 제목을 입력해 주세요."/>
                             </div>
                         </section>
                         <section class="field-list">
                             <h2 class="field-author sd-b">작가명</h2>
                             <div>
-                                <input type="text" name="title" placeholder="작가 이름을 입력해 주세요."/>
+                                <input type="text" name="book-author" placeholder="작가 이름을 입력해 주세요."/>
                             </div>
                         </section>
                         <section class="field-list field-date-list">
@@ -78,15 +81,15 @@
                         <section class="field-list">
                             <h2 class="field-star sd-b">별점</h2>
                             <div class="star-point">
-                                <button type="button" aria-label="1점"><img src="assets/img/star.svg" alt=""></button>
-                                <button type="button" aria-label="2점"><img src="assets/img/star.svg" alt=""></button>
-                                <button type="button" aria-label="3점"><img src="assets/img/star.svg" alt=""></button>
-                                <button type="button" aria-label="4점"><img src="assets/img/star.svg" alt=""></button>
-                                <button type="button" aria-label="5점"><img src="assets/img/star.svg" alt=""></button>
+                                <button type="button" aria-label="2점" data-score="2"><img src="assets/img/star.svg"></button>
+                                <button type="button" aria-label="4점" data-score="4"><img src="assets/img/star.svg"></button>
+                                <button type="button" aria-label="6점" data-score="6"><img src="assets/img/star.svg"></button>
+                                <button type="button" aria-label="8점" data-score="8"><img src="assets/img/star.svg"></button>
+                                <button type="button" aria-label="10점" data-score="10"><img src="assets/img/star.svg"></button>
                             </div>
                         </section>
                     </form>
-                    <button type="submit" class="submit-btn sd-b">등록하기</button>
+                    <button type="submit" id="submitBtn" class="submit-btn sd-b">등록하기</button>
                 </div>
             </div>
             <footer id="footer"></footer>
@@ -95,6 +98,76 @@
 
         <script>
             const currentpage = 'write';
+
+            //별점 포인트
+            let selectedScore = null;
+            const starButtons = document.querySelectorAll('.star-point button');
+            const form = document.getElementById('bookForm');
+
+            // 별점 버튼 클릭 시 처리
+            starButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                selectedScore = button.getAttribute('data-score');
+
+                // 시각적으로 선택된 별 강조 표시
+                starButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                });
+            });
+
+
+            //입력 함수
+            document.getElementById('submitBtn').addEventListener('click', function() {
+                const form = document.getElementById('bookForm');
+                const category = form['category'].value.trim();
+                const title = form['book-title'].value.trim();
+                const author = form['book-author'].value.trim();
+                const startDate = form['start-date'].value.trim();
+                const endDate = form['end-date'].value.trim();
+                const oneline = form['oneline'].value.trim();
+                const reviewContent = form['review-content'].value.trim();
+
+                if (!category || !title || !author || !startDate || !endDate || !oneline || !reviewContent || selectedScore == null) {
+                        alert('모든 항목을 입력해 주세요.');
+                    return; // 입력 안된 경우 함수 종료
+                }
+
+                saveData({
+                    category, title, author, startDate, endDate, oneline, reviewContent, selectedScore
+                });
+            });
+
+            function saveData(data) {
+                const formData = new FormData();
+
+                //구글 폼은 연/월/일 나눠 저장=>합치는 과정 필요
+                function appendDate(entryId, dateStr) {
+                    const [year, month, day] = dateStr.split('-');
+                    formData.append(`${entryId}_year`, year);
+                    formData.append(`${entryId}_month`, month);
+                    formData.append(`${entryId}_day`, day);
+                }
+
+                appendDate('entry.978124758', data.startDate);
+                appendDate('entry.1886080629', data.endDate);
+                formData.append('entry.111606111', data.category);
+                formData.append('entry.2133626741', data.title);
+                formData.append('entry.1121788773', data.author);
+                formData.append('entry.2051817365', data.oneline);
+                formData.append('entry.464459771', data.reviewContent);
+                formData.append('entry.782264585', data.selectedScore);
+
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSdOJ4LDIzpxZ-b1SVLv4RB0O-cMKsqUN4eTBzNs5-ec2ko4WQ/formResponse', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                // 저장 후 done.html로 이동
+                window.location.href = 'done.html';
+            }).catch(() => {
+                alert('등록 중 오류가 발생했습니다.');
+            });
+            }
         </script>
     </body>
 </html>
