@@ -9,14 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
         centeredSlides : true,
     });
 
-    //main slider2
-    const MyRecomandBoook = new Swiper('.my_recomand_book', {
-        slidesPerView: 1.15,
-        loop: true,
-        spaceBetween:15,
-
-    });
-
 
     //calendar for book stamp
     var calendarEl = document.getElementById('calendar');
@@ -58,18 +50,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    //footer my information toggle
-    const Copytogglebtn = $('#footer-toggle');
-
-    Copytogglebtn.addEventListener('click',()=>{
-        const Copytogglecont = $('.copyright-dropdown');
-        const hasCont = Copytogglecont.classList.contains('active');
-
-        if(!hasCont) {
-            Copytogglecont.classList.add('active');
-        } else {
-            Copytogglecont.classList.remove('active');
-        }
-    })
 });
 
