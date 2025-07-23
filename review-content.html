@@ -32,7 +32,7 @@
                         <h2 class="sr-only">책 정보</h2>
                         <div class="book-cover-img"></div>
                         <div class="book-infor">
-                            <p id="book-cate" class="sd-b">인문학</p>
+                            <p id="book-cate" class="sd-b">카테고리</p>
                             <p id="book-title" class="sd-b">물고기는 존재하지 않는다.</p>
                             <p id="book-author">룰루밀러 저</p>
 
@@ -94,13 +94,124 @@
         <script>
             const currentpage = 'reviewcontent';
 
-            //추후 기능 연결
-            const score = 3;
-            const total = 5;
-            document.querySelector('.icons-wrap').setAttribute(
-                'aria-label',
-                `내가 준 평점: ${total}점 만점에 ${score}점`
-            );
+
+            const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
+            const gid = '1116419757';
+            const kakaoKey = '7ef7831f0d6b81e970b30f0cdfa6a4a2';
+
+            // 1. 쿼리값(title, author) 읽기
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title');
+            const author = params.get('author');
+
+            // 2. 카카오 API로 커버 이미지 가져오기
+            async function fetchBookCover(title, author) {
+                try {
+                    const query = `${title} ${author}`;
+                    const apiUrl = `https://dapi.kakao.com/v3/search/book?target=all&query=${encodeURIComponent(query)}`;
+                    const res = await fetch(apiUrl, {
+                        headers: { Authorization: `KakaoAK ${kakaoKey}` }
+                    });
+                    const data = await res.json();
+                    const filtered = data.documents.find(book =>
+                        book.title.includes(title) && book.authors.join(',').includes(author)
+                    );
+                    return (filtered || data.documents[0])?.thumbnail || '';
+                } catch (e) {
+                    console.error('카카오 API 오류:', e);
+                    return '';
+                }
+            }
+
+
+            //google 시트의 날짜 형식은 Date(2025, 5, 10) 형태의 문자열로 출력, 변환처리 필요
+            function sheetDateFormat(rawDate) {
+                const match = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                if (!match) return rawDate;
+                    const year = match[1];
+                    const month = String(Number(match[2]) + 1).padStart(2, '0'); // 0부터 시작
+                    const day = String(match[3]).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
+            }
+
+            // 3. 구글 시트에서 데이터 불러와서 일치하는 리뷰 찾기
+            async function loadReviewDetail() {
+                const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+                const text = await fetch(url).then(r => r.text());
+                const json = JSON.parse(
+                    text
+                        .replace("/*O_o*/", "")
+                        .replace("google.visualization.Query.setResponse(", "")
+                        .slice(0, -2)
+                );
+                const rows = json.table.rows;
+
+                // 제목, 작가 모두 일치하는 row 찾기
+                const review = rows.find(row =>
+                    (row.c[2]?.v || '') === title && (row.c[3]?.v || '') === author
+                );
+                if (!review) {
+                    alert('리뷰 데이터를 찾을 수 없습니다.');
+                    return;
+                }
+
+                // 시트 인덱스에 따라 데이터 추출
+                const cate = review.c[1]?.v || '';
+                const startDateRaw = review.c[4]?.v || '';
+                const endDateRaw = review.c[5]?.v || '';
+                const oneline = review.c[6]?.v || '';
+                const reviewTextRaw = review.c[7]?.v || '';
+                const star = review.c[8]?.v || '';
+
+                // 날짜 형식 변환
+                const startDate = sheetDateFormat(startDateRaw);
+                const endDate = sheetDateFormat(endDateRaw);
+
+                //textarea로 받은 값은 줄바꿈없이 출력됩니다. 변환필요
+                const reviewText = reviewTextRaw.replace(/\n/g, `<br>`);
+
+                // DOM에 값 넣기
+                document.getElementById('book-cate').textContent = cate;
+                document.getElementById('book-title').textContent = title;
+                document.querySelector('.page-title').textContent = title;
+                document.getElementById('book-author').textContent = author + ' 저';
+                document.getElementById('start-date').textContent = startDate;
+                document.getElementById('end-date').textContent = endDate;
+                document.querySelector('.my-oneline-cont').textContent = oneline;
+                document.querySelector('.my-review-cont').innerHTML = reviewText;
+                document.querySelector('.point-number').textContent = star;
+
+                // 별점(예: 8.5라면 4개 반 별 등) 처리는 필요시 추가
+                MyRaiting(star);
+                // 커버 이미지 넣기
+                const thumb = await fetchBookCover(title, author);
+                if (thumb) {
+                    document.querySelector('.book-cover-img').style.backgroundImage = `url('${thumb}')`;
+                }
+            }
+
+            loadReviewDetail();
+
+
+            function MyRaiting(star) {
+                const score = star;
+                const total = 10;
+                document.querySelector('.icons-wrap').setAttribute(
+                    'aria-label',
+                    `내가 준 평점: ${total}점 만점에 ${score}점`
+                );
+            }
+            // function MyRaiting(score, total) {
+            //     const icons = document.querySelectorAll('.icons-wrap img');
+            //     icons.forEach((icon, index) => {
+            //         if (index < score) {
+            //             icon.src = 'assets/img/star.svg'; // 채워진 별
+            //         } else {
+            //             icon.src = 'assets/img/star-empty.svg'; // 빈 별
+            //         }
+            //     });
+            //     document.querySelector('.point-number').textContent = (score / total * 10).toFixed(1);
+            // }
         </script>
     </body>
 </html>
