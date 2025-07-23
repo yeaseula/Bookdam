@@ -39,42 +39,7 @@
                             <a href="javascript:void(0)" class="go_my_librery"><span>내 서재</span></a>
                         </div>
                         <div class="my-review-list">
-                            <div class="list-item">
-                                <a href=""></a>
-                                <div class="list-img"></div>
-                                <div class="list-cont">
-                                    <p class="list-title">책 제목입니다.</p>
-                                    <p class="list-summary">한줄 요약입니다.</p>
-                                    <p class="list-date">2025-07-12</p>
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <a href=""></a>
-                                <div class="list-img"></div>
-                                <div class="list-cont">
-                                    <p class="list-title">책 제목입니다.</p>
-                                    <p class="list-summary">한줄 요약입니다.</p>
-                                    <p class="list-date">2025-07-12</p>
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <a href=""></a>
-                                <div class="list-img"></div>
-                                <div class="list-cont">
-                                    <p class="list-title">책 제목입니다.</p>
-                                    <p class="list-summary">한줄 요약입니다.</p>
-                                    <p class="list-date">2025-07-12</p>
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <a href=""></a>
-                                <div class="list-img"></div>
-                                <div class="list-cont">
-                                    <p class="list-title">책 제목입니다.</p>
-                                    <p class="list-summary">한줄 요약입니다.</p>
-                                    <p class="list-date">2025-07-12</p>
-                                </div>
-                            </div>
+
                         </div>
                     </section>
                 </div>
@@ -85,6 +50,70 @@
 
         <script>
             const currentpage = 'review';
+
+            const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
+            const gid = '1116419757';
+            const kakaoKey = '7ef7831f0d6b81e970b30f0cdfa6a4a2'; // REST 키
+
+            async function fetchBookCover(title) {
+                try {
+                    const res = await fetch(`https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(title)}`, {
+                        headers: { Authorization: `KakaoAK ${kakaoKey}` }
+                    });
+                    const json = await res.json();
+                        return json.documents[0]?.thumbnail || '';
+                    } catch (e) {
+                        console.error('카카오 API 오류:', e);
+                        return '';
+                    }
+                }
+
+                async function loadReviews() {
+                    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+                    const text = await fetch(url).then(r => r.text());
+                    const json = JSON.parse(
+                    text
+                        .replace("/*O_o*/", "")
+                        .replace("google.visualization.Query.setResponse(", "")
+                        .slice(0, -2)
+                    );
+                    const rows = json.table.rows;
+                    const container = document.querySelector('.my-review-list');
+                    container.innerHTML = '';
+
+                    for (const row of rows) {
+                        const title = row.c[2]?.v || '';
+                        const oneline = row.c[6]?.v || '';
+                        const rawDate = row.c[0]?.v || ''; // "Date(2025,6,23)"
+
+                        let formattedDate = '';
+
+                        const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+
+                    if (dateMatch) {
+                        const year = dateMatch[1];
+                        const month = String(Number(dateMatch[2]) + 1).padStart(2, '0'); // 0부터 시작하니까 +1
+                        const day = String(dateMatch[3]).padStart(2, '0');
+
+                        formattedDate = `${year}-${month}-${day}`;
+                    }
+                    const thumb = await fetchBookCover(title);
+                    const item = document.createElement('div');
+                    item.className = 'list-item';
+                    item.innerHTML = `
+                        <a href="#"></a>
+                        <div class="list-img" style="background-image:url('${thumb}')"></div>
+                        <div class="list-cont">
+                        <p class="list-title">${title}</p>
+                        <p class="list-summary">${oneline}</p>
+                        <p class="list-date">${formattedDate}</p>
+                        </div>`;
+                    container.appendChild(item);
+                    }
+                }
+
+                loadReviews();
+
         </script>
     </body>
 </html>
