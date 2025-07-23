@@ -55,6 +55,7 @@
             const gid = '1116419757';
             const kakaoKey = '7ef7831f0d6b81e970b30f0cdfa6a4a2'; // REST 키
 
+            //kakao api로 북커버 불러오기
             async function fetchBookCover(title,author) {
                 try {
                     const query = `${title} ${author}`;
@@ -79,6 +80,7 @@
                     }
                 }
 
+                //구글 시트에서 데이터 불러오기
                 async function loadReviews() {
                     const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
                     const text = await fetch(url).then(r => r.text());
@@ -89,6 +91,19 @@
                         .slice(0, -2)
                     );
                     const rows = json.table.rows;
+
+                    rows.sort((a, b) => {
+                    const rawA = a.c[0]?.v || '';
+                    const rawB = b.c[0]?.v || '';
+                    const parseDate = (raw) => {
+                        const match = raw.match(/Date\((\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)/);
+                        if (!match) return new Date(0);
+                        const [ , y, m, d, h, min, s ] = match.map(Number);
+                        return new Date(y, m, d, h, min, s);
+                    };
+                    return parseDate(rawB) - parseDate(rawA);
+                    });
+
                     const container = document.querySelector('.my-review-list');
                     container.innerHTML = '';
 
@@ -96,32 +111,47 @@
                         const title = row.c[2]?.v || '';
                         const oneline = row.c[6]?.v || '';
                         const author = row.c[3]?.v || '';
-                        const rawDate = row.c[0]?.v || ''; // "Date(2025,6,23)"
+                        const rawDate = row.c[0]?.v || '';
 
                         let formattedDate = '';
 
-                        const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                        const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)/);
 
-                    if (dateMatch) {
-                        const year = dateMatch[1];
-                        const month = String(Number(dateMatch[2]) + 1).padStart(2, '0'); // 0부터 시작하니까 +1
-                        const day = String(dateMatch[3]).padStart(2, '0');
+                        if (dateMatch) {
+                            const year = parseInt(dateMatch[1]);
+                            const month = parseInt(dateMatch[2]); // 0부터 시작
+                            const day = parseInt(dateMatch[3]);
+                            const hour = parseInt(dateMatch[4]);
+                            const minute = parseInt(dateMatch[5]);
+                            const second = parseInt(dateMatch[6]);
 
-                        formattedDate = `${year}-${month}-${day}`;
-                    }
-                    const thumb = await fetchBookCover(title,author);
-                    const item = document.createElement('div');
-                    item.className = 'list-item';
-                    item.innerHTML = `
-                        <a href="#"></a>
-                        <div class="list-img" style="background-image:url('${thumb}')"></div>
-                        <div class="list-cont">
-                        <p class="list-title">${title}</p>
-                        <p class="list-summary">${oneline}</p>
-                        <p class="list-date">${formattedDate}</p>
-                        </div>`;
-                    container.appendChild(item);
-                    }
+                            const dateObj = new Date(year, month, day, hour, minute, second);
+
+                        // 원하는 포맷으로 변환 (예: 2025-07-23 09:20)
+                            const formattedMonth = String(dateObj.getMonth() + 1).padStart(2, '0');
+                            const formattedDay = String(dateObj.getDate()).padStart(2, '0');
+                            const formattedHour = String(dateObj.getHours()).padStart(2, '0');
+                            const formattedMinute = String(dateObj.getMinutes()).padStart(2, '0');
+
+                            formattedDate = `${dateObj.getFullYear()}-${formattedMonth}-${formattedDay} ${formattedHour}:${formattedMinute}`;
+                        } else {
+                            console.warn('날짜 파싱 실패:', rawDate);
+                        }
+
+
+                        const thumb = await fetchBookCover(title,author);
+                        const item = document.createElement('div');
+                        item.className = 'list-item';
+                        item.innerHTML = `
+                            <a href="#"></a>
+                            <div class="list-img" style="background-image:url('${thumb}')"></div>
+                            <div class="list-cont">
+                            <p class="list-title">${title}</p>
+                            <p class="list-summary">${oneline}</p>
+                            <p class="list-date">${formattedDate}</p>
+                            </div>`;
+                        container.appendChild(item);
+                        }
                 }
 
                 loadReviews();
