@@ -55,13 +55,24 @@
             const gid = '1116419757';
             const kakaoKey = '7ef7831f0d6b81e970b30f0cdfa6a4a2'; // REST 키
 
-            async function fetchBookCover(title) {
+            async function fetchBookCover(title,author) {
                 try {
-                    const res = await fetch(`https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(title)}`, {
-                        headers: { Authorization: `KakaoAK ${kakaoKey}` }
+                    const query = `${title} ${author}`;
+                    const apiUrl = `https://dapi.kakao.com/v3/search/book?target=all&query=${encodeURIComponent(query)}`;
+
+                    const res = await fetch(apiUrl, {
+                        headers: {
+                            Authorization: `KakaoAK ${kakaoKey}`
+                        }
                     });
-                    const json = await res.json();
-                        return json.documents[0]?.thumbnail || '';
+                    const data = await res.json();
+                    const filtered = data.documents.find(book =>
+                        book.title.includes(title) && book.authors.join(',').includes(author)
+                    );
+
+                    return (filtered || data.documents[0])?.thumbnail || '';
+
+                    return filtered || data.documents[0]; // 없으면 첫 번째 결과라도 반환
                     } catch (e) {
                         console.error('카카오 API 오류:', e);
                         return '';
@@ -84,6 +95,7 @@
                     for (const row of rows) {
                         const title = row.c[2]?.v || '';
                         const oneline = row.c[6]?.v || '';
+                        const author = row.c[3]?.v || '';
                         const rawDate = row.c[0]?.v || ''; // "Date(2025,6,23)"
 
                         let formattedDate = '';
@@ -97,7 +109,7 @@
 
                         formattedDate = `${year}-${month}-${day}`;
                     }
-                    const thumb = await fetchBookCover(title);
+                    const thumb = await fetchBookCover(title,author);
                     const item = document.createElement('div');
                     item.className = 'list-item';
                     item.innerHTML = `
