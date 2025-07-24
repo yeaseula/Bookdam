@@ -435,7 +435,7 @@ header .search-box .reset-btn {
 /* 나의 리뷰 상세페이지 */
 .review-contents-wrap .review-head {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: start;
 }
 .review-contents-wrap .review-head .book-cover-img {
@@ -446,7 +446,7 @@ header .search-box .reset-btn {
   background-color: #bdbdbd;
 }
 .review-contents-wrap .review-head .book-infor {
-  width: calc(100% - 160px);
+  width: calc(100% - 165px);
 }
 .review-contents-wrap .review-head .book-infor #book-cate {
   font-size: 1.6rem;
@@ -784,6 +784,7 @@ header .search-box .reset-btn {
   width: 100%;
   display: flex;
   align-items: start;
+  padding-top: 10px;
   gap: 10px;
   border-bottom: 1px solid #e0e0e0;
 }
