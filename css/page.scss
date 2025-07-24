@@ -80,7 +80,6 @@ $point_color:#6ac8d8;
         .my_book_list {
             width: 100%;
             margin-top: 20px;
-            margin-left: -15px;
             .swiper-wrapper {
                 align-items: center;
             }
@@ -458,16 +457,17 @@ header {
 .review-contents-wrap {
     .review-head {
         display: flex;
-        gap: 10px;
+        gap: 15px;
         align-items: start;
         .book-cover-img {
             width: 150px;
             height: auto;
+            background-size: cover;
             aspect-ratio: 3 / 4;
             background-color: #bdbdbd;
         }
         .book-infor {
-            width: calc(100% - 160px);
+            width: calc(100% - 165px);
             #book-cate {
                 font-size: 1.6rem;
             }
