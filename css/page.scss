@@ -104,7 +104,7 @@
     /* section1 */
     #section1 {
         padding-top: 60px;
-        .my_reading_state, .my_reading_history {
+        .my-reading-state, .my-reading-history {
             text-align: center;
             padding: 15px;
             border-radius: 12px;
@@ -118,7 +118,7 @@
                 font-size: 1.6rem;
             }
         }
-        .my_reading_history {
+        .my-reading-history {
             background-color: var(--main-color);
             margin-top: 20px;
         }
@@ -267,7 +267,7 @@
                             word-break: break-all;
                         }
                         .book_title {
-                            font-size: 1.5rem;
+                            font-size: 1.6rem;
                             margin-bottom: 5px;
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
@@ -275,7 +275,7 @@
                             -webkit-line-clamp: 1;
                         }
                         .book_intro {
-                            font-size: 1.5rem;
+                            font-size: 1.4rem;
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
                             overflow: hidden;
@@ -440,7 +440,7 @@ header {
                 .list-title {
                     font-size: 1.8rem;
                     font-weight: 700;
-                    color: var(--point_color);
+                    color: var(--point-color);
                 }
                 .list-summary {
                     margin-top: 5px;
@@ -778,6 +778,7 @@ header {
     border-radius: 50%;
     background-color: rgb(106, 200, 216,0.5);
     color: #424242;
+    opacity: 0.5;
 }
 @mixin input-text-flied {
     height: 37px;
@@ -866,8 +867,9 @@ header {
                 input {
                     @include input-apperance;
                     &:checked+label {
-                        color: #fff;
-                        background-color: var(--point_color);
+                        opacity: 1;
+                        color: #fff ;
+                        background-color: var(--point-color) ;
                     }
                 }
             }

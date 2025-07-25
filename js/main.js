@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const $ = (node) => document.querySelector(node);
+    const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
+    const gid = '1116419757';
 
     //main slider
     const MyBookList = new Swiper('.my_book_list', {
@@ -8,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
         centeredSlides : true,
     });
+
+
 
 
     //calendar for book stamp
@@ -26,12 +30,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //data 연결 예정입니다
     //기록 날짜를 불러와 캘린더 객체의 date키 값과 일치하는지 확인한 후 스탬프를 찍습니다.
-    let stampDates = ['2025-07-10', '2025-07-12', '2025-07-19'];
+
+    const stampDates = [];
+
+    async function loadReviewDetail() {
+        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+        const text = await fetch(url).then(r => r.text());
+        const json = JSON.parse(
+            text
+                .replace("/*O_o*/", "")
+                .replace("google.visualization.Query.setResponse(", "")
+                .slice(0, -2)
+        );
+
+        const rows = json.table.rows;
+
+        for(const row of rows) {
+            //google 시트의 날짜 형식은 Date(2025, 5, 10) 형태의 문자열로 출력, 변환처리 필요
+            function sheetDateFormat(rawDate) {
+                const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                if (!dateMatch) return rawDate;
+                    const year = dateMatch[1];
+                    const month = String(Number(dateMatch[2]) + 1).padStart(2, '0'); // 0부터 시작
+                    const day = String(dateMatch[3]).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
+                }
+            const startDateRaw = row.c[4]?.v || '';
+            const endDateRaw = row.c[5]?.v || '';
+
+            // 날짜 형식 변환
+            const endDate = sheetDateFormat(endDateRaw);
+            stampDates.push(endDate)
+        }
+        StampFunc();
+        readHistory();
+    }
+
+    loadReviewDetail();
+
+
     function StampFunc () {
         let calendarbox = document.querySelectorAll('.fc-scrollgrid-sync-table td');
         let dayList = [...Array.from(calendarbox)];
         dayList.forEach((ele,idx)=>{
-            let {date:dayValue} =dayList[idx].dataset
+            let {date:dayValue} = dayList[idx].dataset;
             stampDates.forEach((ele,idx2)=>{
                 if (dayValue == stampDates[idx2]) {
                     dayList[idx].classList.add('simple')
@@ -41,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.onload = function(){
-        StampFunc();
         const CalPrevBtn = document.querySelector('.fc-prev-button')
         const CalNextBtn = document.querySelector('.fc-next-button')
 
@@ -52,10 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //카카오 api 불러오기
 
-    const keywords = ['국내소설', '베스트셀러', '인문', '소설', '에세이'];
+    const keywords = ['국내소설', '베스트셀러', '해외소설', '소설', '에세이'];
     const slideCount = 7;
 
-    //api로 데이터를 받아옵니다.
+    //api로 데이터 다운
     async function fetchBooks() {
         const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
         const response = await fetch(`https://dapi.kakao.com/v3/search/book?query=${randomKeyword}&size=15`, {
@@ -108,6 +149,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     initSlider();
+
+    //슬라이드 아래 섹션
+
+    //조사 을/를 선택
+    function pickObjectParticle(word) {
+        if (!word) return '';
+        const lastChar = word[word.length - 1];
+        // 한글 유니코드 범위 내에서 받침(종성) 여부 판별
+        const uni = lastChar.charCodeAt(0);
+        if (uni < 0xac00 || uni > 0xd7a3) return '를'; // 한글이 아니면 '를'
+        return ((uni - 0xac00) % 28) ? '을' : '를';
+    }
+
+    //읽고있는 책 정보 로컬스토리지에서 불러오기
+    function readingBookmark(){
+        //json문자열을 객체로 가져오기
+        const books = JSON.parse(localStorage.getItem('readingBooks') || '[]');
+
+        console.log(books) //books 배열 첫번째의 제목을 가져옴
+        let readingBooktitle = books[0].title;
+        let readingBookpage = books[0].readPage;
+        const booknextparticle = pickObjectParticle(readingBooktitle)
+        const contentArea = $('.my-reading-state');
+
+        contentArea.innerHTML = `
+            <img src="/assets/img/bulb.png">
+            <p>현재 <span class="reading_name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
+            <span class="reading_page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
+            }
+
+    readingBookmark();
+
+    //지금까지 n권의 책을 읽었어요.
+    function readHistory(){
+        const readHistory = $('.my-reading-history');
+        const bookNumber = stampDates.length;
+        console.log(bookNumber)
+        readHistory.innerHTML = `
+        <p>지금까지 <span class="reading_book sd-bb">${bookNumber}권</span>의 책을 읽었어요!</p>`
+    }
 
 });
 

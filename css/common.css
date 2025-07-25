@@ -8,10 +8,12 @@ p {
 }
 
 html {
-  font-size: 55%; /* 1rem = 10px */
+  font-size: 10px;
+  font-size: 62.5%; /* 1rem = 10px */
 }
 
 body {
+  font-size: 1.6rem;
   height: 100vh;
   display: flex;
   justify-content: center;

@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //kakao api로 북커버 호출 함수
+    //kakao api로 북커버 호출 함수 (공통)
     async function fetchBookCover(title,author) {
         try {
             const query = `${title} ${author}`;
