@@ -131,31 +131,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('카카오 API 오류:', e);
                 return '';
             }
-        }
+    }
+
+    //구글 시트 데이터 호출 함수 (공통)
+    async function loadGoogle(sheetId, gid) {
+        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+        const text = await fetch(url).then(r => r.text());
+        const json = JSON.parse(
+        text
+            .replace("/*O_o*/", "")
+            .replace("google.visualization.Query.setResponse(", "")
+            .slice(0, -2)
+        );
+        return json.table.rows;
+    }
 
     if(currentpage == 'review') {
         //구글 시트에서 데이터 불러오기
         async function loadReviews() {
-            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-            const text = await fetch(url).then(r => r.text());
-            const json = JSON.parse(
-            text
-                .replace("/*O_o*/", "")
-                .replace("google.visualization.Query.setResponse(", "")
-                .slice(0, -2)
-            );
-            const rows = json.table.rows;
+            const rows = await loadGoogle(sheetId, gid);
 
             rows.sort((a, b) => {
-            const rawA = a.c[0]?.v || '';
-            const rawB = b.c[0]?.v || '';
-            const parseDate = (raw) => {
-                const match = raw.match(/Date\((\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)/);
-                if (!match) return new Date(0);
-                const [ , y, m, d, h, min, s ] = match.map(Number);
-                return new Date(y, m, d, h, min, s);
-            };
-            return parseDate(rawB) - parseDate(rawA);
+                const rawA = a.c[0]?.v || '';
+                const rawB = b.c[0]?.v || '';
+                const parseDate = (raw) => {
+                    const match = raw.match(/Date\((\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)/);
+                    if (!match) return new Date(0);
+                    const [ , y, m, d, h, min, s ] = match.map(Number);
+                    return new Date(y, m, d, h, min, s);
+                };
+                return parseDate(rawB) - parseDate(rawA);
             });
 
             const container = document.querySelector('.my-review-list');
@@ -205,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="list-date">${formattedDate}</p>
                     </div>`;
                 container.appendChild(item);
-                }
+            }
         }
 
         loadReviews();
@@ -220,23 +225,15 @@ document.addEventListener('DOMContentLoaded', function () {
         function sheetDateFormat(rawDate) {
             const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
             if (!dateMatch) return rawDate;
-                const year = dateMatch[1];
-                const month = String(Number(dateMatch[2]) + 1).padStart(2, '0'); // 0부터 시작
-                const day = String(dateMatch[3]).padStart(2, '0');
-                return `${year}-${month}-${day}`;
+            const year = dateMatch[1];
+            const month = String(Number(dateMatch[2]) + 1).padStart(2, '0'); // 0부터 시작
+            const day = String(dateMatch[3]).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
 
         // 구글 시트에서 데이터 불러와서 일치하는 리뷰 찾기
         async function loadReviewDetail() {
-            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-            const text = await fetch(url).then(r => r.text());
-            const json = JSON.parse(
-                text
-                    .replace("/*O_o*/", "")
-                    .replace("google.visualization.Query.setResponse(", "")
-                    .slice(0, -2)
-            );
-            const rows = json.table.rows;
+            const rows = await loadGoogle(sheetId, gid);
 
             // 제목, 작가 모두 일치하는 row 찾기
             const review = rows.find(row =>
@@ -341,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // 더블클릭/더블터치로 수정
-        function editField(el, type, idx) {
+        window.editField = function editField(el, type, idx) {
             const books = getBooks();
             const book = books[idx];
             const span = el.querySelector('span');
@@ -366,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 모바일 더블터치 감지
-        function touchEdit(e, el, type, idx) {
+        window.touchEdit = function touchEdit(e, el, type, idx) {
             const now = Date.now();
             if (now - lastTap < 300) {
                 editField(el, type, idx);
@@ -395,5 +392,42 @@ document.addEventListener('DOMContentLoaded', function () {
             renderBooks();
         });
     }
+    if(currentpage == 'mypage') {
+        async function loadReviews() {
+            const rows = await loadGoogle(sheetId, gid)
+
+            const now = new Date();
+            const thisYear = now.getFullYear();
+            const thisMonth = now.getMonth() + 1;
+
+            let yearCount=0;
+            let monthCount=0;
+
+            function sheetDateFormat(rawDate) {
+                const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                //console.log(dateMatch) ['Date(2025,6,19)', '2025', '6', '19',...] 형태반환
+                if (!dateMatch) return rawDate;
+                    return {
+                        year: Number(dateMatch[1]),
+                        month: Number(dateMatch[2]) + 1,
+                        day: Number(dateMatch[3])
+                    };
+                }
+
+            for (const row of rows) {
+                const endDateRaw = row.c[5]?.v || '';
+                const dateObj = sheetDateFormat(endDateRaw);
+                //console.log(dateObj)
+                if (!dateObj) continue;
+                if (dateObj.year === thisYear) yearCount++;
+                if (dateObj.year === thisYear && dateObj.month === thisMonth) monthCount++;
+            }
+
+            document.getElementById('total_year_read').textContent = `${yearCount} 권`;
+            document.getElementById('total_month_read').textContent = `${monthCount} 권`;
+        }
+        loadReviews();
+    }
+
 });
 
