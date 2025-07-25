@@ -17,6 +17,7 @@
 
         <!--javascript-->
         <script src="js/common.js"></script>
+        <script src="js/api-key.js"></script>
         <script src="js/page.js"></script>
 
     </head>
@@ -80,141 +81,6 @@
         <nav id="bottom_navigator"></nav>
         <script>
             const currentpage = 'reading';
-
-            // ...existing code...
-            const STORAGE_KEY = 'readingBooks';
-
-            // 샘플 데이터
-            const SAMPLE_BOOKS = [
-                { title: '앵무새 죽이기', totalPage: 300, readPage: 120 },
-                { title: '나니아 연대기', totalPage: 200, readPage: 50 }
-            ];
-
-            // 데이터 불러오기
-            function getBooks() {
-                let books = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                // 최초 방문 시 샘플 데이터 저장
-                if (!books.length) {
-                    books = SAMPLE_BOOKS;
-                    setBooks(books);
-                }
-                return books;
-            }
-
-            // 데이터 저장
-            function setBooks(books) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
-            }
-
-            function calcProgress(readPage, totalPage) {
-                if (!totalPage || totalPage === 0) return '0%';
-                const percent = Math.round((readPage / totalPage) * 1000) / 10; // 소수점 첫째자리 반올림
-                return `${percent}%`;
-            }
-
-            console.log(localStorage)
-
-            // 리스트 렌더링
-            function renderBooks() {
-                const books = getBooks();
-                const list = document.querySelector('.reading-book-list');
-                list.innerHTML = '<h2 class="sr-only">읽고있는 책 목록</h2>';
-                books.forEach((book, idx) => {
-                    list.innerHTML += `
-                    <div class="list-item" data-idx="${idx}">
-                        <div class="check-field">
-                            <input type="checkbox" name="list-check" id="list${idx}" aria-label="목록 선택">
-                            <label for="list${idx}"><i class="ri-check-line" aria-hidden="true"></i></label>
-                        </div>
-                        <div class="list-infor">
-                            <div>
-                                <p class="book-title">${book.title}</p>
-                                <p class="reading-number" ondblclick="editField(this, 'reading', ${idx})" ontouchstart="touchEdit(event, this, 'reading', ${idx})">
-                                    <img src="assets/img/pencil-fill.svg" alt="읽은 페이지 수정">
-                                    <span>${book.readPage}페이지 읽는 중</span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="reading-progress">${Math.round(book.readPage / book.totalPage * 100)}%</p>
-                                <p class="total-number" ondblclick="editField(this, 'total', ${idx})" ontouchstart="touchEdit(event, this, 'total', ${idx})">
-                                    <img src="assets/img/pencil-fill.svg" alt="총 페이지 수정">
-                                    <span>총 ${book.totalPage}페이지</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>`;
-                });
-            }
-
-            // 책 추가
-            document.querySelector('.book-add-field form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const title = this['rd-book-title'].value.trim();
-                const totalPage = Number(this['total-book-page'].value);
-                const readPage = Number(this['readed-book-page'].value);
-                if (!title || !totalPage || !readPage) return alert('모든 값을 입력하세요.');
-                const books = getBooks();
-                books.unshift({ title, totalPage, readPage }); // 최신순
-                setBooks(books);
-                renderBooks();
-                this.reset();
-            });
-
-            // 더블클릭/더블터치로 수정
-            function editField(el, type, idx) {
-                const books = getBooks();
-                const book = books[idx];
-                const span = el.querySelector('span');
-                const oldValue = type === 'reading' ? book.readPage : book.totalPage;
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.value = oldValue;
-                input.style.width = '80px';
-                span.replaceWith(input);
-                input.focus();
-
-                function save() {
-                    const val = Number(input.value);
-                    if (!val) return;
-                    if (type === 'reading') book.readPage = val;
-                    else book.totalPage = val;
-                    setBooks(books);
-                    renderBooks();
-                }
-                input.addEventListener('blur', save);
-                input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
-            }
-
-            // 모바일 더블터치 감지
-            let lastTap = 0;
-            function touchEdit(e, el, type, idx) {
-                const now = Date.now();
-                if (now - lastTap < 300) {
-                    editField(el, type, idx);
-                    e.preventDefault();
-                }
-                lastTap = now;
-            }
-
-            // 페이지 로드 시 렌더링
-            renderBooks();
-            // ...existing code...
-
-            // 삭제 버튼 기능
-            document.getElementById('delete_btn').addEventListener('click', function() {
-                const books = getBooks();
-                // 체크된 항목의 인덱스 수집
-                const checked = Array.from(document.querySelectorAll('.reading-book-list input[type="checkbox"]:checked'))
-                    .map(input => Number(input.closest('.list-item').dataset.idx));
-                if (!checked.length) {
-                    alert('삭제할 책을 선택하세요.');
-                    return;
-                }
-                // 체크된 인덱스 제외하고 새 배열 생성
-                const newBooks = books.filter((_, idx) => !checked.includes(idx));
-                setBooks(newBooks);
-                renderBooks();
-            });
         </script>
     </body>
 </html>
