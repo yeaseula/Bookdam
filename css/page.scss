@@ -1,15 +1,19 @@
 @charset "utf-8";
 
-$main_color : #fff4ba;
-$main_color_light: #fffadf;
-$sub_color:#3a3967;
-$point_color:#6ac8d8;
+:root {
+    --main-color: #fff4ba;
+    --main-color-right: #fffadf;
+    --sub_color: #3a3967;
+    --point-color: #6ac8d8;
+    --background-color: #fffdfc;
+}
+
 
 #main {
     width: 100%;
     overflow: hidden;
     position: relative;
-    background-color: #fffdfc;
+    background-color: var(--background-color);
     .main-background {
         position: absolute;
         top: 0;
@@ -27,7 +31,7 @@ $point_color:#6ac8d8;
             top: -253px;
             left: -77px;
             z-index: 3;
-            background: $sub_color;
+            background: var(--sub_color);
             width: 600px;
             height: 600px;
             margin-left: 0;
@@ -104,7 +108,7 @@ $point_color:#6ac8d8;
             text-align: center;
             padding: 15px;
             border-radius: 12px;
-            background-color: $main_color_light;
+            background-color: var(--main-color-right);
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             > img {
                 max-width: 50px;
@@ -115,7 +119,7 @@ $point_color:#6ac8d8;
             }
         }
         .my_reading_history {
-            background-color: $main_color;
+            background-color: var(--main-color);
             margin-top: 20px;
         }
     }
@@ -162,7 +166,7 @@ $point_color:#6ac8d8;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: $sub_color;
+                background-color: var(--sub_color);
             }
         }
         .fc .fc-button .fc-icon {
@@ -296,8 +300,8 @@ $point_color:#6ac8d8;
                             color: #424242;
                             font-size: 1.3rem;
                             &.wish {
-                                background-color: $sub_color;
-                                border-color: $sub_color;
+                                background-color: var(--sub_color);
+                                border-color: var(--sub_color);
                                 color: #fff;
                             }
                         }
@@ -412,7 +416,7 @@ header {
             gap: 10px;
             margin-bottom: 13px;
             padding: 7px;
-            background-color: $sub_color;
+            background-color: var(--sub_color);
             border-radius: 150px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.35);
             > a {
@@ -436,7 +440,7 @@ header {
                 .list-title {
                     font-size: 1.8rem;
                     font-weight: 700;
-                    color: $point_color;
+                    color: var(--point_color);
                 }
                 .list-summary {
                     margin-top: 5px;
@@ -483,7 +487,7 @@ header {
                 font-size: 1.5rem;
                 #start-date,
                 #end-date {
-                    background: linear-gradient(to top, $main_color 50%, transparent 50%);
+                    background: linear-gradient(to top, var(--main-color) 50%, transparent 50%);
                     font-size: 1.5rem;
                 }
             }
@@ -518,7 +522,7 @@ header {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        background-color: #fffdfc;
+        background-color: var(--background-color);
         .contents-list {
             margin-bottom: 17px;
             &:last-of-type {
@@ -573,8 +577,8 @@ header {
             left: 0;
             z-index: -1;
             &:checked+label {
-                border-color: $point_color;
-                background-color: $point_color;
+                border-color: var(--point_color);
+                background-color: var(--point_color);
                 color: #fff;
             }
         }
@@ -662,7 +666,7 @@ header {
         display: flex;
         align-items: center;
         gap: 15px;
-        background-color: #fffdfc;
+        background-color: var(--background-color);
         border-radius: 12px;
         padding: 20px 15px;
         box-shadow: 0 2px 13px rgba(0,0,0,0.15);
@@ -693,7 +697,7 @@ header {
         margin: 25px 0;
         border-radius: 12px;
         padding: 20px 15px 40px 15px;
-        background-color: #fffdfc;
+        background-color: var(--background-color);
         box-shadow: 0 2px 13px rgba(0,0,0,0.15);
         > p {
             position: relative;
@@ -704,7 +708,7 @@ header {
                 position: relative;
                 font-size: 2.4rem;
                 display: inline-block;
-                background: linear-gradient(to top, $main_color 50%, transparent 50%);
+                background: linear-gradient(to top, var(--main-color) 50%, transparent 50%);
             }
         }
         > img {
@@ -718,7 +722,7 @@ header {
     .my-menu-box {
         margin-bottom: 20px;
         padding: 20px;
-        background-color: #fffdfc;
+        background-color: var(--background-color);
         border-radius: 12px;
         box-shadow: 0 2px 13px rgba(0,0,0,0.15);
         .menu-title {
@@ -795,7 +799,7 @@ header {
     width: 37px;
     height: 37px;
     line-height: 37px !important;
-    background-color: $sub_color;
+    background-color: var(--sub_color);
     border: unset;
     color: #fff;
     font-size: 2.4rem;
@@ -807,8 +811,8 @@ header {
     height: 37px;
     line-height: 35px !important;
     border-radius: 5px;
-    border: 1px solid $sub_color;
-    background-color: $sub_color;
+    border: 1px solid var(--sub_color);
+    background-color: var(--sub_color);
     color: #fff;
     margin-left: auto;
     margin-top: 50px;
@@ -863,7 +867,7 @@ header {
                     @include input-apperance;
                     &:checked+label {
                         color: #fff;
-                        background-color: $point_color;
+                        background-color: var(--point_color);
                     }
                 }
             }
@@ -896,7 +900,7 @@ header {
                 .reading-number,
                 .total-number {
                     span {
-                            background-image: linear-gradient(to bottom, transparent 50%, $main_color 50%);
+                            background-image: linear-gradient(to bottom, transparent 50%, var(--main-color) 50%);
                         }
                 }
                 .reading-progress {
@@ -973,8 +977,8 @@ header {
     .submit-btn {
         margin-top: 20px;
         width: 100%;
-        background-color: $sub_color;
-        border: 1px solid $sub_color;
+        background-color: var(--sub_color);
+        border: 1px solid var(--sub_color);
         border-radius: 5px;
         height: 38px !important;
         line-height: 41px;
@@ -995,11 +999,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fffdfc;
+    background-color: var(--background-color);
     .done-message {
         width: calc(100% - 30px);
         padding: 40px;
-        background-color: $main_color;
+        background-color: var(--main-color);
         border-radius: 15px;
         text-align: center;
         box-shadow: 0 3px 18px rgba(0,0,0,0.15);
@@ -1019,8 +1023,8 @@ header {
         line-height: 39px !important;
         border-radius: 6px;
         font-size: 1.8rem;
-        border: 1px solid $sub_color;
-        background-color: $sub_color;
+        border: 1px solid var(--sub_color);
+        background-color: var(--sub_color);
         color: #fff;
         cursor: pointer;
     }
@@ -1071,7 +1075,7 @@ header {
 
             &.active {
                 > p {
-                    color: $point_color;
+                    color: var(--point_color);
                     font-weight: 500 !important;
                 }
             }
@@ -1168,7 +1172,7 @@ footer {
         align-items: center;
         justify-content: center;
         text-align: center;
-        background-color: $main_color_light;
+        background-color: var(--main-color-right);
         img {
             max-width: 25px;
         }
