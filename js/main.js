@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const gid = '1116419757';
 
     //main slider
-    const MyBookList = new Swiper('.my_book_list', {
+    const MyBookList = new Swiper('.my-book-list', {
         slidesPerView: 'auto',
         loop: true,
         centeredSlides : true,
@@ -118,17 +118,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const link = Math.random() > 0.5 ? yes24Link : kyoboLink;
 
         return `
-        <div class="swiper-slide recomand_slide">
-            <div class="swiper_depth">
-                <div class="book_cover">
+        <div class="swiper-slide recomand-slide">
+            <div class="swiper-depth">
+                <div class="book-cover">
                     <img src="${book.thumbnail}" alt="${book.title} 표지" />
                 </div>
-                <div class="book_desc">
-                    <p class="book_title sd-b">${book.title}</p>
-                    <p class="book_intro">${book.contents ? book.contents.substring(0, 200) + '...' : '설명이 없습니다.'}</p>
-                    <div class="button_wrap">
-                        <button class="wish common_btn red-n">Wish</button>
-                        <button class="common_btn red-n" onclick="window.open('${link}', '_blank')">More View</button>
+                <div class="book-desc">
+                    <p class="book-title sd-b">${book.title}</p>
+                    <p class="book-intro">${book.contents ? book.contents.substring(0, 200) + '...' : '설명이 없습니다.'}</p>
+                    <div class="button-wrap">
+                        <button class="gray-style-btn red-n">Wish</button>
+                        <button class="dark-style-btn red-n" onclick="window.open('${link}', '_blank')">More View</button>
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const wrapper = document.getElementById('bookSliderWrapper');
         wrapper.innerHTML = books.map(createSlide).join('');
 
-        new Swiper('.my_recomand_book', {
+        new Swiper('.my-recomand-book', {
             slidesPerView: 1.15,
             spaceBetween: 15,
             loop: true
@@ -175,8 +175,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         contentArea.innerHTML = `
             <img src="/assets/img/bulb.png">
-            <p>현재 <span class="reading_name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
-            <span class="reading_page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
+            <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
+            <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
             }
 
     readingBookmark();
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const bookNumber = stampDates.length;
         console.log(bookNumber)
         readHistory.innerHTML = `
-        <p>지금까지 <span class="reading_book sd-bb">${bookNumber}권</span>의 책을 읽었어요!</p>`
+        <p>지금까지 <span class="reading-book sd-bb">${bookNumber}권</span>의 책을 읽었어요!</p>`
     }
 
 });

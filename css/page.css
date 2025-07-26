@@ -1,12 +1,48 @@
 @charset "UTF-8";
+@import url("./common.scss");
+/* 변수 설정 */
 :root {
   --main-color: #fff4ba;
-  --main-color-right: #fffadf;
+  --main-color-light: #fffadf;
   --sub_color: #3a3967;
   --point-color: #6ac8d8;
   --background-color: #fffdfc;
 }
 
+@media (max-width: 450px) {
+  #main .slider_wrap .my_book_list .swiper-slide {
+    width: 21vw;
+    aspect-ratio: 3/4;
+    background-color: #bdbdbd;
+    opacity: 0.5;
+  }
+  #main .slider_wrap .my_book_list .swiper-slide-active {
+    width: 26.5vw !important;
+  }
+}
+@media (max-width: 380px) {
+  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_cover {
+    width: 79px;
+  }
+  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc {
+    width: calc(100% - 94px);
+  }
+  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .book_intro {
+    -webkit-line-clamp: 2;
+  }
+  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn {
+    font-size: 1.2rem;
+    min-width: 65px;
+    height: 22px;
+  }
+}
+@media (max-width: 360px) {
+  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn {
+    font-size: 1rem;
+    min-width: 65px;
+    height: 22px;
+  }
+}
 #main {
   width: 100%;
   overflow: hidden;
@@ -21,7 +57,7 @@
   left: 0;
   z-index: 3;
 }
-#main .main-background .wave_wrap {
+#main .main-background .wave-wrap {
   position: relative;
   width: 450px;
   aspect-ratio: 375/400;
@@ -72,7 +108,7 @@
     transform: rotate(360deg);
   }
 }
-#main .slider_wrap {
+#main .slider-wrap {
   position: relative;
   z-index: 5;
   width: 100%;
@@ -81,52 +117,57 @@
   aspect-ratio: 375/280;
   padding-bottom: 5rem;
 }
-#main .slider_wrap .slider_top_text {
+#main .slider-wrap .slider-top-text {
   font-size: 2.1rem;
   color: #fff;
 }
-#main .slider_wrap .slider_top_text #user_name {
+#main .slider-wrap .slider-top-text #user-name {
   font-size: 2.8rem;
   vertical-align: middle;
 }
-#main .slider_wrap .my_book_list {
+#main .slider-wrap .my-book-list {
   width: 100%;
   margin-top: 20px;
 }
-#main .slider_wrap .my_book_list .swiper-wrapper {
+#main .slider-wrap .my-book-list .swiper-wrapper {
   align-items: center;
 }
-#main .slider_wrap .my_book_list .swiper-slide {
+#main .slider-wrap .my-book-list .swiper-slide {
   width: 90px;
   aspect-ratio: 3/4;
   margin: 0 6.5px;
   background-color: #bdbdbd;
   opacity: 0.5;
 }
-#main .slider_wrap .my_book_list .swiper-slide-active {
+#main .slider-wrap .my-book-list .swiper-slide-active {
   opacity: 1 !important;
   width: 105px !important;
 }
 #main #section1 {
   padding-top: 60px;
 }
-#main #section1 .my-reading-state, #main #section1 .my-reading-history {
+#main #section1 .my-reading-state {
   text-align: center;
   padding: 15px;
   border-radius: 12px;
-  background-color: var(--main-color-right);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--main-color);
 }
-#main #section1 .my-reading-state > img, #main #section1 .my-reading-history > img {
+#main #section1 .my-reading-state > img {
   max-width: 50px;
 }
-#main #section1 .my-reading-state > p, #main #section1 .my-reading-history > p {
+#main #section1 .my-reading-state > p {
   margin-top: 5px;
   font-size: 1.6rem;
 }
 #main #section1 .my-reading-history {
-  background-color: var(--main-color);
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--main-color-light);
   margin-top: 20px;
+  padding-top: 21px;
 }
 #main #section2 {
   padding-top: 20px;
@@ -169,10 +210,13 @@
   justify-content: center;
   background-color: var(--sub_color);
 }
+#main #section2 .fc .fc-button:focus-visible {
+  border-color: var(--point-color);
+}
 #main #section2 .fc .fc-button .fc-icon {
   font-size: 1.2rem;
   line-height: 1.2;
-  margin-top: -4px;
+  margin-top: -7px;
 }
 #main #section2 .fc .fc-view-harness {
   min-height: 180px;
@@ -206,47 +250,46 @@
   opacity: 0.7;
 }
 #main #section3 {
-  padding-top: 40px;
-  padding-bottom: 65px;
+  padding: 40px 15px 65px 15px;
 }
-#main #section3 .title_section {
+#main #section3 .title-section {
   display: flex;
   gap: 10px;
 }
-#main #section3 .title_section > img {
+#main #section3 .title-section > img {
   position: relative;
   top: -10px;
   transform: rotate(-15deg);
-  max-width: 52px;
+  max-width: 55px;
 }
-#main #section3 .title_section .sec3_title {
+#main #section3 .title-section .sec3-title {
   font-size: 2rem;
 }
-#main #section3 .my_recomand_book {
+#main #section3 .my-recomand-book {
   margin-top: 13px;
 }
-#main #section3 .my_recomand_book .swiper-slide {
+#main #section3 .my-recomand-book .swiper-slide {
   opacity: 0.5;
 }
-#main #section3 .my_recomand_book .swiper-slide-active {
+#main #section3 .my-recomand-book .swiper-slide-active {
   opacity: 1;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth {
-  padding: 15px;
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth {
   display: flex;
   gap: 10px;
+  padding: 15px;
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_cover {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-cover {
   position: relative;
   width: 100px;
   aspect-ratio: 3/4;
   background-color: #bdbdbd;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_cover img {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-cover img {
   position: absolute;
   top: 0;
   left: 0;
@@ -254,14 +297,14 @@
   width: 100%;
   height: 100%;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc {
   position: relative;
   width: calc(100% - 110px);
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc p {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc p {
   word-break: break-all;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .book_title {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .book-title {
   font-size: 1.6rem;
   margin-bottom: 5px;
   display: -webkit-box;
@@ -269,14 +312,14 @@
   overflow: hidden;
   -webkit-line-clamp: 1;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .book_intro {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .book-intro {
   font-size: 1.4rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 3;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .button_wrap {
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -284,21 +327,15 @@
   gap: 5px;
   align-items: center;
 }
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn {
-  min-width: 80px;
+#main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap button {
+  min-width: 87px;
   height: 24px;
-  line-height: 24px;
+  line-height: 20px !important;
+  padding: 0 4px;
   border-radius: 150px;
-  background-color: #e6e6e8;
-  border: 1px solid #e6e6e8;
   text-align: center;
-  color: #424242;
   font-size: 1.3rem;
-}
-#main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn.wish {
-  background-color: var(--sub_color);
-  border-color: var(--sub_color);
-  color: #fff;
+  border-radius: 500px;
 }
 
 /* header */
@@ -395,15 +432,21 @@ header .search-box .reset-btn {
   margin-top: 20px;
 }
 .my-review-wrap .my-review-list .list-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
   padding: 7px;
-  background-color: var(--sub_color);
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 150px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: center;
+  margin-bottom: 13px;
+  background-color: var(--sub_color);
+  transition: all 0.2s;
+}
+.my-review-wrap .my-review-list .list-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
 }
 .my-review-wrap .my-review-list .list-item > a {
   position: absolute;
@@ -415,23 +458,23 @@ header .search-box .reset-btn {
   height: 100%;
 }
 .my-review-wrap .my-review-list .list-item .list-img {
-  width: 105px;
-  height: 105px;
+  width: 97px;
+  height: 97px;
   border-radius: 500px;
   overflow: hidden;
   background-color: #bdbdbd;
 }
 .my-review-wrap .my-review-list .list-item .list-cont {
-  width: calc(100% - 115px);
+  width: calc(100% - 107px);
 }
 .my-review-wrap .my-review-list .list-item .list-cont .list-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--point-color);
 }
 .my-review-wrap .my-review-list .list-item .list-cont .list-summary {
   margin-top: 5px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #fff;
 }
 .my-review-wrap .my-review-list .list-item .list-cont .list-date {
@@ -457,10 +500,10 @@ header .search-box .reset-btn {
   width: calc(100% - 165px);
 }
 .review-contents-wrap .review-head .book-infor #book-cate {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 .review-contents-wrap .review-head .book-infor #book-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-top: 5px;
 }
 .review-contents-wrap .review-head .book-infor #book-author {
@@ -476,7 +519,7 @@ header .search-box .reset-btn {
   font-size: 1.5rem;
 }
 .review-contents-wrap .review-head .book-infor .my-star {
-  margin: 30px 0 5px 0;
+  margin: 12px 0 0 0;
   font-size: 1.5rem;
 }
 .review-contents-wrap .review-head .book-infor .my-star > div {
@@ -516,7 +559,8 @@ header .search-box .reset-btn {
   font-size: 1.6rem;
 }
 .review-contents-wrap .review-contents .contents-list > p:first-child {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
 }
 .review-contents-wrap .review-contents .contents-list > p:not(:first-child) {
   margin-bottom: 5px;
@@ -675,12 +719,12 @@ header .search-box .reset-btn {
 .my-page-wrap .my-total-active > p {
   position: relative;
   top: 10px;
-  font-size: 2.1rem;
+  font-size: 2rem;
   line-height: 1.6 !important;
 }
 .my-page-wrap .my-total-active > p span {
   position: relative;
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   display: inline-block;
   background: linear-gradient(to top, var(--main-color) 50%, transparent 50%);
 }
@@ -702,7 +746,7 @@ header .search-box .reset-btn {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 17px;
 }
@@ -712,7 +756,7 @@ header .search-box .reset-btn {
   align-items: center;
   justify-content: space-between;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 7px;
 }
 .my-page-wrap .my-menu-box .menu-depth .menu-list a span {
@@ -737,9 +781,7 @@ header .search-box .reset-btn {
   height: 37px;
   line-height: 35px !important;
   border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  padding: 0 9px;
-  font-size: 1.5rem;
+  box-shadow: none;
 }
 .book-add-field .field-input1 {
   width: 100%;
@@ -754,24 +796,19 @@ header .search-box .reset-btn {
   width: 100%;
   max-width: 100%;
   height: 90px;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
 }
 .book-add-field button {
   display: inline-block;
   width: 37px;
   height: 37px;
-  line-height: 37px !important;
-  background-color: var(--sub_color);
-  border: unset;
-  color: #fff;
+  line-height: 39px !important;
   font-size: 2.4rem;
   border-radius: 5px;
 }
 
-.my-wish-wrap .wish-book-list,
-.my-wish-wrap .reading-book-list,
-.my-wish-wrap .memo-book-list,
+.my-wish-wrapm .wish-book-list,
+.my-wish-wrapm .reading-book-list,
+.my-wish-wrapm .memo-book-list,
 .my-reading-wrap .wish-book-list,
 .my-reading-wrap .reading-book-list,
 .my-reading-wrap .memo-book-list,
@@ -780,9 +817,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list {
   margin-top: 35px;
 }
-.my-wish-wrap .wish-book-list .list-item,
-.my-wish-wrap .reading-book-list .list-item,
-.my-wish-wrap .memo-book-list .list-item,
+.my-wish-wrapm .wish-book-list .list-item,
+.my-wish-wrapm .reading-book-list .list-item,
+.my-wish-wrapm .memo-book-list .list-item,
 .my-reading-wrap .wish-book-list .list-item,
 .my-reading-wrap .reading-book-list .list-item,
 .my-reading-wrap .memo-book-list .list-item,
@@ -796,9 +833,9 @@ header .search-box .reset-btn {
   gap: 10px;
   border-bottom: 1px solid #e0e0e0;
 }
-.my-wish-wrap .wish-book-list .list-item .check-field,
-.my-wish-wrap .reading-book-list .list-item .check-field,
-.my-wish-wrap .memo-book-list .list-item .check-field,
+.my-wish-wrapm .wish-book-list .list-item .check-field,
+.my-wish-wrapm .reading-book-list .list-item .check-field,
+.my-wish-wrapm .memo-book-list .list-item .check-field,
 .my-reading-wrap .wish-book-list .list-item .check-field,
 .my-reading-wrap .reading-book-list .list-item .check-field,
 .my-reading-wrap .memo-book-list .list-item .check-field,
@@ -808,9 +845,9 @@ header .search-box .reset-btn {
   position: relative;
   top: 1px;
 }
-.my-wish-wrap .wish-book-list .list-item .check-field label,
-.my-wish-wrap .reading-book-list .list-item .check-field label,
-.my-wish-wrap .memo-book-list .list-item .check-field label,
+.my-wish-wrapm .wish-book-list .list-item .check-field label,
+.my-wish-wrapm .reading-book-list .list-item .check-field label,
+.my-wish-wrapm .memo-book-list .list-item .check-field label,
 .my-reading-wrap .wish-book-list .list-item .check-field label,
 .my-reading-wrap .reading-book-list .list-item .check-field label,
 .my-reading-wrap .memo-book-list .list-item .check-field label,
@@ -827,9 +864,9 @@ header .search-box .reset-btn {
   color: #424242;
   opacity: 0.5;
 }
-.my-wish-wrap .wish-book-list .list-item .check-field input,
-.my-wish-wrap .reading-book-list .list-item .check-field input,
-.my-wish-wrap .memo-book-list .list-item .check-field input,
+.my-wish-wrapm .wish-book-list .list-item .check-field input,
+.my-wish-wrapm .reading-book-list .list-item .check-field input,
+.my-wish-wrapm .memo-book-list .list-item .check-field input,
 .my-reading-wrap .wish-book-list .list-item .check-field input,
 .my-reading-wrap .reading-book-list .list-item .check-field input,
 .my-reading-wrap .memo-book-list .list-item .check-field input,
@@ -844,9 +881,9 @@ header .search-box .reset-btn {
   left: 0;
   z-index: -1;
 }
-.my-wish-wrap .wish-book-list .list-item .check-field input:checked + label,
-.my-wish-wrap .reading-book-list .list-item .check-field input:checked + label,
-.my-wish-wrap .memo-book-list .list-item .check-field input:checked + label,
+.my-wish-wrapm .wish-book-list .list-item .check-field input:checked + label,
+.my-wish-wrapm .reading-book-list .list-item .check-field input:checked + label,
+.my-wish-wrapm .memo-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .wish-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .reading-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .memo-book-list .list-item .check-field input:checked + label,
@@ -857,9 +894,9 @@ header .search-box .reset-btn {
   color: #fff;
   background-color: var(--point-color);
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor,
-.my-wish-wrap .reading-book-list .list-item .list-infor,
-.my-wish-wrap .memo-book-list .list-item .list-infor,
+.my-wish-wrapm .wish-book-list .list-item .list-infor,
+.my-wish-wrapm .reading-book-list .list-item .list-infor,
+.my-wish-wrapm .memo-book-list .list-item .list-infor,
 .my-reading-wrap .wish-book-list .list-item .list-infor,
 .my-reading-wrap .reading-book-list .list-item .list-infor,
 .my-reading-wrap .memo-book-list .list-item .list-infor,
@@ -872,9 +909,9 @@ header .search-box .reset-btn {
   align-items: end;
   justify-content: space-between;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor.memo-type,
-.my-wish-wrap .reading-book-list .list-item .list-infor.memo-type,
-.my-wish-wrap .memo-book-list .list-item .list-infor.memo-type,
+.my-wish-wrapm .wish-book-list .list-item .list-infor.memo-type,
+.my-wish-wrapm .reading-book-list .list-item .list-infor.memo-type,
+.my-wish-wrapm .memo-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .wish-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .reading-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .memo-book-list .list-item .list-infor.memo-type,
@@ -885,20 +922,20 @@ header .search-box .reset-btn {
   align-items: start;
   justify-content: start;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .book-title,
-.my-wish-wrap .reading-book-list .list-item .list-infor .book-title,
-.my-wish-wrap .memo-book-list .list-item .list-infor .book-title,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .book-title,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .book-title,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .wish-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .reading-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .memo-book-list .list-item .list-infor .book-title,
 .my-memo-wrap .wish-book-list .list-item .list-infor .book-title,
 .my-memo-wrap .reading-book-list .list-item .list-infor .book-title,
 .my-memo-wrap .memo-book-list .list-item .list-infor .book-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .author-name,
-.my-wish-wrap .reading-book-list .list-item .list-infor .author-name,
-.my-wish-wrap .memo-book-list .list-item .list-infor .author-name,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .author-name,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .author-name,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .wish-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .reading-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .memo-book-list .list-item .list-infor .author-name,
@@ -906,21 +943,22 @@ header .search-box .reset-btn {
 .my-memo-wrap .reading-book-list .list-item .list-infor .author-name,
 .my-memo-wrap .memo-book-list .list-item .list-infor .author-name {
   font-size: 1.5rem;
+  color: #757575;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .memo-contents,
-.my-wish-wrap .reading-book-list .list-item .list-infor .memo-contents,
-.my-wish-wrap .memo-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .wish-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .reading-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .memo-book-list .list-item .list-infor .memo-contents,
 .my-memo-wrap .wish-book-list .list-item .list-infor .memo-contents,
 .my-memo-wrap .reading-book-list .list-item .list-infor .memo-contents,
 .my-memo-wrap .memo-book-list .list-item .list-infor .memo-contents {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor cite,
-.my-wish-wrap .reading-book-list .list-item .list-infor cite,
-.my-wish-wrap .memo-book-list .list-item .list-infor cite,
+.my-wish-wrapm .wish-book-list .list-item .list-infor cite,
+.my-wish-wrapm .reading-book-list .list-item .list-infor cite,
+.my-wish-wrapm .memo-book-list .list-item .list-infor cite,
 .my-reading-wrap .wish-book-list .list-item .list-infor cite,
 .my-reading-wrap .reading-book-list .list-item .list-infor cite,
 .my-reading-wrap .memo-book-list .list-item .list-infor cite,
@@ -928,18 +966,19 @@ header .search-box .reset-btn {
 .my-memo-wrap .reading-book-list .list-item .list-infor cite,
 .my-memo-wrap .memo-book-list .list-item .list-infor cite {
   display: block;
+  margin-top: 10px;
   width: 100%;
   text-align: right;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .bookprice,
-.my-wish-wrap .wish-book-list .list-item .list-infor .reading-number,
-.my-wish-wrap .wish-book-list .list-item .list-infor .total-number,
-.my-wish-wrap .reading-book-list .list-item .list-infor .bookprice,
-.my-wish-wrap .reading-book-list .list-item .list-infor .reading-number,
-.my-wish-wrap .reading-book-list .list-item .list-infor .total-number,
-.my-wish-wrap .memo-book-list .list-item .list-infor .bookprice,
-.my-wish-wrap .memo-book-list .list-item .list-infor .reading-number,
-.my-wish-wrap .memo-book-list .list-item .list-infor .total-number,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .bookprice,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-number,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .total-number,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .bookprice,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-number,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .total-number,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .bookprice,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-number,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .total-number,
 .my-reading-wrap .wish-book-list .list-item .list-infor .bookprice,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-number,
 .my-reading-wrap .wish-book-list .list-item .list-infor .total-number,
@@ -960,12 +999,12 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .total-number {
   font-size: 1.6rem;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrap .wish-book-list .list-item .list-infor .total-number span,
-.my-wish-wrap .reading-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrap .reading-book-list .list-item .list-infor .total-number span,
-.my-wish-wrap .memo-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrap .memo-book-list .list-item .list-infor .total-number span,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .total-number span,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .total-number span,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .total-number span,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-number span,
 .my-reading-wrap .wish-book-list .list-item .list-infor .total-number span,
 .my-reading-wrap .reading-book-list .list-item .list-infor .reading-number span,
@@ -980,9 +1019,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .total-number span {
   background-image: linear-gradient(to bottom, transparent 50%, var(--main-color) 50%);
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .reading-progress,
-.my-wish-wrap .reading-book-list .list-item .list-infor .reading-progress,
-.my-wish-wrap .memo-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .reading-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .memo-book-list .list-item .list-infor .reading-progress,
@@ -992,9 +1031,9 @@ header .search-box .reset-btn {
   text-align: right;
   font-size: 1.6rem;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor img,
-.my-wish-wrap .reading-book-list .list-item .list-infor img,
-.my-wish-wrap .memo-book-list .list-item .list-infor img,
+.my-wish-wrapm .wish-book-list .list-item .list-infor img,
+.my-wish-wrapm .reading-book-list .list-item .list-infor img,
+.my-wish-wrapm .memo-book-list .list-item .list-infor img,
 .my-reading-wrap .wish-book-list .list-item .list-infor img,
 .my-reading-wrap .reading-book-list .list-item .list-infor img,
 .my-reading-wrap .memo-book-list .list-item .list-infor img,
@@ -1005,19 +1044,17 @@ header .search-box .reset-btn {
   top: 1px;
   max-width: 16px;
 }
-.my-wish-wrap #delete_btn,
+.my-wish-wrapm #delete_btn,
 .my-reading-wrap #delete_btn,
 .my-memo-wrap #delete_btn {
   display: block;
   width: 60px;
   height: 37px;
-  line-height: 35px !important;
   border-radius: 5px;
-  border: 1px solid var(--sub_color);
-  background-color: var(--sub_color);
-  color: #fff;
+  line-height: 38px !important;
   margin-left: auto;
   margin-top: 50px;
+  font-size: 1.5rem;
 }
 
 /* 글쓰기 페이지 */
@@ -1031,32 +1068,16 @@ header .search-box .reset-btn {
 }
 .write-wrap input, .write-wrap select, .write-wrap textarea {
   width: 100%;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
 }
 .write-wrap input, .write-wrap select {
   height: 37px;
-  line-height: 36px;
   border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  padding: 0 9px;
 }
 .write-wrap input[type=date] {
   width: calc(50% - 5px);
 }
-.write-wrap select {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-image: url(../assets/img/arrow-down.svg);
-  background-size: 18px;
-  background-position: 98% 9px;
-  background-repeat: no-repeat;
-}
 .write-wrap textarea {
-  border-radius: 5px;
-  padding: 9px;
   min-height: 125px;
-  border: 1px solid #e0e0e0;
 }
 .write-wrap .field-date-list > div {
   display: flex;
@@ -1070,17 +1091,12 @@ header .search-box .reset-btn {
   margin: 0;
 }
 .write-wrap .submit-btn {
-  margin-top: 20px;
   width: 100%;
-  background-color: var(--sub_color);
-  border: 1px solid var(--sub_color);
+  margin-top: 30px;
   border-radius: 5px;
-  height: 38px !important;
-  line-height: 41px;
-  text-align: center;
-  font-size: 1.7rem;
-  color: #fff;
-  cursor: pointer;
+  font-size: 1.6rem;
+  height: 40px;
+  line-height: 39px !important;
 }
 
 /* 글쓰기 완료 페이지 */
@@ -1265,39 +1281,4 @@ footer .copyright-dropdown .copy-depth span {
 }
 #quick_up > a p {
   font-size: 1.4rem;
-}
-
-@media (max-width: 450px) {
-  #main .slider_wrap .my_book_list .swiper-slide {
-    width: 21vw;
-    aspect-ratio: 3/4;
-    background-color: #bdbdbd;
-    opacity: 0.5;
-  }
-  #main .slider_wrap .my_book_list .swiper-slide-active {
-    width: 26.5vw !important;
-  }
-}
-@media (max-width: 380px) {
-  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_cover {
-    width: 79px;
-  }
-  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc {
-    width: calc(100% - 94px);
-  }
-  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .book_intro {
-    -webkit-line-clamp: 2;
-  }
-  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn {
-    font-size: 1.2rem;
-    min-width: 65px;
-    height: 22px;
-  }
-}
-@media (max-width: 360px) {
-  #main #section3 .my_recomand_book .recomand_slide .swiper_depth .book_desc .common_btn {
-    font-size: 1rem;
-    min-width: 65px;
-    height: 22px;
-  }
 }/*# sourceMappingURL=page.css.map */
