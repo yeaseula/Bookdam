@@ -4,29 +4,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
     const gid = '1116419757';
 
-    // 이용자 로컬 스토리지에 샘플 데이터를 저장
+    // 이용자 로컬 스토리지에 책 샘플 데이터를 저장
     const STORAGE_KEY = 'readingBooks';
-
+    const STORAGE_KEY2 = 'wishBook';
     // 샘플 데이터
     const SAMPLE_BOOKS = [
         { title: '앵무새 죽이기', totalPage: 300, readPage: 120 },
         { title: '나니아 연대기', totalPage: 200, readPage: 50 }
     ];
+    const SAMPLE_BOOKS2 = [
+        { title : '아가미', author:'구병모' , totalPrice: 13000 }
+    ]
 
-    // 데이터 불러오기
-    function getBooks() {
-        let books = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    // 읽고싶은 책 데이터 불러오기
+    function getBooks(key,sample) {
+        let books = JSON.parse(localStorage.getItem(key) || '[]');
         // 최초 방문 시 샘플 데이터 저장
         if (!books.length) {
-            books = SAMPLE_BOOKS;
-            setBooks(books);
+            books = sample;
+            setBooks(books, key);
         }
         return books;
     }
 
     // 데이터 저장
-    function setBooks(books) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
+    function setBooks(books, key) {
+        localStorage.setItem(key, JSON.stringify(books));
     }
 
     function calcProgress(readPage, totalPage) {
@@ -145,6 +148,23 @@ document.addEventListener('DOMContentLoaded', function () {
         );
         return json.table.rows;
     }
+
+    //읽고싶은&읽고있는 책 삭제버튼 (공통)
+    function DeleteBooklist(key, sample, listSelector, renderFunc) {
+        const books = getBooks(key, sample);
+        // 체크된 항목의 인덱스 수집
+        const checked = Array.from(document.querySelectorAll(`${listSelector} input[type="checkbox"]:checked`))
+            .map(input => Number(input.closest('.list-item').dataset.idx));
+        if (!checked.length) {
+            alert('삭제할 책을 선택하세요.');
+            return;
+        }
+        // 체크된 인덱스 제외하고 새 배열 생성
+        const newBooks = books.filter((_, idx) => !checked.includes(idx));
+        setBooks(newBooks, key);
+        renderFunc();
+    }
+
 
     if(currentpage == 'review') {
         //구글 시트에서 데이터 불러오기
@@ -293,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if(currentpage == 'reading') {
         // 리스트 렌더링
         function renderBooks() {
-            const books = getBooks();
+            const books = getBooks(STORAGE_KEY,SAMPLE_BOOKS);
             const list = document.querySelector('.reading-book-list');
             list.innerHTML = '<h2 class="sr-only">읽고있는 책 목록</h2>';
             books.forEach((book, idx) => {
@@ -330,16 +350,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalPage = Number(this['total-book-page'].value);
             const readPage = Number(this['readed-book-page'].value);
             if (!title || !totalPage || !readPage) return alert('모든 값을 입력하세요.');
-            const books = getBooks();
+            const books = getBooks(STORAGE_KEY,SAMPLE_BOOKS);
             books.unshift({ title, totalPage, readPage }); // 최신순
-            setBooks(books);
+            setBooks(books,STORAGE_KEY);
             renderBooks();
             this.reset();
         });
 
         // 더블클릭/더블터치로 수정
         window.editField = function editField(el, type, idx) {
-            const books = getBooks();
+            const books = getBooks(STORAGE_KEY,SAMPLE_BOOKS);
             const book = books[idx];
             const span = el.querySelector('span');
             const oldValue = type === 'reading' ? book.readPage : book.totalPage;
@@ -355,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!val) return;
                 if (type === 'reading') book.readPage = val;
                 else book.totalPage = val;
-                setBooks(books);
+                setBooks(books,STORAGE_KEY);
                 renderBooks();
             }
             input.addEventListener('blur', save);
@@ -372,25 +392,59 @@ document.addEventListener('DOMContentLoaded', function () {
             lastTap = now;
         }
 
-        // 페이지 로드 시 렌더링
         renderBooks();
-        // ...existing code...
 
-        // 삭제 버튼 기능
-        document.getElementById('delete_btn').addEventListener('click', function() {
-            const books = getBooks();
-            // 체크된 항목의 인덱스 수집
-            const checked = Array.from(document.querySelectorAll('.reading-book-list input[type="checkbox"]:checked'))
-                .map(input => Number(input.closest('.list-item').dataset.idx));
-            if (!checked.length) {
-                alert('삭제할 책을 선택하세요.');
-                return;
-            }
-            // 체크된 인덱스 제외하고 새 배열 생성
-            const newBooks = books.filter((_, idx) => !checked.includes(idx));
-            setBooks(newBooks);
+        //삭제 기능
+
+        document.getElementById('delete_btn').addEventListener('click',function(){
+            DeleteBooklist(STORAGE_KEY, SAMPLE_BOOKS, '.reading-book-list', renderBooks)
+        })
+
+    }
+    if(currentpage == 'wish') {
+        function renderBooks() {
+            const books = getBooks(STORAGE_KEY2,SAMPLE_BOOKS2);
+            const list = document.querySelector('.wish-book-list');
+
+            list.innerHTML = '<h2 class="sr-only">읽고싶은 책 목록</h2>';
+            books.forEach((book, idx) => {
+                list.innerHTML += `
+                <div class="list-item" data-idx="${idx}">
+                    <div class="check-field">
+                        <input type="checkbox" name="list-check" id="list${idx}" aria-label="목록 선택">
+                        <label for="list${idx}"><i class="ri-check-line" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="list-infor">
+                        <div>
+                            <p class="book-title">${book.title}</p>
+                            <p class="author-name">${book.author}</p>
+                        </div>
+                        <p class="bookprice">${book.totalPrice.toLocaleString()}원</p>
+                    </div>
+                </div>`;
+            });
+        }
+        // 책 추가
+        document.querySelector('.book-add-field form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = this['wish-book-title'].value.trim();
+            const author = this['wish-book-author'].value.trim();
+            const totalPrice = Number(this['wish-book-price'].value);
+
+            if (!title || !author || !totalPrice) return alert('모든 값을 입력하세요.');
+            const books = getBooks(STORAGE_KEY2,SAMPLE_BOOKS2);
+            books.unshift({ title, author, totalPrice }); // 최신순
+            setBooks(books,STORAGE_KEY2);
             renderBooks();
+            this.reset();
         });
+
+        renderBooks();
+
+        //삭제
+        document.getElementById('delete_btn').addEventListener('click',function(){
+            DeleteBooklist(STORAGE_KEY2, SAMPLE_BOOKS2, '.wish-book-list', renderBooks)
+        })
     }
     if(currentpage == 'mypage') {
         async function loadReviews() {
