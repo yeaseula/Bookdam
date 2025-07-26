@@ -861,6 +861,7 @@ header {
             @include list-style;
             .check-field {
                 position: relative;
+                top: 1px;
                 label {
                     @include label-style;
                 }
@@ -891,8 +892,12 @@ header {
                     font-size: 1.5rem;
                 }
                 .memo-contents {
-                    margin-top: 10px;
-                    font-size: 1.6rem;
+                    font-size: 1.8rem;
+                }
+                cite {
+                    display: block;
+                    width: 100%;
+                    text-align: right;
                 }
                 .bookprice,
                 .reading-number,

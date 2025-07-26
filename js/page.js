@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 이용자 로컬 스토리지에 책 샘플 데이터를 저장
     const STORAGE_KEY = 'readingBooks';
     const STORAGE_KEY2 = 'wishBook';
+    const STORAGE_KEY3 = 'myMemo';
     // 샘플 데이터
     const SAMPLE_BOOKS = [
         { title: '앵무새 죽이기', totalPage: 300, readPage: 120 },
@@ -14,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     const SAMPLE_BOOKS2 = [
         { title : '아가미', author:'구병모' , totalPrice: 13000 }
+    ]
+    const SAMPLE_BOOKS3 = [
+        { title: '마션', pages: '388', contents: '문제가 생기면 하나씩 해결해. 그러다 보면 집에 갈 수 있어.'}
     ]
 
     // 읽고싶은 책 데이터 불러오기
@@ -444,6 +448,48 @@ document.addEventListener('DOMContentLoaded', function () {
         //삭제
         document.getElementById('delete_btn').addEventListener('click',function(){
             DeleteBooklist(STORAGE_KEY2, SAMPLE_BOOKS2, '.wish-book-list', renderBooks)
+        })
+    }
+    if(currentpage == 'memo') {
+        function renderMemo() {
+            const books = getBooks(STORAGE_KEY3,SAMPLE_BOOKS3);
+            const list = document.querySelector('.memo-book-list');
+
+            list.innerHTML = '<h2 class="sr-only">내가 추가한 구절</h2>';
+            books.forEach((book, idx) => {
+                list.innerHTML += `
+                <div class="list-item" data-idx="${idx}">
+                    <div class="check-field">
+                        <input type="checkbox" name="list-check" id="list${idx}" aria-label="목록 선택">
+                        <label for="list${idx}"><i class="ri-check-line" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="list-infor memo-type">
+                        <blockquote>
+                            <p class="memo-contents">${book.contents}</p>
+                            <cite><span class="book-title">${book.title}</span> - <span class="page-number">${book.pages}</span> 페이지 중</cite>
+                        </blockquote>
+                    </div>
+                </div>`;
+            });
+        }
+        // 책 추가
+        document.querySelector('.book-add-field form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = this['memo-book-title'].value.trim();
+            const pages = this['memo-book-page'].value.trim();
+            const lines = this['memo-book-line'].value.trim();
+
+            if (!title || !pages || !lines) return alert('모든 값을 입력하세요.');
+            const books = getBooks(STORAGE_KEY3,SAMPLE_BOOKS3);
+            books.unshift({ title, pages, lines }); // 최신순
+            setBooks(books,STORAGE_KEY3);
+            renderMemo();
+            this.reset();
+        });
+        renderMemo();
+        //삭제
+        document.getElementById('delete_btn').addEventListener('click',function(){
+            DeleteBooklist(STORAGE_KEY3, SAMPLE_BOOKS3, '.memo-book-list', renderMemo)
         })
     }
     if(currentpage == 'mypage') {

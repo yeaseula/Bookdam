@@ -17,6 +17,7 @@
 
         <!--javascript-->
         <script src="js/common.js"></script>
+        <script src="js/page.js"></script>
 
     </head>
     <body>
@@ -36,27 +37,13 @@
                                 <input type="text" name="memo-book-title" class="field-input4" placeholder="책 제목">
                                 <input type="number" name="memo-book-page" class="field-input5" placeholder="페이지">
                                 <button class="btn-add" title="추가">＋</button>
-                                <textarea name="memo-book-line" class="field-text"></textarea>
+                                <textarea name="memo-book-line" class="field-text" maxlength="100" placeholder="100자 이내로 입력하세요."></textarea>
                             </div>
                         </form>
                     </section>
                     <section class="memo-book-list">
                         <h2 class="sr-only">내가 추가한 구절</h2>
-                        <div class="list-item">
-                            <div class="check-field">
-                                <input type="checkbox" name="list-check" id="list0" aria-label="목록 선택">
-                                <label for="list0"><i class="ri-check-line" aria-hidden="true"></i></label>
-                            </div>
-
-                            <div class="list-infor memo-type">
-                                <div>
-                                    <p class="book-title">책 제목</p>
-                                    <p class="page-number">위치</p>
-                                </div>
-                                <p class="memo-contents">내가 메모한 내용은 다음입니다.내가 메모한 내용은 다음입니다.<br>
-                                    내가 메모한 내용은 다음입니다.내가 메모한 내용은 다음입니다.</p>
-                            </div>
-                        </div>
+                        <div class="list-item"></div>
                     </section>
                     <section>
                         <h2 class="sr-only">삭제 버튼</h2>

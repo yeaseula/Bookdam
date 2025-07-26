@@ -806,6 +806,7 @@ header .search-box .reset-btn {
 .my-memo-wrap .reading-book-list .list-item .check-field,
 .my-memo-wrap .memo-book-list .list-item .check-field {
   position: relative;
+  top: 1px;
 }
 .my-wish-wrap .wish-book-list .list-item .check-field label,
 .my-wish-wrap .reading-book-list .list-item .check-field label,
@@ -915,8 +916,20 @@ header .search-box .reset-btn {
 .my-memo-wrap .wish-book-list .list-item .list-infor .memo-contents,
 .my-memo-wrap .reading-book-list .list-item .list-infor .memo-contents,
 .my-memo-wrap .memo-book-list .list-item .list-infor .memo-contents {
-  margin-top: 10px;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+}
+.my-wish-wrap .wish-book-list .list-item .list-infor cite,
+.my-wish-wrap .reading-book-list .list-item .list-infor cite,
+.my-wish-wrap .memo-book-list .list-item .list-infor cite,
+.my-reading-wrap .wish-book-list .list-item .list-infor cite,
+.my-reading-wrap .reading-book-list .list-item .list-infor cite,
+.my-reading-wrap .memo-book-list .list-item .list-infor cite,
+.my-memo-wrap .wish-book-list .list-item .list-infor cite,
+.my-memo-wrap .reading-book-list .list-item .list-infor cite,
+.my-memo-wrap .memo-book-list .list-item .list-infor cite {
+  display: block;
+  width: 100%;
+  text-align: right;
 }
 .my-wish-wrap .wish-book-list .list-item .list-infor .bookprice,
 .my-wish-wrap .wish-book-list .list-item .list-infor .reading-number,
