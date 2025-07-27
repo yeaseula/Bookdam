@@ -10,13 +10,6 @@
         <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" type="text/css" href="css/page.css">
-
-        <!--cdn-->
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-
     </head>
     <body>
         <div class="common-wrap">
@@ -24,7 +17,7 @@
                 <div class="header-depth">
                     <div class="search-box">
                         <form action="/search" method="GET">
-                            <input type="text" name="search" placeholder="검색어를 입력해주세요..">
+                            <input type="search" name="search" placeholder="검색어를 입력해주세요..">
                             <button type="submit" class="submit-btn"><img src="assets/img/search-icon.svg" alt="검색하기"></button>
                             <button type="reset" class="reset-btn"><img src="assets/img/reset-icon.svg" alt="검색어 초기화"></button>
                         </form>
@@ -35,7 +28,7 @@
                 </div>
             </header>
             <div class="sub-wrap">
-                <div class="serach-wrap">
+                <div class="search-wrap">
                     <section class="search-depth">
                         <h2 class="search-page-title">
                             카테고리 선택
@@ -84,8 +77,8 @@
                             날짜 선택
                         </h2>
                         <div class="written-date-wrap depth-wrap">
-                            <input type="text" id="myDate" placeholder="날짜를 선택하세요">
-                            <img src="assets/img/calendar-icon.svg">
+                            <input type="date" id="myDate" placeholder="날짜를 선택하세요">
+
                         </div>
                     </section>
                     <section class="search-depth">
@@ -94,7 +87,7 @@
                         </h2>
                         <div class="latest-wrap depth-wrap">
                             <div class="latest-cont depth-cont">
-                                <input type="checkbox" id="latest_0" value="소설" disabled>
+                                <input type="checkbox" id="latest_0" value="소설">
                                 <label for="latest_0">
                                     <span>천선란</span>
                                     <span class="closed"><img src="assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
@@ -102,7 +95,7 @@
 
                             </div>
                             <div class="latest-cont depth-cont">
-                                <input type="checkbox" id="latest_1" value="에세이" disabled>
+                                <input type="checkbox" id="latest_1" value="에세이">
                                 <label for="latest_1">
                                     <span>에세이</span>
                                     <span class="closed"><img src="assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
@@ -115,9 +108,9 @@
         </div>
         <script>
 
-            flatpickr("#myDate", {
-                dateFormat: "Y-m-d"
-            });
+            // flatpickr("#myDate", {
+            //     dateFormat: "Y-m-d"
+            // });
 
 
         </script>
