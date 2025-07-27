@@ -574,8 +574,14 @@ header {
                     .icons-wrap {
                         display: flex;
                         align-items: center;
-                        > img {
+                        .fill { display: none; }
+                        .icons-detail.selected {
+                            .line { display: none; }
+                            .fill { display: inline-block; }
+                        }
+                        img {
                             max-width: 20px;
+                            vertical-align: middle;
                         }
                     }
                     .point-number {
@@ -872,7 +878,7 @@ header {
         border-radius: 5px;
     }
 }
-.my-wish-wrapm,
+.my-wish-wrap,
 .my-reading-wrap,
 .my-memo-wrap {
     .wish-book-list,
@@ -1013,6 +1019,11 @@ header {
             background-color: transparent;
             padding: 0;
             margin: 0;
+            .fill {display: none;}
+            &.selected,&.selected-before {
+                .line {display: none;}
+                .fill {display: inline-block;}
+            }
         }
     }
     .submit-btn {

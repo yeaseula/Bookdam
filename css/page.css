@@ -533,8 +533,18 @@ header .search-box .reset-btn {
   display: flex;
   align-items: center;
 }
-.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap > img {
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap .fill {
+  display: none;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap .icons-detail.selected .line {
+  display: none;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap .icons-detail.selected .fill {
+  display: inline-block;
+}
+.review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap img {
   max-width: 20px;
+  vertical-align: middle;
 }
 .review-contents-wrap .review-head .book-infor .my-star > div .point-number {
   position: relative;
@@ -808,9 +818,9 @@ header .search-box .reset-btn {
   border-radius: 5px;
 }
 
-.my-wish-wrapm .wish-book-list,
-.my-wish-wrapm .reading-book-list,
-.my-wish-wrapm .memo-book-list,
+.my-wish-wrap .wish-book-list,
+.my-wish-wrap .reading-book-list,
+.my-wish-wrap .memo-book-list,
 .my-reading-wrap .wish-book-list,
 .my-reading-wrap .reading-book-list,
 .my-reading-wrap .memo-book-list,
@@ -819,9 +829,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list {
   margin-top: 35px;
 }
-.my-wish-wrapm .wish-book-list .list-item,
-.my-wish-wrapm .reading-book-list .list-item,
-.my-wish-wrapm .memo-book-list .list-item,
+.my-wish-wrap .wish-book-list .list-item,
+.my-wish-wrap .reading-book-list .list-item,
+.my-wish-wrap .memo-book-list .list-item,
 .my-reading-wrap .wish-book-list .list-item,
 .my-reading-wrap .reading-book-list .list-item,
 .my-reading-wrap .memo-book-list .list-item,
@@ -835,9 +845,9 @@ header .search-box .reset-btn {
   gap: 10px;
   border-bottom: 1px solid #e0e0e0;
 }
-.my-wish-wrapm .wish-book-list .list-item .check-field,
-.my-wish-wrapm .reading-book-list .list-item .check-field,
-.my-wish-wrapm .memo-book-list .list-item .check-field,
+.my-wish-wrap .wish-book-list .list-item .check-field,
+.my-wish-wrap .reading-book-list .list-item .check-field,
+.my-wish-wrap .memo-book-list .list-item .check-field,
 .my-reading-wrap .wish-book-list .list-item .check-field,
 .my-reading-wrap .reading-book-list .list-item .check-field,
 .my-reading-wrap .memo-book-list .list-item .check-field,
@@ -847,9 +857,9 @@ header .search-box .reset-btn {
   position: relative;
   top: 1px;
 }
-.my-wish-wrapm .wish-book-list .list-item .check-field label,
-.my-wish-wrapm .reading-book-list .list-item .check-field label,
-.my-wish-wrapm .memo-book-list .list-item .check-field label,
+.my-wish-wrap .wish-book-list .list-item .check-field label,
+.my-wish-wrap .reading-book-list .list-item .check-field label,
+.my-wish-wrap .memo-book-list .list-item .check-field label,
 .my-reading-wrap .wish-book-list .list-item .check-field label,
 .my-reading-wrap .reading-book-list .list-item .check-field label,
 .my-reading-wrap .memo-book-list .list-item .check-field label,
@@ -866,9 +876,9 @@ header .search-box .reset-btn {
   color: #424242;
   opacity: 0.5;
 }
-.my-wish-wrapm .wish-book-list .list-item .check-field input,
-.my-wish-wrapm .reading-book-list .list-item .check-field input,
-.my-wish-wrapm .memo-book-list .list-item .check-field input,
+.my-wish-wrap .wish-book-list .list-item .check-field input,
+.my-wish-wrap .reading-book-list .list-item .check-field input,
+.my-wish-wrap .memo-book-list .list-item .check-field input,
 .my-reading-wrap .wish-book-list .list-item .check-field input,
 .my-reading-wrap .reading-book-list .list-item .check-field input,
 .my-reading-wrap .memo-book-list .list-item .check-field input,
@@ -883,9 +893,9 @@ header .search-box .reset-btn {
   left: 0;
   z-index: -1;
 }
-.my-wish-wrapm .wish-book-list .list-item .check-field input:checked + label,
-.my-wish-wrapm .reading-book-list .list-item .check-field input:checked + label,
-.my-wish-wrapm .memo-book-list .list-item .check-field input:checked + label,
+.my-wish-wrap .wish-book-list .list-item .check-field input:checked + label,
+.my-wish-wrap .reading-book-list .list-item .check-field input:checked + label,
+.my-wish-wrap .memo-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .wish-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .reading-book-list .list-item .check-field input:checked + label,
 .my-reading-wrap .memo-book-list .list-item .check-field input:checked + label,
@@ -896,9 +906,9 @@ header .search-box .reset-btn {
   color: #fff;
   background-color: var(--point-color);
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor,
-.my-wish-wrapm .reading-book-list .list-item .list-infor,
-.my-wish-wrapm .memo-book-list .list-item .list-infor,
+.my-wish-wrap .wish-book-list .list-item .list-infor,
+.my-wish-wrap .reading-book-list .list-item .list-infor,
+.my-wish-wrap .memo-book-list .list-item .list-infor,
 .my-reading-wrap .wish-book-list .list-item .list-infor,
 .my-reading-wrap .reading-book-list .list-item .list-infor,
 .my-reading-wrap .memo-book-list .list-item .list-infor,
@@ -911,9 +921,9 @@ header .search-box .reset-btn {
   align-items: end;
   justify-content: space-between;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor.memo-type,
-.my-wish-wrapm .reading-book-list .list-item .list-infor.memo-type,
-.my-wish-wrapm .memo-book-list .list-item .list-infor.memo-type,
+.my-wish-wrap .wish-book-list .list-item .list-infor.memo-type,
+.my-wish-wrap .reading-book-list .list-item .list-infor.memo-type,
+.my-wish-wrap .memo-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .wish-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .reading-book-list .list-item .list-infor.memo-type,
 .my-reading-wrap .memo-book-list .list-item .list-infor.memo-type,
@@ -924,9 +934,9 @@ header .search-box .reset-btn {
   align-items: start;
   justify-content: start;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .book-title,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .book-title,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .book-title,
+.my-wish-wrap .wish-book-list .list-item .list-infor .book-title,
+.my-wish-wrap .reading-book-list .list-item .list-infor .book-title,
+.my-wish-wrap .memo-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .wish-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .reading-book-list .list-item .list-infor .book-title,
 .my-reading-wrap .memo-book-list .list-item .list-infor .book-title,
@@ -935,9 +945,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .book-title {
   font-size: 1.6rem;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .author-name,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .author-name,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .author-name,
+.my-wish-wrap .wish-book-list .list-item .list-infor .author-name,
+.my-wish-wrap .reading-book-list .list-item .list-infor .author-name,
+.my-wish-wrap .memo-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .wish-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .reading-book-list .list-item .list-infor .author-name,
 .my-reading-wrap .memo-book-list .list-item .list-infor .author-name,
@@ -947,9 +957,9 @@ header .search-box .reset-btn {
   font-size: 1.5rem;
   color: #757575;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .memo-contents,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .memo-contents,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrap .wish-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrap .reading-book-list .list-item .list-infor .memo-contents,
+.my-wish-wrap .memo-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .wish-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .reading-book-list .list-item .list-infor .memo-contents,
 .my-reading-wrap .memo-book-list .list-item .list-infor .memo-contents,
@@ -958,9 +968,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .memo-contents {
   font-size: 1.6rem;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor cite,
-.my-wish-wrapm .reading-book-list .list-item .list-infor cite,
-.my-wish-wrapm .memo-book-list .list-item .list-infor cite,
+.my-wish-wrap .wish-book-list .list-item .list-infor cite,
+.my-wish-wrap .reading-book-list .list-item .list-infor cite,
+.my-wish-wrap .memo-book-list .list-item .list-infor cite,
 .my-reading-wrap .wish-book-list .list-item .list-infor cite,
 .my-reading-wrap .reading-book-list .list-item .list-infor cite,
 .my-reading-wrap .memo-book-list .list-item .list-infor cite,
@@ -972,15 +982,15 @@ header .search-box .reset-btn {
   width: 100%;
   text-align: right;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .bookprice,
-.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-number,
-.my-wish-wrapm .wish-book-list .list-item .list-infor .total-number,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .bookprice,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-number,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .total-number,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .bookprice,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-number,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .total-number,
+.my-wish-wrap .wish-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .wish-book-list .list-item .list-infor .reading-number,
+.my-wish-wrap .wish-book-list .list-item .list-infor .total-number,
+.my-wish-wrap .reading-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .reading-book-list .list-item .list-infor .reading-number,
+.my-wish-wrap .reading-book-list .list-item .list-infor .total-number,
+.my-wish-wrap .memo-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .memo-book-list .list-item .list-infor .reading-number,
+.my-wish-wrap .memo-book-list .list-item .list-infor .total-number,
 .my-reading-wrap .wish-book-list .list-item .list-infor .bookprice,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-number,
 .my-reading-wrap .wish-book-list .list-item .list-infor .total-number,
@@ -1001,12 +1011,12 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .total-number {
   font-size: 1.6rem;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrapm .wish-book-list .list-item .list-infor .total-number span,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .total-number span,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-number span,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .total-number span,
+.my-wish-wrap .wish-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrap .wish-book-list .list-item .list-infor .total-number span,
+.my-wish-wrap .reading-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrap .reading-book-list .list-item .list-infor .total-number span,
+.my-wish-wrap .memo-book-list .list-item .list-infor .reading-number span,
+.my-wish-wrap .memo-book-list .list-item .list-infor .total-number span,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-number span,
 .my-reading-wrap .wish-book-list .list-item .list-infor .total-number span,
 .my-reading-wrap .reading-book-list .list-item .list-infor .reading-number span,
@@ -1021,9 +1031,9 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .total-number span {
   background-image: linear-gradient(to bottom, transparent 50%, var(--main-color) 50%);
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor .reading-progress,
-.my-wish-wrapm .reading-book-list .list-item .list-infor .reading-progress,
-.my-wish-wrapm .memo-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrap .wish-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrap .reading-book-list .list-item .list-infor .reading-progress,
+.my-wish-wrap .memo-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .reading-book-list .list-item .list-infor .reading-progress,
 .my-reading-wrap .memo-book-list .list-item .list-infor .reading-progress,
@@ -1033,9 +1043,9 @@ header .search-box .reset-btn {
   text-align: right;
   font-size: 1.6rem;
 }
-.my-wish-wrapm .wish-book-list .list-item .list-infor img,
-.my-wish-wrapm .reading-book-list .list-item .list-infor img,
-.my-wish-wrapm .memo-book-list .list-item .list-infor img,
+.my-wish-wrap .wish-book-list .list-item .list-infor img,
+.my-wish-wrap .reading-book-list .list-item .list-infor img,
+.my-wish-wrap .memo-book-list .list-item .list-infor img,
 .my-reading-wrap .wish-book-list .list-item .list-infor img,
 .my-reading-wrap .reading-book-list .list-item .list-infor img,
 .my-reading-wrap .memo-book-list .list-item .list-infor img,
@@ -1046,7 +1056,7 @@ header .search-box .reset-btn {
   top: 1px;
   max-width: 16px;
 }
-.my-wish-wrapm #delete_btn,
+.my-wish-wrap #delete_btn,
 .my-reading-wrap #delete_btn,
 .my-memo-wrap #delete_btn {
   display: block;
@@ -1091,6 +1101,15 @@ header .search-box .reset-btn {
   background-color: transparent;
   padding: 0;
   margin: 0;
+}
+.write-wrap .star-point button .fill {
+  display: none;
+}
+.write-wrap .star-point button.selected .line, .write-wrap .star-point button.selected-before .line {
+  display: none;
+}
+.write-wrap .star-point button.selected .fill, .write-wrap .star-point button.selected-before .fill {
+  display: inline-block;
 }
 .write-wrap .submit-btn {
   width: 100%;

@@ -52,12 +52,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 별점 버튼 클릭 시 처리
         starButtons.forEach(button => {
+
             button.addEventListener('click', () => {
             selectedScore = button.getAttribute('data-score');
 
             // 시각적으로 선택된 별 강조 표시
-            starButtons.forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+                starButtons.forEach(btn => btn.classList.remove('selected'));
+                starButtons.forEach((btn)=>{
+                    //console.log(btn.getAttribute('data-score')) // 2,4,6,8,10
+                    if(Number(btn.getAttribute('data-score')) < selectedScore) {
+                        btn.classList.add('selected-before')
+                    }
+                })
+                button.classList.add('selected');
             });
         });
 
@@ -312,6 +319,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 'aria-label',
                 `내가 준 평점: ${total}점 만점에 ${score}점`
             );
+            //별
+            const Selectedbox = document.querySelectorAll('.icons-detail');
+            Selectedbox.forEach((ele)=>{
+                const Targets = Number(ele.getAttribute('data-score'));
+                console.log(score)
+                if(Targets <= score) {
+                    ele.classList.add('selected')
+                }
+            })
         }
     }
     if(currentpage == 'reading') {
