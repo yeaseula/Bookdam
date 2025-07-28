@@ -402,9 +402,11 @@ header {
             height: 24px;
             line-height: 24px;
         }
-        a {
-        display: inline-block;
-        height: 24px;
+        a,button {
+            display: inline-block;
+            background-color: unset;
+            border: none;
+            height: 24px;
         }
         .page-title {
             position: absolute;
@@ -531,6 +533,129 @@ header {
         }
     }
 }
+
+/* 모달팝업 */
+.modal-popup {
+    max-width: 450px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: calc((100vw - 450px) / 2);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    &.on {
+        visibility:visible;
+    }
+    @media(max-width:450px) {
+        max-width: calc(100%);
+        left: 0;
+    }
+    .modal-backdia {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        background-color: rgba(0, 0, 0, 0.35);
+    }
+    .modal-inner {
+        position: relative;
+        z-index: 11;
+        width: calc(100% - 30px);
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .modal-header {
+        position: relative;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 12px;
+        p {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .closed {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+    .modal-body {
+        padding-top: 25px;
+        ol li:not(:last-child) {
+            margin-bottom: 15px;
+        }
+        ol li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-name {
+            width: 20%;
+            @media(max-width:380px) {
+                font-size: 1.4rem;
+            }
+            @media(max-width:330px) {
+                font-size: 1.2rem;
+            }
+        }
+        .ratio-box {
+            position: relative;
+            width: calc(80% - 10px);
+            height: 10px;
+            .ratio {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                border-radius: 3px;
+                background-color: var(--point-color);
+            }
+            .whole-bar {
+                width: 100%;
+                height: 100%;
+                border-radius: 3px;
+                background-color: #bdbdbd;
+            }
+            .percentage {
+                position: absolute;
+                top: -24px;
+                left: 0;
+                z-index: 3;
+                border-radius: 3px;
+                padding: 2px 4px 0 4px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                background-color: var(--sub_color);
+                color: #fff;
+                font-size: 1.2rem;
+                font-weight: 500;
+                opacity: 0;
+                &::after {
+                    border-top: 5px solid var(--sub_color);
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-bottom: 0px solid transparent;
+                    content: "";
+                    position: absolute;
+                    top: 18px;
+                    left: 3px;
+                }
+                @media(max-width:330px) {
+                    top: -22px;
+                }
+            }
+        }
+    }
+}
+
 
 /* 나의 리뷰 상세페이지 */
 .review-contents-wrap {
@@ -714,12 +839,19 @@ header {
 
 .my-chart-wrap {
     position: relative;
+    section {
+        position: relative;
+        z-index: 2;
+    }
     .my-chart-title {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2.2rem;
         #user_name {
-            font-size: 3.6rem;
+            font-size: 2.8rem;
         }
+    }
+    .chart-depth {
+
     }
     .background {
         position: absolute;
@@ -727,8 +859,8 @@ header {
         left: -15px;
         width: calc(100% + 30px);
         height: calc(100vh - 60px);
-        background:linear-gradient(to bottom, #fff, #fafafa);
-        z-index: -1;
+        background:linear-gradient(to bottom, #fff 70%, var(--main-color-light));
+        z-index: 1;
     }
 }
 

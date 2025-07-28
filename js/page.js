@@ -245,6 +245,60 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         loadReviews();
+
+        //modal
+        const ratioBar = document.querySelectorAll('.ratio');
+        const percentage = document.querySelectorAll('.percentage');
+        const loadingArr = ['74%','32.2%','14.1%'];
+
+        gsap.registerEffect({
+            name: "loading",
+            effect: (targets, config) => {
+                return gsap.to(targets,
+                { width: config.width, duration:config.duration });
+            },
+            defaults: { width: '100%', duration:1.3, ease:'power3.inOut' },
+            extendTimeline: true,
+        })
+
+        function ChangeText(target,config){
+            target[0].textContent = config.left;
+        }
+
+        gsap.registerEffect({
+            name: "flag",
+            effect:(target,config)=>{
+                return gsap.to(target,{ left: config.left, duration:config.duration, opacity:config.opacity,
+                    onStart:ChangeText,
+                    onStartParams:[target,config]
+                })
+            },
+            defaults: { left: '100%', duration:1.3, opacity:1},
+            extendTimeline: true,
+        })
+
+            let tl=gsap.timeline()
+            .loading(ratioBar[0],{width: loadingArr[0]})
+            .flag(percentage[0], {left: loadingArr[0],},'=-0.3')
+            .loading(ratioBar[1],{width: loadingArr[1]},'=-0.3')
+            .flag(percentage[1], {left: loadingArr[1],},'=-0.3')
+            .loading(ratioBar[2],{width: loadingArr[2]},'=-0.3')
+            .flag(percentage[2], {left: loadingArr[2],},'=-0.3')
+
+
+        const closeBtn = document.querySelector('.closed');
+        const openBtn = document.querySelector('.my-reading-chart');
+
+        openBtn.addEventListener('click',(e)=>{
+            const target = document.querySelector('.modal-popup');
+            target.classList.add('on');
+            tl.restart();
+        })
+
+        closeBtn.addEventListener('click',(e)=>{
+            const target = e.currentTarget.closest('.modal-popup');
+            target.classList.remove('on')
+        })
     }
     if(currentpage == 'reviewcontent') {
         // 쿼리값(title, author) 읽기
