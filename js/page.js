@@ -263,6 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function ChangeText(target,config){
             target[0].textContent = config.left;
+            target[0].setAttribute('aria-label',config.left)
         }
 
         gsap.registerEffect({
