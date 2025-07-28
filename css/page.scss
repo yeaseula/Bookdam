@@ -134,7 +134,7 @@
         z-index: 5;
         width: 100%;
         height: auto;
-        padding: 60px 15px 0;
+        padding: 40px 15px 0;
         aspect-ratio: 375 / 280;
         padding-bottom: 5rem;
         .slider-top-text {
@@ -146,17 +146,24 @@
                 vertical-align: middle;
             }
             .go-write-btn {
+                display: flex;
+                align-items: center;
+                gap: 3px;
                 position: absolute;
-                top: -26px;
+                top: -20px;
                 right: 0;
                 z-index: 10;
-                width: 31px;
-                height: 31px;
-                background-color: var(--main-color-light);
-                border-radius: 5px;
-                padding: 5px;
+                background-color: #000;
+                color: #fff;
+                border-radius: 500px;
+                padding: 2px 13px 0 10px;
+                font-size: 1.2rem;
+                box-shadow: 1px 1px 12px rgb(106, 200, 216, 0.5);
                 img {
-                    width:100%;
+                    position: relative;
+                    top: -1px;
+                    max-width: 15px;
+                    filter: contrast(0);
                 }
             }
         }
