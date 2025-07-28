@@ -138,11 +138,26 @@
         aspect-ratio: 375 / 280;
         padding-bottom: 5rem;
         .slider-top-text {
+            position: relative;
             font-size: 2.1rem;
             color: #fff;
             #user-name {
                 font-size: 2.8rem;
                 vertical-align: middle;
+            }
+            .go-write-btn {
+                position: absolute;
+                top: -26px;
+                right: 0;
+                z-index: 10;
+                width: 31px;
+                height: 31px;
+                background-color: var(--main-color-light);
+                border-radius: 5px;
+                padding: 5px;
+                img {
+                    width:100%;
+                }
             }
         }
         .my-book-list {
@@ -472,10 +487,14 @@ header {
         .total-count {
             font-size: 1.5rem;
         }
-        .go_my_librery {
-            span {
-                font-size: 1.5rem;
-            }
+        .go-write-btn {
+            padding: 2px 10px 0 10px;
+            border-radius: 5px;
+            color: #fff;
+            background-color: var(--sub_color);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+
         }
     }
     .my-review-list {
@@ -1159,7 +1178,7 @@ header {
         border-radius: 5px;
         font-size: 1.6rem;
         height: 40px;
-        line-height: 39px !important;
+        line-height: 41px !important;
     }
 }
 
@@ -1237,12 +1256,18 @@ header {
                 flex-direction: column;
                 align-items: center;
                 .nav-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     width: 40px;
                     height: 40px;
                 }
                 p {
                     font-size: 1.3rem;
                     color: #757575;
+                }
+                img {
+                    max-width: 29px;
                 }
             }
 

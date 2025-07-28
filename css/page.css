@@ -118,12 +118,27 @@
   padding-bottom: 5rem;
 }
 #main .slider-wrap .slider-top-text {
+  position: relative;
   font-size: 2.1rem;
   color: #fff;
 }
 #main .slider-wrap .slider-top-text #user-name {
   font-size: 2.8rem;
   vertical-align: middle;
+}
+#main .slider-wrap .slider-top-text .go-write-btn {
+  position: absolute;
+  top: -26px;
+  right: 0;
+  z-index: 10;
+  width: 31px;
+  height: 31px;
+  background-color: var(--main-color-light);
+  border-radius: 5px;
+  padding: 5px;
+}
+#main .slider-wrap .slider-top-text .go-write-btn img {
+  width: 100%;
 }
 #main .slider-wrap .my-book-list {
   width: 100%;
@@ -431,8 +446,13 @@ header .search-box .reset-btn {
 .my-review-wrap .my-review-title .total-count {
   font-size: 1.5rem;
 }
-.my-review-wrap .my-review-title .go_my_librery span {
-  font-size: 1.5rem;
+.my-review-wrap .my-review-title .go-write-btn {
+  padding: 2px 10px 0 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--sub_color);
+  font-size: 1.3rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 .my-review-wrap .my-review-list {
   margin-top: 20px;
@@ -1248,7 +1268,7 @@ header .search-box .reset-btn {
   border-radius: 5px;
   font-size: 1.6rem;
   height: 40px;
-  line-height: 39px !important;
+  line-height: 41px !important;
 }
 
 /* 글쓰기 완료 페이지 */
@@ -1329,12 +1349,18 @@ header .search-box .reset-btn {
   align-items: center;
 }
 #bottom_navigator .navigator_wrap .navigator_cont > a .nav-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   height: 40px;
 }
 #bottom_navigator .navigator_wrap .navigator_cont > a p {
   font-size: 1.3rem;
   color: #757575;
+}
+#bottom_navigator .navigator_wrap .navigator_cont > a img {
+  max-width: 29px;
 }
 #bottom_navigator .navigator_wrap .navigator_cont.active > p {
   color: var(--point_color);

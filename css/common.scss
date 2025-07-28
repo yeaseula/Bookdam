@@ -37,7 +37,7 @@ p {
 a {
     outline: none;
     &:focus-visible {
-        border: 2px solid var(--point-color);
+        border: 2px solid var(--point-color) !important;
     }
 }
 button {
@@ -48,7 +48,7 @@ button {
     outline: none;
     cursor: pointer;
     &:focus-visible {
-        border: 2px solid var(--point-color);
+        border: 2px solid var(--point-color) !important;
     }
 }
 

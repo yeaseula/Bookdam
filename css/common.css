@@ -38,7 +38,7 @@ a {
   outline: none;
 }
 a:focus-visible {
-  border: 2px solid var(--point-color);
+  border: 2px solid var(--point-color) !important;
 }
 
 button {
@@ -50,7 +50,7 @@ button {
   cursor: pointer;
 }
 button:focus-visible {
-  border: 2px solid var(--point-color);
+  border: 2px solid var(--point-color) !important;
 }
 
 input:focus + label {

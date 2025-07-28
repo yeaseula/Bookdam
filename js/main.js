@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
         centeredSlides : true,
         autoplay:true
-        //a11y: false,
     });
 
     //kakao api로 북커버 호출 함수 (공통)
@@ -108,7 +107,14 @@ document.addEventListener('DOMContentLoaded', function () {
         slideContainer.forEach((ele)=>{
             const {swiperSlideIndex:targetindex} = ele.dataset;
             const index = Number(targetindex);
-            ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
+            const thumb = MyReviewThumb[index];
+
+            if (thumb) {
+                ele.style.backgroundImage = `url('${thumb}')`;
+            } else {
+                ele.style.backgroundImage = `none`; // 또는 기본 이미지
+            }
+            // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
         })
     }
 
@@ -136,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //카카오 api 불러오기
 
-    const keywords = ['국내소설', '해외소설', '소설', '인기'];
+    const keywords = ['소설', '러브', '사랑'];
     const slideCount = 7;
 
     //api로 데이터 다운

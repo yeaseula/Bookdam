@@ -242,6 +242,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>`;
                 container.appendChild(item);
             }
+            //총 게시물 수
+            const listcount = document.querySelectorAll('.list-item');
+            document.querySelector('.total-count').textContent = `총 ${listcount.length}개`;
         }
 
         loadReviews();
@@ -300,6 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const target = e.currentTarget.closest('.modal-popup');
             target.classList.remove('on')
         })
+
     }
     if(currentpage == 'reviewcontent') {
         // 쿼리값(title, author) 읽기
