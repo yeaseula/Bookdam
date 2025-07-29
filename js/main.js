@@ -4,9 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
     const gid = '1116419757';
 
-
     const MyReviewThumb = [];
 
+
+    //메인 상단 슬라이드 정의
     const MyBookList = new Swiper('.my-book-list', {
         slidesPerView: 'auto',
         loop: true,
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         autoplay:true
     });
 
-    //kakao api로 북커버 호출 함수 (공통)
+    //kakao api로 북커버 호출 함수
     async function fetchMyReviewCover(title,author) {
         try {
             const query = `${title} ${author}`;
@@ -38,7 +39,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
     }
 
-    //calendar for book stamp!
+    //메인 상단 슬라이드 노드 구성
+    function MainSlideThumb(){
+        //기본 슬라이드 10장
+        const slideContainer = MyBookList.slides;
+
+        //console.log(slideContainer)
+        slideContainer.forEach((ele)=>{
+            const {swiperSlideIndex:targetindex} = ele.dataset;
+            const index = Number(targetindex);
+            const thumb = MyReviewThumb[index];
+
+            if (thumb) {
+                ele.style.backgroundImage = `url('${thumb}')`;
+            } else {
+                ele.style.backgroundImage = `url('assets/img/main-empty.png')`; // 또는 기본 이미지
+            }
+            // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
+        })
+    }
+
+    //캘린더 북 스탬프
     var calendarEl = document.getElementById('calendar');
     var initialLocaleCode = 'en';
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -55,7 +76,29 @@ document.addEventListener('DOMContentLoaded', function () {
     //기록 날짜를 불러와 캘린더 객체의 date키 값과 일치하는지 확인한 후 스탬프를 찍습니다.
     const stampDates = [];
 
-    //google 시트의 날짜 형식은 Date(2025, 5, 10) 형태의 문자열로 출력, 변환처리 필요
+    function StampFunc () {
+        let calendarbox = document.querySelectorAll('.fc-scrollgrid-sync-table td');
+        let dayList = [...Array.from(calendarbox)];
+        dayList.forEach((ele,idx)=>{
+            let {date:dayValue} = dayList[idx].dataset;
+            stampDates.forEach((ele,idx2)=>{
+                if (dayValue == stampDates[idx2]) {
+                    dayList[idx].classList.add('simple')
+                }
+            })
+        })
+    }
+
+    //prev,next 버튼 누를 시 캘린더 초기화
+    window.onload = function(){
+        const CalPrevBtn = document.querySelector('.fc-prev-button')
+        const CalNextBtn = document.querySelector('.fc-next-button')
+
+        CalPrevBtn.addEventListener('click',()=>{StampFunc()})
+        CalNextBtn.addEventListener('click',()=>{StampFunc()})
+    }
+
+    //google 시트의 날짜 형식 변환 함수
     function sheetDateFormat(rawDate) {
         const dateMatch = rawDate.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
         if (!dateMatch) return rawDate;
@@ -65,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return `${year}-${month}-${day}`;
     }
 
+    //google 시트에 기록된 데이터 불러오기
     async function loadReviewDetail() {
         const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
         const text = await fetch(url).then(r => r.text());
@@ -99,53 +143,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loadReviewDetail();
 
-    function MainSlideThumb(){
-        //기본 슬라이드 10장
-        const slideContainer = MyBookList.slides;
-
-        console.log(slideContainer)
-        slideContainer.forEach((ele)=>{
-            const {swiperSlideIndex:targetindex} = ele.dataset;
-            const index = Number(targetindex);
-            const thumb = MyReviewThumb[index];
-
-            if (thumb) {
-                ele.style.backgroundImage = `url('${thumb}')`;
-            } else {
-                ele.style.backgroundImage = `url('assets/img/main-empty.png')`; // 또는 기본 이미지
-            }
-            // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
-        })
-    }
-
-    function StampFunc () {
-        let calendarbox = document.querySelectorAll('.fc-scrollgrid-sync-table td');
-        let dayList = [...Array.from(calendarbox)];
-        dayList.forEach((ele,idx)=>{
-            let {date:dayValue} = dayList[idx].dataset;
-            stampDates.forEach((ele,idx2)=>{
-                if (dayValue == stampDates[idx2]) {
-                    dayList[idx].classList.add('simple')
-                }
-            })
-        })
-    }
-
-    window.onload = function(){
-        const CalPrevBtn = document.querySelector('.fc-prev-button')
-        const CalNextBtn = document.querySelector('.fc-next-button')
-
-        CalPrevBtn.addEventListener('click',()=>{StampFunc()})
-        CalNextBtn.addEventListener('click',()=>{StampFunc()})
-    }
-
 
     //카카오 api 불러오기
-
-    const keywords = ['소설', '러브', '사랑'];
+    const keywords = ['소설', '러브', '사랑', '우정', '희망'];
     const slideCount = 7;
 
-    //api로 데이터 다운
+    //마지막 섹션 AI 추천
     async function fetchBooks() {
         const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
         const response = await fetch(`https://dapi.kakao.com/v3/search/book?query=${randomKeyword}&size=15`, {
@@ -153,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 Authorization: `KakaoAK ${kakaoKey}`
             }
         });
-        //서버에서 받은 정보를 객체로 바꿉니다.
         const data = await response.json();
         //console.log(data)
         return data.documents.sort(() => 0.5 - Math.random()).slice(0, slideCount);
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="book-title sd-b">${book.title}</p>
                     <p class="book-intro">${book.contents ? book.contents.substring(0, 200) + '...' : '설명이 없습니다.'}</p>
                     <div class="button-wrap">
-                        <button class="gray-style-btn red-n">Wish</button>
+                        <button class="gray-style-btn wish-btn red-n" data-title="${book.title}" data-author="${book.authors?.[0] || '작자미상'}" data-price="${book.price || 0}">Wish</button>
                         <button class="dark-style-btn red-n" onclick="window.open('${link}', '_blank')">More View</button>
                     </div>
                 </div>
@@ -195,12 +197,42 @@ document.addEventListener('DOMContentLoaded', function () {
             spaceBetween: 15,
             loop: true
         });
+
+        //wish 버튼 클릭->로컬에 데이터 저장
+        setTimeout(() => {
+            document.querySelectorAll('.wish-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                const book = {
+                    title: this.dataset.title,
+                    author: this.dataset.author,
+                    totalPrice: parseInt(this.dataset.price, 10),
+                    totalPage: parseInt(this.dataset.page, 10)
+                };
+                saveWishBook(book);
+                window.renderWishList();
+                alert('읽고싶은 책 목록에 추가됐습니다!')
+                });
+            });
+        }, 0);
+    }
+
+    function getBooks(key, sample = []) {
+        return JSON.parse(localStorage.getItem(key)) || sample;
+    }
+
+    function saveWishBook(newBook) {
+        const books = getBooks(STORAGE_KEY2, []);
+        const isExist = books.some(b => b.title === newBook.title && b.author === newBook.author);
+        if (!isExist) {
+            books.unshift(newBook);
+            localStorage.setItem(STORAGE_KEY2, JSON.stringify(books));
+        }
     }
 
     initSlider();
 
-    //슬라이드 아래 섹션
 
+    //section1 관련 함수
     //조사 을/를 선택
     function pickObjectParticle(word) {
         if (!word) return '';

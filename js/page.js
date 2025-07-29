@@ -4,22 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const sheetId = '1EiQpFub62jL2VZOULwozl_f3hkz1J-wVec9rcSbR5CU';
     const gid = '1116419757';
 
-    // 이용자 로컬 스토리지에 책 샘플 데이터를 저장
-    const STORAGE_KEY = 'readingBooks';
-    const STORAGE_KEY2 = 'wishBook';
-    const STORAGE_KEY3 = 'myMemo';
-    // 샘플 데이터
-    const SAMPLE_BOOKS = [
-        { title: '앵무새 죽이기', totalPage: 300, readPage: 120 },
-        { title: '나니아 연대기', totalPage: 200, readPage: 50 }
-    ];
-    const SAMPLE_BOOKS2 = [
-        { title : '아가미', author:'구병모' , totalPrice: 13000 }
-    ]
-    const SAMPLE_BOOKS3 = [
-        { title: '마션', pages: '388', contents: '문제가 생기면 하나씩 해결해. 그러다 보면 집에 갈 수 있어.'}
-    ]
-
     // 읽고싶은 책 데이터 불러오기
     function getBooks(key,sample) {
         let books = JSON.parse(localStorage.getItem(key) || '[]');
@@ -480,29 +464,32 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
     }
-    if(currentpage == 'wish') {
-        function renderBooks() {
-            const books = getBooks(STORAGE_KEY2,SAMPLE_BOOKS2);
-            const list = document.querySelector('.wish-book-list');
 
-            list.innerHTML = '<h2 class="sr-only">읽고싶은 책 목록</h2>';
-            books.forEach((book, idx) => {
-                list.innerHTML += `
-                <div class="list-item" data-idx="${idx}">
-                    <div class="check-field">
-                        <input type="checkbox" name="list-check" id="list${idx}" aria-label="목록 선택">
-                        <label for="list${idx}"><i class="ri-check-line" aria-hidden="true"></i></label>
+    //main.js에서 접근해야해서 전역으로 등록함
+    window.renderWishList = function () {
+        if (currentpage !== 'wish') return;
+
+        const books = getBooks(STORAGE_KEY2,SAMPLE_BOOKS2);
+        const list = document.querySelector('.wish-book-list');
+        list.innerHTML = '<h2 class="sr-only">읽고싶은 책 목록</h2>';
+        books.forEach((book, idx) => {
+            list.innerHTML += `
+            <div class="list-item" data-idx="${idx}">
+                <div class="check-field">
+                    <input type="checkbox" name="list-check" id="list${idx}" aria-label="목록 선택">
+                    <label for="list${idx}"><i class="ri-check-line" aria-hidden="true"></i></label>
+                </div>
+                <div class="list-infor wish-type">
+                    <div>
+                        <p class="book-title">${book.title}</p>
+                        <p class="author-name">${book.author}</p>
                     </div>
-                    <div class="list-infor">
-                        <div>
-                            <p class="book-title">${book.title}</p>
-                            <p class="author-name">${book.author}</p>
-                        </div>
-                        <p class="bookprice">${book.totalPrice.toLocaleString()}원</p>
-                    </div>
-                </div>`;
-            });
-        }
+                    <p class="book-price">${book.totalPrice.toLocaleString()}원</p>
+                </div>
+            </div>`;
+        });
+    }
+    if(currentpage == 'wish') {
         // 책 추가
         document.querySelector('.book-add-field form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -514,15 +501,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const books = getBooks(STORAGE_KEY2,SAMPLE_BOOKS2);
             books.unshift({ title, author, totalPrice }); // 최신순
             setBooks(books,STORAGE_KEY2);
-            renderBooks();
+            window.renderWishList();
             this.reset();
         });
 
-        renderBooks();
+        window.renderWishList();
 
         //삭제
         document.getElementById('delete_btn').addEventListener('click',function(){
-            DeleteBooklist(STORAGE_KEY2, SAMPLE_BOOKS2, '.wish-book-list', renderBooks)
+            DeleteBooklist(STORAGE_KEY2, SAMPLE_BOOKS2, '.wish-book-list', window.renderWishList)
         })
     }
     if(currentpage == 'memo') {

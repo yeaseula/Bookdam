@@ -1083,6 +1083,9 @@ header {
                 display: flex;
                 align-items: end;
                 justify-content: space-between;
+                &.wish-type {
+                    position: relative;
+                }
                 &.memo-type {
                     flex-direction: column;
                     align-items: start;
@@ -1090,6 +1093,11 @@ header {
                 }
                 .book-title {
                     font-size: 1.6rem;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
                 }
                 .author-name {
                     font-size: 1.5rem;
@@ -1098,13 +1106,18 @@ header {
                 .memo-contents {
                     font-size: 1.6rem;
                 }
+                .book-price {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 0;
+                }
                 cite {
                     display: block;
                     margin-top: 10px;
                     width: 100%;
                     text-align: right;
                 }
-                .bookprice,
+                .book-price,
                 .reading-number,
                 .total-number {
                     font-size: 1.6rem;
@@ -1300,7 +1313,7 @@ header {
 footer {
     background-color: #fafafa;
     padding: 20px 7px;
-    padding-bottom: 90px;
+    padding-bottom: 110px;
     .bar {
         display: inline-block;
         position: relative;

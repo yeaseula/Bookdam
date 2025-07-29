@@ -1089,6 +1089,17 @@ header .search-box .reset-btn {
   align-items: end;
   justify-content: space-between;
 }
+.my-wish-wrap .wish-book-list .list-item .list-infor.wish-type,
+.my-wish-wrap .reading-book-list .list-item .list-infor.wish-type,
+.my-wish-wrap .memo-book-list .list-item .list-infor.wish-type,
+.my-reading-wrap .wish-book-list .list-item .list-infor.wish-type,
+.my-reading-wrap .reading-book-list .list-item .list-infor.wish-type,
+.my-reading-wrap .memo-book-list .list-item .list-infor.wish-type,
+.my-memo-wrap .wish-book-list .list-item .list-infor.wish-type,
+.my-memo-wrap .reading-book-list .list-item .list-infor.wish-type,
+.my-memo-wrap .memo-book-list .list-item .list-infor.wish-type {
+  position: relative;
+}
 .my-wish-wrap .wish-book-list .list-item .list-infor.memo-type,
 .my-wish-wrap .reading-book-list .list-item .list-infor.memo-type,
 .my-wish-wrap .memo-book-list .list-item .list-infor.memo-type,
@@ -1112,6 +1123,11 @@ header .search-box .reset-btn {
 .my-memo-wrap .reading-book-list .list-item .list-infor .book-title,
 .my-memo-wrap .memo-book-list .list-item .list-infor .book-title {
   font-size: 1.6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 .my-wish-wrap .wish-book-list .list-item .list-infor .author-name,
 .my-wish-wrap .reading-book-list .list-item .list-infor .author-name,
@@ -1136,6 +1152,19 @@ header .search-box .reset-btn {
 .my-memo-wrap .memo-book-list .list-item .list-infor .memo-contents {
   font-size: 1.6rem;
 }
+.my-wish-wrap .wish-book-list .list-item .list-infor .book-price,
+.my-wish-wrap .reading-book-list .list-item .list-infor .book-price,
+.my-wish-wrap .memo-book-list .list-item .list-infor .book-price,
+.my-reading-wrap .wish-book-list .list-item .list-infor .book-price,
+.my-reading-wrap .reading-book-list .list-item .list-infor .book-price,
+.my-reading-wrap .memo-book-list .list-item .list-infor .book-price,
+.my-memo-wrap .wish-book-list .list-item .list-infor .book-price,
+.my-memo-wrap .reading-book-list .list-item .list-infor .book-price,
+.my-memo-wrap .memo-book-list .list-item .list-infor .book-price {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
 .my-wish-wrap .wish-book-list .list-item .list-infor cite,
 .my-wish-wrap .reading-book-list .list-item .list-infor cite,
 .my-wish-wrap .memo-book-list .list-item .list-infor cite,
@@ -1150,31 +1179,31 @@ header .search-box .reset-btn {
   width: 100%;
   text-align: right;
 }
-.my-wish-wrap .wish-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .wish-book-list .list-item .list-infor .book-price,
 .my-wish-wrap .wish-book-list .list-item .list-infor .reading-number,
 .my-wish-wrap .wish-book-list .list-item .list-infor .total-number,
-.my-wish-wrap .reading-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .reading-book-list .list-item .list-infor .book-price,
 .my-wish-wrap .reading-book-list .list-item .list-infor .reading-number,
 .my-wish-wrap .reading-book-list .list-item .list-infor .total-number,
-.my-wish-wrap .memo-book-list .list-item .list-infor .bookprice,
+.my-wish-wrap .memo-book-list .list-item .list-infor .book-price,
 .my-wish-wrap .memo-book-list .list-item .list-infor .reading-number,
 .my-wish-wrap .memo-book-list .list-item .list-infor .total-number,
-.my-reading-wrap .wish-book-list .list-item .list-infor .bookprice,
+.my-reading-wrap .wish-book-list .list-item .list-infor .book-price,
 .my-reading-wrap .wish-book-list .list-item .list-infor .reading-number,
 .my-reading-wrap .wish-book-list .list-item .list-infor .total-number,
-.my-reading-wrap .reading-book-list .list-item .list-infor .bookprice,
+.my-reading-wrap .reading-book-list .list-item .list-infor .book-price,
 .my-reading-wrap .reading-book-list .list-item .list-infor .reading-number,
 .my-reading-wrap .reading-book-list .list-item .list-infor .total-number,
-.my-reading-wrap .memo-book-list .list-item .list-infor .bookprice,
+.my-reading-wrap .memo-book-list .list-item .list-infor .book-price,
 .my-reading-wrap .memo-book-list .list-item .list-infor .reading-number,
 .my-reading-wrap .memo-book-list .list-item .list-infor .total-number,
-.my-memo-wrap .wish-book-list .list-item .list-infor .bookprice,
+.my-memo-wrap .wish-book-list .list-item .list-infor .book-price,
 .my-memo-wrap .wish-book-list .list-item .list-infor .reading-number,
 .my-memo-wrap .wish-book-list .list-item .list-infor .total-number,
-.my-memo-wrap .reading-book-list .list-item .list-infor .bookprice,
+.my-memo-wrap .reading-book-list .list-item .list-infor .book-price,
 .my-memo-wrap .reading-book-list .list-item .list-infor .reading-number,
 .my-memo-wrap .reading-book-list .list-item .list-infor .total-number,
-.my-memo-wrap .memo-book-list .list-item .list-infor .bookprice,
+.my-memo-wrap .memo-book-list .list-item .list-infor .book-price,
 .my-memo-wrap .memo-book-list .list-item .list-infor .reading-number,
 .my-memo-wrap .memo-book-list .list-item .list-infor .total-number {
   font-size: 1.6rem;
@@ -1388,7 +1417,7 @@ header .search-box .reset-btn {
 footer {
   background-color: #fafafa;
   padding: 20px 7px;
-  padding-bottom: 90px;
+  padding-bottom: 110px;
 }
 footer .bar {
   display: inline-block;
