@@ -1305,10 +1305,11 @@ footer {
         background-color: #e0e0e0;
     }
     .logo-box {
-        width: 120px;
-        height: 40px;
-        background-color: #bdbdbd;
-        margin: 0 auto 15px;
+        width: 86px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+        }
     }
     .footer-menu {
         display: flex;

@@ -1389,10 +1389,11 @@ footer .bar {
   background-color: #e0e0e0;
 }
 footer .logo-box {
-  width: 120px;
-  height: 40px;
-  background-color: #bdbdbd;
-  margin: 0 auto 15px;
+  width: 86px;
+  margin: 0 auto;
+}
+footer .logo-box img {
+  width: 100%;
 }
 footer .footer-menu {
   display: flex;
