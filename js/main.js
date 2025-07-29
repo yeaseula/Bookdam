@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (thumb) {
                 ele.style.backgroundImage = `url('${thumb}')`;
             } else {
-                ele.style.backgroundImage = `none`; // 또는 기본 이미지
+                ele.style.backgroundImage = `url('assets/img/main-empty.png')`; // 또는 기본 이미지
             }
             // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
         })

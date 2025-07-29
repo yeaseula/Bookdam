@@ -130,16 +130,16 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  position: absolute;
-  top: -20px;
-  right: 0;
-  z-index: 10;
   background-color: #000;
   color: #fff;
   border-radius: 500px;
   padding: 2px 13px 0 10px;
   font-size: 1.2rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
+  position: absolute;
+  top: -20px;
+  right: 0;
+  z-index: 10;
 }
 #main .slider-wrap .slider-top-text .go-write-btn img {
   position: relative;
@@ -454,12 +454,22 @@ header .search-box .reset-btn {
   font-size: 1.5rem;
 }
 .my-review-wrap .my-review-title .go-write-btn {
-  padding: 2px 10px 0 10px;
-  border-radius: 5px;
-  color: #fff;
-  background-color: var(--sub_color);
-  font-size: 1.3rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 500px;
+  padding: 2px 13px 0 10px;
+  font-size: 1.2rem;
+  box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.my-review-wrap .my-review-title .go-write-btn img {
+  position: relative;
+  top: -1px;
+  max-width: 15px;
 }
 .my-review-wrap .my-review-list {
   margin-top: 20px;
