@@ -26,6 +26,19 @@ body {
   overflow-y: scroll;
 }
 
+.common-wrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.common-wrap::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.common-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .section {
   padding: 5px 15px;
 }

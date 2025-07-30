@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     path: 'nav-animation/review.json'
                 }),
                 review: lottie.loadAnimation({
+                    container: document.getElementById('memo-icon'),
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: (currentpage === 'memo'),
+                    path: 'nav-animation/Heart.json'
+                }),
+                review: lottie.loadAnimation({
                     container: document.getElementById('reading-icon'),
                     renderer: 'svg',
                     loop: false,
