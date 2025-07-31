@@ -395,7 +395,7 @@ header .header-depth a, header .header-depth button {
 }
 header .header-depth .page-title {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 1px);
   left: 50%;
   z-index: 3;
   transform: translate(-50%, -50%);
@@ -1328,9 +1328,8 @@ header .search-box .reset-btn {
 .write-wrap input, .write-wrap select, .write-wrap textarea {
   width: 100%;
 }
-.write-wrap #datepicker-start,
-.write-wrap #datepicker-end {
-  width: calc(50% - 5px);
+.write-wrap .date-type-input.pc-width {
+  width: 205px;
 }
 .write-wrap textarea {
   min-height: 125px;

@@ -417,7 +417,7 @@ header {
         }
         .page-title {
             position: absolute;
-            top: 50%;
+            top: calc(50% + 1px);
             left: 50%;
             z-index: 3;
             transform: translate(-50%,-50%);
@@ -1189,9 +1189,11 @@ header {
     input,select,textarea {
         width: 100%;
     }
-    #datepicker-start,
-    #datepicker-end {
-        width: calc(50% - 5px);
+    .date-type-input {
+        &.pc-width {
+            width: 205px;
+        }
+
     }
     textarea {
         min-height: 125px;

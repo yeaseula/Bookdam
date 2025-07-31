@@ -29,33 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastTap = 0;
 
     if(currentpage == 'write') {
-
-        const picker = new Litepicker({
-            element: document.getElementById('datepicker-start'),
-            elementEnd: document.getElementById('datepicker-end'),
-            singleMode: false, // 범위 선택
-            format: 'YYYY-MM-DD',
-            lang: 'ko',
-            numberOfMonths: 2,
-            numberOfColumns: 2,
-            autoApply: true,
-            tooltipText: {
-            one: '일',
-            other: '일들'
-            },
-            dropdowns: {
-            minYear: 2000,
-            maxYear: null,
-            months: true,
-            years: true
-            },
-            setup: (picker) => {
-            picker.on('selected', (startDate, endDate) => {
-                document.getElementById('datepicker-start').value = startDate.format('YYYY-MM-DD');
-                document.getElementById('datepicker-end').value = endDate.format('YYYY-MM-DD');
-            });
-            }
-        });
+        if(window.innerWidth > 450) {
+            const width = 205;
+            const inputdate = document.querySelectorAll('.date-type-input')
+            inputdate.forEach((el)=>{
+                el.classList.add('pc-width')
+            })
+        } else {
+            const width = (window.innerWidth - 40) / 2 ;
+            const inputdate = document.querySelectorAll('.date-type-input')
+            inputdate.forEach((el)=>{
+                el.style.width = width;
+                //console.log(width)
+            })
+        }
 
         //별점 포인트
         let selectedScore = null;
