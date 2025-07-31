@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (thumb) {
                 ele.style.backgroundImage = `url('${thumb}')`;
             } else {
-                ele.style.backgroundImage = `url('/Bookdam/assets/img/main-empty.png')`; // 또는 기본 이미지
+                ele.style.backgroundImage = `url('/Bookdam/assets/img/cover-thumbnail.svg')`; // 또는 기본 이미지
             }
             // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
         })

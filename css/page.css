@@ -336,7 +336,7 @@
 #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap button {
   min-width: 76px;
   height: 24px;
-  line-height: 20px !important;
+  line-height: 24px !important;
   padding: 0 4px;
   border-radius: 150px;
   text-align: center;
@@ -410,7 +410,6 @@ header .search-box {
 }
 header .search-box input {
   width: 100%;
-  height: 37px;
   border-radius: 30px;
   padding: 0 15px 0 40px;
   font-size: 1.6rem;
@@ -835,9 +834,8 @@ header .search-box .reset-btn {
 .search-wrap .written-date-wrap {
   position: relative;
 }
-.search-wrap .written-date-wrap #myDate {
+.search-wrap .written-date-wrap input {
   width: 100%;
-  border-radius: 5px;
   box-shadow: none;
 }
 .search-wrap .latest-cont {
@@ -998,8 +996,6 @@ header .search-box .reset-btn {
   gap: 5px;
 }
 .book-add-field input {
-  height: 37px;
-  line-height: 35px !important;
   border-radius: 5px;
   box-shadow: none;
 }
@@ -1329,10 +1325,6 @@ header .search-box .reset-btn {
 }
 .write-wrap input, .write-wrap select, .write-wrap textarea {
   width: 100%;
-}
-.write-wrap input, .write-wrap select {
-  height: 37px;
-  border-radius: 5px;
 }
 .write-wrap #datepicker-start,
 .write-wrap #datepicker-end {

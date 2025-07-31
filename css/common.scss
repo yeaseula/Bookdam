@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-*{box-sizing: border-box; line-height: 20px !important;}
+*{box-sizing: border-box; line-height: 1.45 !important;}
 
 html {
     font-size: 10px;
@@ -44,7 +44,8 @@ body {
 }
 
 p {
-    line-height: 20px !important;
+    padding-top: 2.5px;
+    line-height: 1.45 !important;
 }
 a {
     outline: none;
@@ -63,7 +64,11 @@ button {
         border: 2px solid var(--point-color) !important;
     }
 }
-
+input {
+    height: 37px;
+    line-height: 35px !important;
+    padding: 0 9px;
+}
 input:focus+label {
     opacity: 1;
     border: 2px solid var(--sub_color);
