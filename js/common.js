@@ -73,5 +73,19 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('파일 로딩 오류:', error);
         })
 
+        // 로컬스토리지 초기화 함수
+        function initializeStorage() {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_BOOKS));
+        }
+        if (!localStorage.getItem(STORAGE_KEY2)) {
+            localStorage.setItem(STORAGE_KEY2, JSON.stringify(SAMPLE_BOOKS2));
+        }
+        if (!localStorage.getItem(STORAGE_KEY3)) {
+            localStorage.setItem(STORAGE_KEY3, JSON.stringify(SAMPLE_BOOKS3));
+        }
+        }
+
+        initializeStorage();
 
 })
