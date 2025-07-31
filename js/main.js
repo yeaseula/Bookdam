@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const contentArea = $('.my-reading-state');
 
         contentArea.innerHTML = `
-            <img src="/assets/img/bulb.png">
+            <img src="/Bookdam/assets/img/bulb.png">
             <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
             <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
             }
