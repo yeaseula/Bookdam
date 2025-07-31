@@ -349,9 +349,6 @@
                             gap: 5px;
                             align-items: center;
                             button {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
                                 min-width: 76px;
                                 height: 24px;
                                 padding: 0 4px;
@@ -481,8 +478,9 @@ header {
         }
             .go-write-btn {
                 @include gowritebtn(var(--main-color-light),#000);
-                border: 1px solid #e0e0e0;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                border-radius: 5px;
+                border: 1px solid #eeeeee;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
                 img {
                     position: relative;
                     top: -1px;
@@ -495,9 +493,8 @@ header {
         .list-item {
             padding: 12px;
             background-color: #fff;
-            border: 1px solid #e0e0e0;
             border-radius: 12px;
-            box-shadow: 0 4px 10px var(--sub_color);
+            box-shadow: 0 2px 8px var(--sub_color);
             display: flex;
             gap: 10px;
             position: relative;
@@ -1196,6 +1193,7 @@ header {
         -moz-appearance: textfield;
         width: 100%;
         min-width: calc(100% - 30px);
+        max-width: 100%;
     }
     textarea {
         min-height: 125px;

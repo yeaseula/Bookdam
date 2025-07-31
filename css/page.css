@@ -335,9 +335,6 @@
   align-items: center;
 }
 #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-width: 76px;
   height: 24px;
   padding: 0 4px;
@@ -465,8 +462,9 @@ header .search-box .reset-btn {
   padding: 2px 17px 0 14px;
   font-size: 1.2rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .my-review-wrap .my-review-title .go-write-btn img {
   position: relative;
@@ -479,9 +477,8 @@ header .search-box .reset-btn {
 .my-review-wrap .my-review-list .list-item {
   padding: 12px;
   background-color: #fff;
-  border: 1px solid #e0e0e0;
   border-radius: 12px;
-  box-shadow: 0 4px 10px var(--sub_color);
+  box-shadow: 0 2px 8px var(--sub_color);
   display: flex;
   gap: 10px;
   position: relative;
@@ -1336,6 +1333,7 @@ header .search-box .reset-btn {
   -moz-appearance: textfield;
   width: 100%;
   min-width: calc(100% - 30px);
+  max-width: 100%;
 }
 .write-wrap textarea {
   min-height: 125px;
