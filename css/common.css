@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  line-height: 1.6 !important;
+  line-height: 20px !important;
 }
 
 html {
@@ -47,7 +47,7 @@ body {
 }
 
 p {
-  line-height: 1.45 !important;
+  line-height: 20px !important;
 }
 
 a {
@@ -75,6 +75,7 @@ input:focus + label {
 }
 
 select {
+  color: #424242;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -106,7 +107,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 textarea {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .dark-style-btn {

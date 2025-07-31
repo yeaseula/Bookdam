@@ -29,6 +29,22 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastTap = 0;
 
     if(currentpage == 'write') {
+
+        const startPicker = flatpickr("#datepicker-start", {
+            dateFormat: "Y-m-d",
+            locale: "ko",
+            onChange: function(selectedDates) {
+                endPicker.set("minDate", selectedDates[0]);
+            }
+        });
+        const endPicker = flatpickr("#datepicker-end", {
+        dateFormat: "Y-m-d",
+        locale: "ko",
+        onChange: function(selectedDates) {
+            startPicker.set("maxDate", selectedDates[0]);
+        }
+        });
+
         //별점 포인트
         let selectedScore = null;
         const starButtons = document.querySelectorAll('.star-point button');

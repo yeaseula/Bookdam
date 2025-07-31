@@ -10,6 +10,10 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" type="text/css" href="css/page.css">
+        <!--cdn-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
     </head>
     <body>
         <div class="common-wrap">
@@ -77,8 +81,7 @@
                             날짜 선택
                         </h2>
                         <div class="written-date-wrap depth-wrap">
-                            <input type="date" id="myDate" placeholder="날짜를 선택하세요">
-
+                            <input type="text" id="datepicker-search" name="search-date" placeholder="찾고있는 날짜">
                         </div>
                     </section>
                     <section class="search-depth">
@@ -108,9 +111,10 @@
         </div>
         <script>
 
-            // flatpickr("#myDate", {
-            //     dateFormat: "Y-m-d"
-            // });
+            const endPicker = flatpickr("#datepicker-search", {
+                dateFormat: "Y-m-d",
+                locale: "ko",
+            });
 
 
         </script>
