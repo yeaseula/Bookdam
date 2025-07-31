@@ -1190,10 +1190,11 @@ header {
         width: 100%;
     }
     input[type="date"] {
+        color: #000;
         display:block;
         -webkit-appearance: textfield;
         -moz-appearance: textfield;
-        min-width: 100%;
+        min-width: calc(100% - 30px);
     }
     textarea {
         min-height: 125px;

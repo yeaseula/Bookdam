@@ -1329,10 +1329,11 @@ header .search-box .reset-btn {
   width: 100%;
 }
 .write-wrap input[type=date] {
+  color: #000;
   display: block;
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
-  min-width: 100%;
+  min-width: calc(100% - 30px);
 }
 .write-wrap textarea {
   min-height: 125px;
