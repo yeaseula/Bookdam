@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const title = this['memo-book-title'].value.trim();
             const pages = this['memo-book-page'].value.trim();
             const contents = this['memo-book-line'].value.trim();
-            alert(contents)
+
             if (!title || !pages || !contents) return alert('모든 값을 입력하세요.');
             const books = getBooks(STORAGE_KEY3,SAMPLE_BOOKS3);
             books.unshift({ title, pages, contents }); // 최신순
