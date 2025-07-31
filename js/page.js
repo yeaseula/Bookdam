@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         } else {
             const width = (window.innerWidth - 40) / 2 ;
+            alert(width)
             const inputdate = document.querySelectorAll('.date-type-input')
             inputdate.forEach((el)=>{
                 el.style.width = width;
