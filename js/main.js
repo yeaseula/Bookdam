@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="book-title sd-b">${book.title}</p>
                     <p class="book-intro">${book.contents ? book.contents.substring(0, 200) + '...' : '설명이 없습니다.'}</p>
                     <div class="button-wrap">
-                        <button class="gray-style-btn wish-btn red-n" data-title="${book.title}" data-author="${book.authors?.[0] || '작자미상'}" data-price="${book.price || 0}">Wish</button>
-                        <button class="dark-style-btn red-n" onclick="window.open('${link}', '_blank')">More View</button>
+                        <button class="gray-style-btn wish-btn red-n" data-title="${book.title}" data-author="${book.authors?.[0] || '작자미상'}" data-price="${book.price || 0}"><span>Wish</span></button>
+                        <button class="dark-style-btn red-n" onclick="window.open('${link}', '_blank')"><span>More View</span></button>
                     </div>
                 </div>
             </div>

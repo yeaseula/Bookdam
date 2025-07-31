@@ -28,8 +28,8 @@
     background-color: $bg;
     color: $color;
     border-radius: 500px;
-    padding: 2px 17px 0 14px;
-    font-size: 1.2rem;
+    padding: 0 17px 0 14px;
+    font-size: 1.3rem;
     box-shadow: 1px 1px 12px rgb(106, 200, 216, 0.5);
     @content
 }
@@ -112,8 +112,8 @@
                 z-index: 10;
                 img {
                     position: relative;
-                    top: -1px;
-                    max-width: 15px;
+                    top: 0px;
+                    max-width: 18px;
                     filter: contrast(0);
                 }
             }
@@ -350,6 +350,9 @@
                             align-items: center;
                             button {
                                 min-width: 76px;
+                                justify-content:center;
+                                display:flex;
+                                align-items:center;
                                 height: 24px;
                                 padding: 0 4px;
                                 border-radius: 150px;
@@ -477,14 +480,14 @@ header {
             font-size: 1.5rem;
         }
             .go-write-btn {
-                @include gowritebtn(var(--main-color-light),#000);
+                @include gowritebtn(#fafafa,#000);
                 border-radius: 5px;
                 border: 1px solid #eeeeee;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
                 img {
                     position: relative;
-                    top: -1px;
-                    max-width: 15px;
+                    top: 0px;
+                    max-width: 18px;
                 }
             }
     }

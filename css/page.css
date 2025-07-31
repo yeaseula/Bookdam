@@ -100,8 +100,8 @@
   background-color: #000;
   color: #fff;
   border-radius: 500px;
-  padding: 2px 17px 0 14px;
-  font-size: 1.2rem;
+  padding: 0 17px 0 14px;
+  font-size: 1.3rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
   position: absolute;
   top: 0;
@@ -110,8 +110,8 @@
 }
 #main .slider-wrap .slider-top-text .go-write-btn img {
   position: relative;
-  top: -1px;
-  max-width: 15px;
+  top: 0px;
+  max-width: 18px;
   filter: contrast(0);
 }
 #main .slider-wrap .my-book-list {
@@ -456,11 +456,11 @@ header .search-box .reset-btn {
   display: flex;
   align-items: center;
   gap: 3px;
-  background-color: var(--main-color-light);
+  background-color: #fafafa;
   color: #000;
   border-radius: 500px;
-  padding: 2px 17px 0 14px;
-  font-size: 1.2rem;
+  padding: 0 17px 0 14px;
+  font-size: 1.3rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
   border-radius: 5px;
   border: 1px solid #eeeeee;
@@ -468,8 +468,8 @@ header .search-box .reset-btn {
 }
 .my-review-wrap .my-review-title .go-write-btn img {
   position: relative;
-  top: -1px;
-  max-width: 15px;
+  top: 0px;
+  max-width: 18px;
 }
 .my-review-wrap .my-review-list {
   margin-top: 20px;
