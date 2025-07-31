@@ -21,13 +21,14 @@
 }
 
 @mixin gowritebtn($bg,$color) {
+    height: 30px;
     display: flex;
     align-items: center;
     gap: 3px;
     background-color: $bg;
     color: $color;
     border-radius: 500px;
-    padding: 2px 13px 0 10px;
+    padding: 2px 17px 0 14px;
     font-size: 1.2rem;
     box-shadow: 1px 1px 12px rgb(106, 200, 216, 0.5);
     @content
@@ -479,7 +480,7 @@ header {
             font-size: 1.5rem;
         }
             .go-write-btn {
-                @include gowritebtn(#fff,#000);
+                @include gowritebtn(var(--main-color-light),#000);
                 border: 1px solid #e0e0e0;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.15);
                 img {
@@ -492,20 +493,20 @@ header {
     .my-review-list {
         margin-top: 20px;
         .list-item {
-            padding: 7px;
+            padding: 12px;
             background-color: #fff;
             border: 1px solid #e0e0e0;
-            border-radius: 150px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--sub_color);
             display: flex;
             gap: 10px;
             position: relative;
             align-items: center;
             margin-bottom: 13px;
-            background-color: var(--sub_color);
+            background-color: rgb(70 69 118);
             transition: all 0.2s;
             &:hover {
-                box-shadow: 0 4px 16px rgba(0,0,0,0.55);
+                box-shadow: 0 4px 16px var(--point-color);
             }
             > a {
                 position: absolute;
@@ -519,7 +520,7 @@ header {
             .list-img {
                 width: 97px;
                 height: 97px;
-                border-radius: 500px;
+                border-radius: 10px;
                 overflow: hidden;
                 background-color: #bdbdbd;
                 background-size: cover;
@@ -527,7 +528,7 @@ header {
             .list-cont {
                 width: calc(100% - 107px);
                 .list-title {
-                    font-size: 1.6rem;
+                    font-size: 1.7rem;
                     font-weight: 700;
                     color: var(--point-color);
                 }
@@ -1216,7 +1217,7 @@ header {
         width: 100%;
         margin-top: 30px;
         border-radius: 5px;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         height: 40px;
         line-height: 40px !important;
     }
