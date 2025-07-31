@@ -348,9 +348,11 @@
                             gap: 5px;
                             align-items: center;
                             button {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
                                 min-width: 76px;
                                 height: 24px;
-                                line-height: 24px !important;
                                 padding: 0 4px;
                                 border-radius: 150px;
                                 text-align: center;

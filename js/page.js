@@ -30,19 +30,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if(currentpage == 'write') {
 
-        const startPicker = flatpickr("#datepicker-start", {
-            dateFormat: "Y-m-d",
-            locale: "ko",
-            onChange: function(selectedDates) {
-                endPicker.set("minDate", selectedDates[0]);
+        const picker = new Litepicker({
+            element: document.getElementById('datepicker-start'),
+            elementEnd: document.getElementById('datepicker-end'),
+            singleMode: false, // 범위 선택
+            format: 'YYYY-MM-DD',
+            lang: 'ko',
+            numberOfMonths: 2,
+            numberOfColumns: 2,
+            autoApply: true,
+            tooltipText: {
+            one: '일',
+            other: '일들'
+            },
+            dropdowns: {
+            minYear: 2000,
+            maxYear: null,
+            months: true,
+            years: true
+            },
+            setup: (picker) => {
+            picker.on('selected', (startDate, endDate) => {
+                document.getElementById('datepicker-start').value = startDate.format('YYYY-MM-DD');
+                document.getElementById('datepicker-end').value = endDate.format('YYYY-MM-DD');
+            });
             }
-        });
-        const endPicker = flatpickr("#datepicker-end", {
-        dateFormat: "Y-m-d",
-        locale: "ko",
-        onChange: function(selectedDates) {
-            startPicker.set("maxDate", selectedDates[0]);
-        }
         });
 
         //별점 포인트
