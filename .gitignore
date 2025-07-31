@@ -6,4 +6,3 @@ assets/img/*.gif
 assets/img/*.webp
 assets/img/*.svg
 js/api-key.js
-.env
