@@ -47,7 +47,6 @@ body {
 }
 
 p {
-  padding-top: 2.5px;
   line-height: 1.45 !important;
 }
 
@@ -70,12 +69,6 @@ button:focus-visible {
   border: 2px solid var(--point-color) !important;
 }
 
-input {
-  height: 37px;
-  line-height: 35px !important;
-  padding: 0 9px;
-}
-
 input:focus + label {
   opacity: 1;
   border: 2px solid var(--sub_color);
@@ -92,29 +85,48 @@ select {
   background-repeat: no-repeat;
 }
 
-input, select, textarea {
+input, select {
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
+  height: 37px;
+  line-height: 35px !important;
   padding: 0 9px;
   font-size: 1.6rem;
   outline: none;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
 }
-input::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder, select::-moz-placeholder {
   font-size: 1.6rem;
   color: #bdbdbd;
 }
-input::placeholder, select::placeholder, textarea::placeholder {
+input::placeholder, select::placeholder {
   font-size: 1.6rem;
   color: #bdbdbd;
 }
-input:focus, select:focus, textarea:focus {
+input:focus, select:focus {
   border: 2px solid var(--point-color);
 }
 
 textarea {
-  padding-top: 10px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 10px 9px;
+  font-size: 1.6rem;
+  outline: none;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
+}
+textarea::-moz-placeholder {
+  font-size: 1.6rem;
+  color: #bdbdbd;
+}
+textarea::placeholder {
+  font-size: 1.6rem;
+  color: #bdbdbd;
+}
+textarea:focus {
+  border: 2px solid var(--point-color);
 }
 
 .dark-style-btn {
