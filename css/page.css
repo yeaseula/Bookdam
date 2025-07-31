@@ -124,7 +124,7 @@
 }
 #main .slider-wrap .slider-top-text #user-name {
   font-size: 2.8rem;
-  vertical-align: middle;
+  vertical-align: inherit;
 }
 #main .slider-wrap .slider-top-text .go-write-btn {
   display: flex;
@@ -137,7 +137,7 @@
   font-size: 1.2rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
   position: absolute;
-  top: -20px;
+  top: 0;
   right: 0;
   z-index: 10;
 }
@@ -357,14 +357,29 @@
   align-items: center;
 }
 #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap button {
-  min-width: 87px;
+  min-width: 76px;
   height: 24px;
   line-height: 20px !important;
   padding: 0 4px;
   border-radius: 150px;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   border-radius: 500px;
+}
+@media (max-width: 376px) {
+  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-cover {
+    width: 75px;
+  }
+  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro {
+    width: calc(100% - 85px);
+  }
+  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro .book-title {
+    -webkit-line-clamp: 2;
+  }
+  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro .button-wrap button {
+    height: 20px;
+    line-height: 17px !important;
+  }
 }
 
 /* header */
@@ -511,6 +526,7 @@ header .search-box .reset-btn {
   border-radius: 500px;
   overflow: hidden;
   background-color: #bdbdbd;
+  background-size: cover;
 }
 .my-review-wrap .my-review-list .list-item .list-cont {
   width: calc(100% - 107px);
@@ -529,6 +545,24 @@ header .search-box .reset-btn {
   margin-top: 2px;
   font-size: 1.4rem;
   color: #e0e0e0;
+}
+@media (max-width: 376px) {
+  .my-review-wrap .my-review-list .list-item .list-img {
+    width: 85px;
+    height: 85px;
+  }
+  .my-review-wrap .my-review-list .list-item .list-cont {
+    width: calc(100% - 95px);
+  }
+  .my-review-wrap .my-review-list .list-item .list-cont .list-title {
+    font-size: 1.5rem;
+  }
+  .my-review-wrap .my-review-list .list-item .list-cont .list-summary {
+    font-size: 1.4rem;
+  }
+  .my-review-wrap .my-review-list .list-item .list-cont .list-date {
+    font-size: 1.3rem;
+  }
 }
 
 /* 모달팝업 */
@@ -726,6 +760,28 @@ header .search-box .reset-btn {
   position: relative;
   top: 2px;
   font-size: 2rem;
+}
+@media (max-width: 376px) {
+  .review-contents-wrap .review-head .book-cover-img {
+    width: 140px;
+  }
+  .review-contents-wrap .review-head .book-infor {
+    width: calc(100% - 155px);
+  }
+  .review-contents-wrap .review-head .book-infor #book-cate {
+    font-size: 1.4rem;
+  }
+  .review-contents-wrap .review-head .book-infor #book-title {
+    font-size: 1.6rem;
+    margin-top: 5px;
+  }
+  .review-contents-wrap .review-head .book-infor .book-read-date {
+    margin-top: 10px;
+  }
+  .review-contents-wrap .review-head .book-infor .my-star {
+    margin: 7px 0 0 0;
+    font-size: 1.4rem;
+  }
 }
 .review-contents-wrap .review-contents {
   width: calc(100% + 30px);
@@ -1169,6 +1225,17 @@ header .search-box .reset-btn {
   position: absolute;
   bottom: 10px;
   right: 0;
+}
+.my-wish-wrap .wish-book-list .list-item .list-infor blockquote,
+.my-wish-wrap .reading-book-list .list-item .list-infor blockquote,
+.my-wish-wrap .memo-book-list .list-item .list-infor blockquote,
+.my-reading-wrap .wish-book-list .list-item .list-infor blockquote,
+.my-reading-wrap .reading-book-list .list-item .list-infor blockquote,
+.my-reading-wrap .memo-book-list .list-item .list-infor blockquote,
+.my-memo-wrap .wish-book-list .list-item .list-infor blockquote,
+.my-memo-wrap .reading-book-list .list-item .list-infor blockquote,
+.my-memo-wrap .memo-book-list .list-item .list-infor blockquote {
+  width: 100%;
 }
 .my-wish-wrap .wish-book-list .list-item .list-infor cite,
 .my-wish-wrap .reading-book-list .list-item .list-infor cite,

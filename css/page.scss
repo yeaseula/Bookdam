@@ -155,12 +155,12 @@
             color: #fff;
             #user-name {
                 font-size: 2.8rem;
-                vertical-align: middle;
+                vertical-align: inherit;
             }
             .go-write-btn {
                 @include gowritebtn(#000,#fff);
                 position: absolute;
-                top: -20px;
+                top: 0;
                 right: 0;
                 z-index: 10;
                 img {
@@ -348,7 +348,6 @@
                     border: 1px solid #e0e0e0;
                     border-radius: 15px;
                     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
                     .book-cover {
                         position: relative;
                         width: 100px;
@@ -392,14 +391,32 @@
                             gap: 5px;
                             align-items: center;
                             button {
-                                min-width: 87px;
+                                min-width: 76px;
                                 height: 24px;
                                 line-height: 20px !important;
                                 padding: 0 4px;
                                 border-radius: 150px;
                                 text-align: center;
-                                font-size: 1.3rem;
+                                font-size: 1.1rem;
                                 border-radius: 500px;
+                            }
+                        }
+
+                    }
+                    @media(max-width:376px){
+                        .book-cover {
+                            width: 75px;
+                        }
+                        .book-intro {
+                            width: calc(100% - 85px);
+                            .book-title {
+                                -webkit-line-clamp: 2;
+                            }
+                            .button-wrap {
+                                button {
+                                    height: 20px;
+                                    line-height: 17px !important;
+                                }
                             }
                         }
                     }
@@ -545,6 +562,7 @@ header {
                 border-radius: 500px;
                 overflow: hidden;
                 background-color: #bdbdbd;
+                background-size: cover;
             }
             .list-cont {
                 width: calc(100% - 107px);
@@ -562,6 +580,24 @@ header {
                     margin-top: 2px;
                     font-size: 1.4rem;
                     color: #e0e0e0;
+                }
+            }
+            @media (max-width:376px) {
+                .list-img {
+                    width: 85px;
+                    height: 85px;
+                }
+                .list-cont {
+                    width: calc(100% - 95px);
+                    .list-title {
+                        font-size: 1.5rem;
+                    }
+                    .list-summary {
+                        font-size: 1.4rem;
+                    }
+                    .list-date {
+                        font-size: 1.3rem;
+                    }
                 }
             }
         }
@@ -750,6 +786,28 @@ header {
                         top: 2px;
                         font-size: 2rem;
                     }
+                }
+            }
+        }
+        @media(max-width:376px) {
+            .book-cover-img {
+                width: 140px;
+            }
+            .book-infor {
+                width: calc(100% - 155px);
+                #book-cate {
+                    font-size: 1.4rem;
+                }
+                #book-title {
+                    font-size: 1.6rem;
+                    margin-top: 5px;
+                }
+                .book-read-date {
+                    margin-top: 10px;
+                }
+                .my-star {
+                    margin: 7px 0 0 0;
+                    font-size: 1.4rem;
                 }
             }
         }
@@ -1113,6 +1171,9 @@ header {
                     position: absolute;
                     bottom: 10px;
                     right: 0;
+                }
+                blockquote {
+                    width: 100%;
                 }
                 cite {
                     display: block;

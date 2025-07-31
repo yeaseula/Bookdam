@@ -81,7 +81,7 @@ input,select,textarea {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    padding: 6px 9px 2px 9px;
+    padding: 0 9px;
     font-size: 1.6rem;
     outline: none;
     box-shadow: 0 3px 14px rgba(0,0,0,0.15);
@@ -92,6 +92,9 @@ input,select,textarea {
     &:focus {
         border: 2px solid var(--point-color);
     }
+}
+textarea {
+    padding-top: 15px;
 }
 
 .dark-style-btn {
