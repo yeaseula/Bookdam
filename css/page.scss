@@ -1186,24 +1186,17 @@ header {
         }
     }
     //common style
-    input,select,textarea {
+    input:not([type="date"]),select,textarea {
         width: 100%;
     }
-    .date-type-input {
-        &.pc-width {
-            width: 205px;
-        }
-
+    input[type="date"] {
+        display:block;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        min-width: 100%;
     }
     textarea {
         min-height: 125px;
-    }
-    .field-date-list {
-        > div {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
     }
     .star-point {
         button {

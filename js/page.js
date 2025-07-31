@@ -29,21 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastTap = 0;
 
     if(currentpage == 'write') {
-        if(window.innerWidth > 450) {
-            const width = 205;
-            const inputdate = document.querySelectorAll('.date-type-input')
-            inputdate.forEach((el)=>{
-                el.classList.add('pc-width')
-            })
-        } else {
-            const width = (window.innerWidth - 40) / 2 ;
-            alert(width)
-            const inputdate = document.querySelectorAll('.date-type-input')
-            inputdate.forEach((el)=>{
-                el.style.width = width;
-                //console.log(width)
-            })
-        }
 
         //별점 포인트
         let selectedScore = null;

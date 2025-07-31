@@ -1325,19 +1325,17 @@ header .search-box .reset-btn {
   margin-bottom: 7px;
   font-size: 1.6rem;
 }
-.write-wrap input, .write-wrap select, .write-wrap textarea {
+.write-wrap input:not([type=date]), .write-wrap select, .write-wrap textarea {
   width: 100%;
 }
-.write-wrap .date-type-input.pc-width {
-  width: 205px;
+.write-wrap input[type=date] {
+  display: block;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  min-width: 100%;
 }
 .write-wrap textarea {
   min-height: 125px;
-}
-.write-wrap .field-date-list > div {
-  display: flex;
-  gap: 10px;
-  align-items: center;
 }
 .write-wrap .star-point button {
   border: unset;
