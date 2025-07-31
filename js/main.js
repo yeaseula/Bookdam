@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const gid = '1116419757';
 
     const MyReviewThumb = [];
-
+    const kakaoKey = '7ef7831f0d6b81e970b30f0cdfa6a4a2';
 
     //메인 상단 슬라이드 정의
     const MyBookList = new Swiper('.my-book-list', {
