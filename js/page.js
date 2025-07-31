@@ -539,11 +539,11 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const title = this['memo-book-title'].value.trim();
             const pages = this['memo-book-page'].value.trim();
-            const lines = this['memo-book-line'].value.trim();
-
-            if (!title || !pages || !lines) return alert('모든 값을 입력하세요.');
+            const contents = this['memo-book-line'].value.trim();
+            alert(contents)
+            if (!title || !pages || !contents) return alert('모든 값을 입력하세요.');
             const books = getBooks(STORAGE_KEY3,SAMPLE_BOOKS3);
-            books.unshift({ title, pages, lines }); // 최신순
+            books.unshift({ title, pages, contents }); // 최신순
             setBooks(books,STORAGE_KEY3);
             renderMemo();
             this.reset();
