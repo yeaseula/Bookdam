@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if(currentpage == 'search') {
         if (isIOS && isSafari) {
-                const input = document.querySelectorAll('.date-type-input');
+                const input = document.querySelectorAll('.search-type-input');
 
                 input.forEach((ele)=>{
                     //input 필드에 값이 입력되면 실행
