@@ -631,5 +631,30 @@ document.addEventListener('DOMContentLoaded', function () {
             }),
         };
     }
+    if(currentpage == 'search') {
+        if (isIOS && isSafari) {
+                const input = document.querySelectorAll('.date-type-input');
+
+                input.forEach((ele)=>{
+                    //input 필드에 값이 입력되면 실행
+                    ele.addEventListener('input',(e)=>{
+                        iosDatePlaceholder(e.currentTarget)
+                    })
+
+                function iosDatePlaceholder (ele) {
+                    let value = ele.value;
+                    //console.log(value)
+                    if(value && value !=='') {
+                        ele.classList.remove('placeholder');
+                    } else {
+                        ele.classList.add('placeholder')
+                    }
+                }
+
+                //초기 접속 시 실행
+                iosDatePlaceholder(ele);
+            })
+        }
+    }
 });
 
