@@ -188,7 +188,7 @@
 #main #section2 .fc .fc-toolbar.fc-header-toolbar {
   display: block;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 #main #section2 .fc .fc-toolbar-title {
   font-size: 1.8rem;
@@ -454,24 +454,28 @@ header .search-box .reset-btn {
   font-size: 1.5rem;
 }
 .my-review-wrap .my-review-title .go-write-btn {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  background-color: #fafafa;
-  color: #000;
-  border-radius: 500px;
-  padding: 0 17px 0 14px;
-  font-size: 1.3rem;
-  box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
-  border-radius: 5px;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 100px;
+  right: calc((100vw - 450px) / 2 - 15px);
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  font-size: 32px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px #9ADBC5;
+  z-index: 20;
+  background: #fff;
 }
 .my-review-wrap .my-review-title .go-write-btn img {
   position: relative;
   top: 0px;
   max-width: 18px;
+}
+@media (max-width: 450px) {
+  .my-review-wrap .my-review-title .go-write-btn {
+    right: 15px;
+  }
 }
 .my-review-wrap .my-review-list {
   margin-top: 20px;
