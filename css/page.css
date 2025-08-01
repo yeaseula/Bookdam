@@ -336,6 +336,9 @@
 }
 #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .button-wrap button {
   min-width: 76px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   height: 24px;
   padding: 0 4px;
   border-radius: 150px;
@@ -808,13 +811,21 @@ header .search-box .reset-btn {
   flex: 0 0 auto;
 }
 .search-wrap .depth-cont label {
-  display: inline-block;
-  padding: 2px 10px 0 10px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 11px;
   border-radius: 150px;
   border: 1px solid #bdbdbd;
   font-size: 1.4rem;
 }
+.search-wrap .depth-cont label > span {
+  line-height: 1 !important;
+}
 .search-wrap .depth-cont input {
+  width: 100%;
+  height: 100%;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -830,6 +841,9 @@ header .search-box .reset-btn {
   border-color: var(--point-color);
   background-color: var(--point-color);
   color: #fff;
+}
+.search-wrap .depth-cont input:checked + label img {
+  filter: invert(1);
 }
 .search-wrap .written-date-wrap {
   position: relative;
@@ -854,13 +868,11 @@ header .search-box .reset-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15px;
-  height: 15px;
-  line-height: 15px;
+  width: 13px;
+  height: 13px;
 }
 .search-wrap .latest-cont .closed img {
   position: relative;
-  top: 1px;
   max-width: 13px;
 }
 
