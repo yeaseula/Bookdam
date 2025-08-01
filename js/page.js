@@ -106,6 +106,35 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('등록 중 오류가 발생했습니다.');
         });
         }
+
+        //input[type="date"] 필드 ios 기능 미적용 오류
+        const ua = navigator.userAgent;
+        const isIOS = /iP(hone|od|ad)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS
+        const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+
+        if (isIOS && isSafari) {
+                const input = document.querySelectorAll('.date-type-input');
+
+                input.forEach((ele)=>{
+                    //input 필드에 값이 입력되면 실행
+                    ele.addEventListener('input',(e)=>{
+                        iosDatePlaceholder(e.currentTarget)
+                    })
+
+                function iosDatePlaceholder (ele) {
+                    let value = ele.value;
+                    //console.log(value)
+                    if(value && value !=='') {
+                        ele.classList.remove('placeholder');
+                    } else {
+                        ele.classList.add('placeholder')
+                    }
+                }
+
+                //초기 접속 시 실행
+                iosDatePlaceholder(ele);
+            })
+        }
     }
 
     //kakao api로 북커버 호출 함수 (공통)

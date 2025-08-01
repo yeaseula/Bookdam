@@ -1207,13 +1207,11 @@ header {
         gap: 10px;
         input[type="date"] {
             position: relative;
-            // -webkit-appearance: none;
             color: #000;
-            border: 1px solid goldenrod;
             flex-grow: 1;
             &.placeholder {
                 &::after {
-                    content: '날짜 입력';
+                    content: '날짜를 입력해 주세요.';
                     display: block;
                     font-size: 1.6rem;
                     color: #bdbdbd;
