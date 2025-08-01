@@ -1348,6 +1348,7 @@ header .search-box .reset-btn {
 .write-wrap .date-type > div input[type=date] {
   color: #000;
   width: calc(50% - 10px);
+  min-width: 0;
 }
 .write-wrap .star-point button {
   border: unset;

@@ -1208,6 +1208,7 @@ header {
         input[type="date"] {
             color: #000;
             width: calc(50% - 10px);
+            min-width: 0;
         }
     }
     .star-point {
