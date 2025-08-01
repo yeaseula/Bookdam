@@ -1206,9 +1206,9 @@ header {
         align-items: center;
         gap: 10px;
         input[type="date"] {
-            -webkit-appearance: none;
+            // -webkit-appearance: none;
             color: #000;
-            border: 1px solid green;
+            border: 1px solid blue;
             flex-grow: 1;
         }
     }

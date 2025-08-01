@@ -1346,9 +1346,8 @@ header .search-box .reset-btn {
   gap: 10px;
 }
 .write-wrap .date-type > div input[type=date] {
-  -webkit-appearance: none;
   color: #000;
-  border: 1px solid green;
+  border: 1px solid blue;
   flex-grow: 1;
 }
 .write-wrap .star-point button {
