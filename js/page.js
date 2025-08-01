@@ -417,14 +417,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="list-infor">
                         <div>
                             <p class="book-title">${book.title}</p>
-                            <p class="reading-number" ondblclick="editField(this, 'reading', ${idx})" ontouchstart="touchEdit(event, this, 'reading', ${idx})">
+                            <p class="reading-number" ondblclick="editField(this, 'reading', ${idx})">
                                 <img src="assets/img/pencil-fill.svg" alt="읽은 페이지 수정">
                                 <span>${book.readPage}페이지 읽는 중</span>
                             </p>
                         </div>
                         <div>
                             <p class="reading-progress">${Math.round(book.readPage / book.totalPage * 100)}%</p>
-                            <p class="total-number" ondblclick="editField(this, 'total', ${idx})" ontouchstart="touchEdit(event, this, 'total', ${idx})">
+                            <p class="total-number" ondblclick="editField(this, 'total', ${idx})">
                                 <img src="assets/img/pencil-fill.svg" alt="총 페이지 수정">
                                 <span>총 ${book.totalPage}페이지</span>
                             </p>
@@ -448,9 +448,12 @@ document.addEventListener('DOMContentLoaded', function () {
             this.reset();
         });
 
+        let activeInput = null;
+
         // 더블클릭/더블터치로 수정
+        // 수정된 editField 함수
         window.editField = function editField(el, type, idx) {
-            const books = getBooks(STORAGE_KEY,SAMPLE_BOOKS);
+            const books = getBooks(STORAGE_KEY, SAMPLE_BOOKS);
             const book = books[idx];
             const span = el.querySelector('span');
             const oldValue = type === 'reading' ? book.readPage : book.totalPage;
@@ -460,28 +463,30 @@ document.addEventListener('DOMContentLoaded', function () {
             input.style.width = '80px';
             span.replaceWith(input);
             input.focus();
+            activeInput = input; // 현재 활성 input 저장
 
             function save() {
                 const val = Number(input.value);
                 if (!val) return;
                 if (type === 'reading') book.readPage = val;
                 else book.totalPage = val;
-                setBooks(books,STORAGE_KEY);
+                setBooks(books, STORAGE_KEY);
                 renderBooks();
+                activeInput = null; // 저장 후 초기화
             }
-            input.addEventListener('blur', save);
-            input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); });
-        }
 
-        // 모바일 더블터치 감지
-        window.touchEdit = function touchEdit(e, el, type, idx) {
-            const now = Date.now();
-            if (now - lastTap < 300) {
-                editField(el, type, idx);
-                e.preventDefault();
+            input.addEventListener('blur', save);
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter') input.blur();
+            });
+        };
+
+        // 모바일 외부 터치 시 blur 강제 호출
+        document.addEventListener('touchend', function (e) {
+            if (activeInput && !activeInput.contains(e.target)) {
+                activeInput.blur();
             }
-            lastTap = now;
-        }
+        });
 
         renderBooks();
 
