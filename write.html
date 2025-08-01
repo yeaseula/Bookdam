@@ -66,8 +66,10 @@
                                 <input type="date" class="date-type-input" name="start-end" placeholder="독서 종료 날짜"/>
                             </div>
                             <script>
-                                const isIOS = /iP(ad|hone|od)/.test(navigator.userAgent);
-                                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+                            const ua = navigator.userAgent;
+                            const isIOS = /iP(hone|od|ad)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS
+                            const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
 
                                 if (isIOS && isSafari) {
                                     const input = document.querySelectorAll('.date-type-input');

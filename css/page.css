@@ -1348,7 +1348,7 @@ header .search-box .reset-btn {
 .write-wrap .date-type > div input[type=date] {
   position: relative;
   color: #000;
-  border: 1px solid fuchsia;
+  border: 1px solid goldenrod;
   flex-grow: 1;
 }
 .write-wrap .date-type > div input[type=date].placeholder::after {
