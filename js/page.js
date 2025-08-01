@@ -33,23 +33,21 @@ document.addEventListener('DOMContentLoaded', function () {
         //별점 포인트
         let selectedScore = null;
         const starButtons = document.querySelectorAll('.star-point button');
-        const form = document.getElementById('bookForm');
 
             // 별점 버튼 클릭 시 처리
         starButtons.forEach(button => {
-
             button.addEventListener('click', () => {
             selectedScore = button.getAttribute('data-score');
-
             // 시각적으로 선택된 별 강조 표시
-                starButtons.forEach(btn => btn.classList.remove('selected'));
                 starButtons.forEach((btn)=>{
-                    //console.log(btn.getAttribute('data-score')) // 2,4,6,8,10
-                    if(Number(btn.getAttribute('data-score')) < selectedScore) {
-                        btn.classList.add('selected-before')
+                    console.log(typeof Number(selectedScore)) // 2,4,6,8,10
+                    if(Number(btn.getAttribute('data-score')) <= Number(selectedScore)) {
+                        btn.classList.add('selected-before');
+                        console.log('실행')
+                    } else {
+                        btn.classList.remove('selected-before')
                     }
                 })
-                button.classList.add('selected');
             });
         });
 

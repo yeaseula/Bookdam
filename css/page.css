@@ -869,23 +869,17 @@ header .search-box .reset-btn {
 }
 .search-wrap .latest-cont label {
   position: relative;
-  padding-right: 30px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
 }
 .search-wrap .latest-cont .closed {
-  position: absolute;
-  top: 50%;
-  right: 7px;
-  transform: translateY(-50%);
-  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 13px;
   height: 13px;
-}
-.search-wrap .latest-cont .closed img {
-  position: relative;
-  max-width: 15px;
 }
 
 /* 차트 */

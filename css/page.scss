@@ -885,23 +885,17 @@ header {
         position: relative;
         label {
             position: relative;
-            padding-right: 30px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
         }
         .closed {
-            position: absolute;
-            top: 50%;
-            right: 7px;
-            transform: translateY(-50%);
-            z-index: 5;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 13px;
             height: 13px;
-            img {
-                position: relative;
-                max-width: 15px;
-            }
         }
     }
 }
