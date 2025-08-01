@@ -1206,9 +1206,10 @@ header {
         align-items: center;
         gap: 10px;
         input[type="date"] {
+            -webkit-appearance: none;
             color: #000;
-            width: calc(50% - 10px);
-            min-width: 0;
+            border: 1px solid green;
+            flex-grow: 1;
         }
     }
     .star-point {
