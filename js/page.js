@@ -635,6 +635,9 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
     if(currentpage == 'search') {
+        const ua = navigator.userAgent;
+        const isIOS = /iP(hone|od|ad)/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS
+        const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
         if (isIOS && isSafari) {
                 const input = document.querySelectorAll('.search-type-input');
 

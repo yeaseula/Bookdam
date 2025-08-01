@@ -878,8 +878,11 @@ header .search-box .reset-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
+}
+.search-wrap .latest-cont img {
+  max-width: 15px;
 }
 
 /* 차트 */

@@ -894,8 +894,11 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 13px;
-            height: 13px;
+            width: 15px;
+            height: 15px;
+        }
+        img {
+            max-width: 15px;
         }
     }
 }
