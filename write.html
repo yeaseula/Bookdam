@@ -65,6 +65,30 @@
                                 <input type="date" class="date-type-input" name="start-date" placeholder="독서 시작 날짜"/>
                                 <input type="date" class="date-type-input" name="start-end" placeholder="독서 종료 날짜"/>
                             </div>
+                            <script>
+                                const isIOS = /iP(ad|hone|od)/.test(navigator.userAgent);
+                                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+                                if (isIOS && isSafari) {
+                                    const input = document.querySelectorAll('.date-type-input');
+                                    input.forEach((ele)=>{
+                                        ele.addEventListener('input',(e)=>{
+                                            Test(e.currentTarget)
+                                        })
+                                    function Test (ele) {
+                                        let value = ele.value;
+                                        //console.log(value)
+                                        if(value && value !=='') {
+                                            ele.classList.remove('placeholder');
+                                        } else {
+                                            ele.classList.add('placeholder')
+                                        }
+                                    }
+                                        Test(ele);
+                                    })
+                                }
+
+                            </script>
                         </section>
                         <!-- <section class="field-list">
                             <h2 class="field-date sd-b">독서 종료 날짜</h2>
