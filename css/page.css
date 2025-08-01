@@ -218,7 +218,6 @@
 #main #section2 .fc .fc-button .fc-icon {
   font-size: 1.2rem;
   line-height: 1.2;
-  margin-top: -7px;
 }
 #main #section2 .fc .fc-view-harness {
   min-height: 180px;
@@ -873,7 +872,7 @@ header .search-box .reset-btn {
 }
 .search-wrap .latest-cont .closed img {
   position: relative;
-  max-width: 13px;
+  max-width: 14px;
 }
 
 /* 차트 */
