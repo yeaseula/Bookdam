@@ -23,8 +23,8 @@
         <div class="common-wrap" >
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
-                    <p class="page-title sd-b">책 제목이 노출됩니다</p>
+                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
+                    <p class="page-title sd-b">책 제목</p>
                 </div>
             </header>
             <div class="sub-wrap" style="padding-bottom: 0;">
@@ -34,12 +34,12 @@
                         <div class="book-cover-img"></div>
                         <div class="book-infor">
                             <p id="book-cate" class="sd-b">카테고리</p>
-                            <p id="book-title" class="sd-b">물고기는 존재하지 않는다.</p>
-                            <p id="book-author">룰루밀러 저</p>
+                            <p id="book-title" class="sd-b"></p>
+                            <p id="book-author"></p>
 
                             <div class="book-read-date">
-                                <span id="start-date">2025년 6월 10일</span> 부터<br>
-                                <span id="end-date">2025년 7월 1일</span> 까지 읽었어요.
+                                <span id="start-date"></span> 부터<br>
+                                <span id="end-date"></span> 까지 읽었어요.
                             </div>
 
                             <div class="my-star">
@@ -78,21 +78,13 @@
                         <div class="contents-list">
                             <p class="my-online sd-b">한줄평</p>
                             <p class="my-oneline-cont">
-                                처음엔 지루했지만 인생책이 됐다.
+
                             </p>
                         </div>
 
                         <div class="contents-list">
                             <p class="my-review sd-b">서평</p>
                             <p class="my-review-cont">
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
-                                내용입니다. 내용입니다. 내용입니다. 내용입니다.
                             </p>
                         </div>
                     </section>
@@ -103,17 +95,6 @@
         <nav id="bottom_navigator"></nav>
         <script>
             const currentpage = 'reviewcontent';
-            // function MyRaiting(score, total) {
-            //     const icons = document.querySelectorAll('.icons-wrap img');
-            //     icons.forEach((icon, index) => {
-            //         if (index < score) {
-            //             icon.src = 'assets/img/star.svg'; // 채워진 별
-            //         } else {
-            //             icon.src = 'assets/img/star-empty.svg'; // 빈 별
-            //         }
-            //     });
-            //     document.querySelector('.point-number').textContent = (score / total * 10).toFixed(1);
-            // }
         </script>
     </body>
 </html>
