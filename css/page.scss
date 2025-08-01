@@ -1197,17 +1197,18 @@ header {
     input:not([type="date"]),select,textarea {
         width: 100%;
     }
-    input[type="date"] {
-        color: #000;
-        display:block;
-        -webkit-appearance: textfield;
-        -moz-appearance: textfield;
-        width: 100%;
-        min-width: calc(100% - 30px);
-        max-width: 100%;
-    }
+
     textarea {
         min-height: 125px;
+    }
+    .date-type > div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        input[type="date"] {
+            color: #000;
+            width: calc(100% - 10px);
+        }
     }
     .star-point {
         button {

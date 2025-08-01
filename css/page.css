@@ -1337,17 +1337,17 @@ header .search-box .reset-btn {
 .write-wrap input:not([type=date]), .write-wrap select, .write-wrap textarea {
   width: 100%;
 }
-.write-wrap input[type=date] {
-  color: #000;
-  display: block;
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  width: 100%;
-  min-width: calc(100% - 30px);
-  max-width: 100%;
-}
 .write-wrap textarea {
   min-height: 125px;
+}
+.write-wrap .date-type > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.write-wrap .date-type > div input[type=date] {
+  color: #000;
+  width: calc(100% - 10px);
 }
 .write-wrap .star-point button {
   border: unset;
