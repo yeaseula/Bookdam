@@ -717,6 +717,7 @@ header {
             .book-read-date {
                 margin-top: 20px;
                 font-size: 1.5rem;
+                line-height: 1.6 !important;
                 #start-date,
                 #end-date {
                     background: linear-gradient(to top, var(--main-color) 50%, transparent 50%);
@@ -1022,7 +1023,7 @@ header {
                 justify-content: space-between;
                 font-weight: 500;
                 font-size: 1.6rem;
-                margin-bottom: 7px;
+                margin-bottom: 10px;
                 span {
                     position: relative;
                     top: 2px;

@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${percent}%`;
     }
 
-    let lastTap = 0;
-
     if(currentpage == 'write') {
 
         //별점 포인트
@@ -133,6 +131,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 iosDatePlaceholder(ele);
             })
         }
+
+        //날짜 입력 제한 조건
+        const startInput = document.querySelector('input[name="start-date"]');
+        const endInput = document.querySelector('input[name="end-date"]');
+
+        startInput.addEventListener('input',()=>{
+            endInput.min = startInput.value;
+        });
+        endInput.addEventListener('input',()=>{
+            startInput.max = endInput.value
+        })
     }
 
     //kakao api로 북커버 호출 함수 (공통)

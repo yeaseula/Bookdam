@@ -712,6 +712,7 @@ header .search-box .reset-btn {
 .review-contents-wrap .review-head .book-infor .book-read-date {
   margin-top: 20px;
   font-size: 1.5rem;
+  line-height: 1.6 !important;
 }
 .review-contents-wrap .review-head .book-infor .book-read-date #start-date,
 .review-contents-wrap .review-head .book-infor .book-read-date #end-date {
@@ -1004,7 +1005,7 @@ header .search-box .reset-btn {
   justify-content: space-between;
   font-weight: 500;
   font-size: 1.6rem;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
 }
 .my-page-wrap .my-menu-box .menu-depth .menu-list a span {
   position: relative;
