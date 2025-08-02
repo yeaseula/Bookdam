@@ -88,7 +88,7 @@
   font-size: 2.1rem;
   color: #fff;
 }
-#main .slider-wrap .slider-top-text #user-name {
+#main .slider-wrap .slider-top-text #slider-user-name {
   font-size: 2.8rem;
   vertical-align: inherit;
 }
@@ -454,11 +454,14 @@ header .search-box .reset-btn {
   font-size: 1.5rem;
 }
 .my-review-wrap .my-review-title .go-write-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   bottom: 100px;
-  right: calc((100vw - 450px) / 2 - 15px);
-  width: 56px;
-  height: 56px;
+  right: calc(((100vw - 450px) / 2) - 15px);
+  width: 50px;
+  height: 50px;
   color: #fff;
   font-size: 32px;
   border: none;
@@ -470,7 +473,8 @@ header .search-box .reset-btn {
 .my-review-wrap .my-review-title .go-write-btn img {
   position: relative;
   top: 0px;
-  max-width: 18px;
+  max-width: 28px;
+  width: 100%;
 }
 @media (max-width: 450px) {
   .my-review-wrap .my-review-title .go-write-btn {

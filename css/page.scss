@@ -79,7 +79,7 @@
             position: relative;
             font-size: 2.1rem;
             color: #fff;
-            #user-name {
+            #slider-user-name {
                 font-size: 2.8rem;
                 vertical-align: inherit;
             }
@@ -466,28 +466,32 @@ header {
         .total-count {
             font-size: 1.5rem;
         }
-            .go-write-btn {
-                position: fixed;
-                bottom: 100px;
-                right: calc(((100vw - 450px) / 2) - 15px);
-                width: 56px;
-                height: 56px;
-                color: #fff;
-                font-size: 32px;
-                border: none;
-                border-radius: 50%;
-                box-shadow: 0 4px 12px #9ADBC5;
-                z-index: 20;
-                background: #fff;
-                img {
-                    position: relative;
-                    top: 0px;
-                    max-width: 18px;
-                }
-                @media(max-width:450px) {
-                    right: 15px;
-                }
+        .go-write-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 100px;
+            right: calc(((100vw - 450px) / 2) - 15px);
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            font-size: 32px;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px #9ADBC5;
+            z-index: 20;
+            background: #fff;
+            img {
+                position: relative;
+                top: 0px;
+                max-width: 28px;
+                width: 100%;
             }
+            @media(max-width:450px) {
+                right: 15px;
+            }
+        }
     }
     .my-review-list {
         margin-top: 20px;
