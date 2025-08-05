@@ -169,7 +169,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   background-color: var(--main-color-light);
   margin-top: 20px;
-  padding-top: 21px;
+  padding-top: 18px;
 }
 #main #section2 {
   padding-top: 20px;
@@ -259,6 +259,7 @@
   padding: 40px 15px 65px 15px;
 }
 #main #section3 .title-section {
+  position: relative;
   display: flex;
   gap: 10px;
 }
@@ -270,6 +271,14 @@
 }
 #main #section3 .title-section .sec3-title {
   font-size: 2rem;
+}
+#main #section3 .title-section .swiper-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 #main #section3 .my-recomand-book {
   margin-top: 13px;
@@ -497,14 +506,13 @@ header .search-box .reset-btn {
   background-color: rgb(70, 69, 118);
   transition: all 0.2s;
 }
-.my-review-wrap .my-review-list .list-item:hover {
+.my-review-wrap .my-review-list .list-item:active {
   box-shadow: 0 4px 16px var(--point-color);
 }
 .my-review-wrap .my-review-list .list-item > a {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 500px;
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -725,7 +733,6 @@ header .search-box .reset-btn {
 }
 .review-contents-wrap .review-head .book-infor .my-star > div {
   display: flex;
-  align-items: center;
   gap: 5px;
 }
 .review-contents-wrap .review-head .book-infor .my-star > div .icons-wrap {
@@ -746,9 +753,8 @@ header .search-box .reset-btn {
   vertical-align: middle;
 }
 .review-contents-wrap .review-head .book-infor .my-star > div .point-number {
-  position: relative;
-  top: 2px;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 @media (max-width: 376px) {
   .review-contents-wrap .review-head .book-cover-img {
@@ -910,7 +916,7 @@ header .search-box .reset-btn {
   text-align: center;
   font-size: 2.2rem;
 }
-.my-chart-wrap .my-chart-title #user_name {
+.my-chart-wrap .my-chart-title #user-name {
   font-size: 2.8rem;
 }
 .my-chart-wrap .background {
@@ -1178,6 +1184,17 @@ header .search-box .reset-btn {
   flex-direction: column;
   align-items: start;
   justify-content: start;
+}
+.my-wish-wrap .wish-book-list .list-item .list-infor.memo-type .book-title,
+.my-wish-wrap .reading-book-list .list-item .list-infor.memo-type .book-title,
+.my-wish-wrap .memo-book-list .list-item .list-infor.memo-type .book-title,
+.my-reading-wrap .wish-book-list .list-item .list-infor.memo-type .book-title,
+.my-reading-wrap .reading-book-list .list-item .list-infor.memo-type .book-title,
+.my-reading-wrap .memo-book-list .list-item .list-infor.memo-type .book-title,
+.my-memo-wrap .wish-book-list .list-item .list-infor.memo-type .book-title,
+.my-memo-wrap .reading-book-list .list-item .list-infor.memo-type .book-title,
+.my-memo-wrap .memo-book-list .list-item .list-infor.memo-type .book-title {
+  margin-bottom: 5px;
 }
 .my-wish-wrap .wish-book-list .list-item .list-infor .book-title,
 .my-wish-wrap .reading-book-list .list-item .list-infor .book-title,

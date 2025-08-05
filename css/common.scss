@@ -92,7 +92,7 @@ input,select {
         font-size: 1.6rem;
         color: #bdbdbd;
     }
-    &:focus {
+    &:focus,&:focus-visible {
         border: 2px solid var(--point-color);
     }
 }
@@ -108,7 +108,7 @@ textarea {
         font-size: 1.6rem;
         color: #bdbdbd;
     }
-    &:focus {
+    &:focus,&:focus-visible {
         border: 2px solid var(--point-color);
     }
 }

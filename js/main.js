@@ -11,7 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
         slidesPerView: 'auto',
         loop: true,
         centeredSlides : true,
-        autoplay:true
+        autoplay:true,
+        a11y: {
+            enabled: true,
+        },
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
     });
 
     //kakao api로 북커버 호출 함수
@@ -185,17 +192,45 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>`;
     }
 
+    //swiper active 외의 slide는 키보드 포커스 금지
+    function updateInertAttribute(swiper) {
+        swiper.slides.forEach((slide, index) => {
+            if (index === swiper.activeIndex) {
+                slide.removeAttribute('inert');
+            } else {
+                slide.setAttribute('inert', '');
+            }
+        });
+    }
     //slider set
     async function initSlider() {
         const books = await fetchBooks(); //return 배열
         const wrapper = document.getElementById('bookSliderWrapper');
         wrapper.innerHTML = books.map(createSlide).join('');
 
-        new Swiper('.my-recomand-book', {
+        let recomandedAi = new Swiper('.my-recomand-book', {
             slidesPerView: 1.15,
             spaceBetween: 15,
-            loop: true
+            autoplay:true,
+            loop: true,
+            a11y: {
+                enabled: true,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            navigation: {
+                nextEl: '.next-slide',
+                prevEl: '.prev-slide',
+            },
         });
+
+        recomandedAi.on('slideChange', function () {
+            updateInertAttribute(this);
+        });
+
+        let wasPlayingBeforeFocus = true;
 
         //wish 버튼 클릭->로컬에 데이터 저장
         setTimeout(() => {
@@ -211,7 +246,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.renderWishList();
                 alert('읽고싶은 책 목록에 추가됐습니다!')
                 });
+                btn.addEventListener('focusin', (e) => {
+                    const swiperWrapper = document.getElementById('bookSliderWrapper')
+                    if (e.target.closest('.swiper-slide')) {
+                        wasPlayingBeforeFocus = recomandedAi.autoplay.running;
+                        if (recomandedAi.autoplay.running) {
+                            recomandedAi.autoplay.stop();
+                            swiperWrapper.setAttribute('aria-live', 'polite');
+                        }
+                    }
+                });
+                btn.addEventListener('focusout', (e) => {
+                    if (!btn.contains(e.relatedTarget) && wasPlayingBeforeFocus) {
+                        recomandedAi.autoplay.start();
+                        swiperWrapper.setAttribute('aria-live', 'off');
+                    }
+                });
             });
+
         }, 0);
     }
 
@@ -247,14 +299,14 @@ document.addEventListener('DOMContentLoaded', function () {
         //json문자열을 객체로 가져오기
         const books = JSON.parse(localStorage.getItem('readingBooks') || '[]');
 
-        console.log(books) //books 배열 첫번째의 제목을 가져옴
+        //console.log(books) //books 배열 첫번째의 제목을 가져옴
         let readingBooktitle = books[0].title;
         let readingBookpage = books[0].readPage;
         const booknextparticle = pickObjectParticle(readingBooktitle)
         const contentArea = $('.my-reading-state');
 
         contentArea.innerHTML = `
-            <img src="/Bookdam/assets/img/bulb.png">
+            <img src="/Bookdam/assets/img/bulb.png" alt="전구모양 3d 아이콘">
             <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
             <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
             }
@@ -265,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function readHistory(){
         const readHistory = $('.my-reading-history');
         const bookNumber = stampDates.length;
-        console.log(bookNumber)
+        //console.log(bookNumber)
         readHistory.innerHTML = `
         <p>지금까지 <span class="reading-book sd-bb">${bookNumber}권</span>의 책을 읽었어요!</p>`
     }

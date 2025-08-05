@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedScore = button.getAttribute('data-score');
             // 시각적으로 선택된 별 강조 표시
                 starButtons.forEach((btn)=>{
-                    console.log(typeof Number(selectedScore)) // 2,4,6,8,10
+                    //console.log(typeof Number(selectedScore)) // 2,4,6,8,10
                     if(Number(btn.getAttribute('data-score')) <= Number(selectedScore)) {
                         btn.classList.add('selected-before');
-                        console.log('실행')
+                        //console.log('실행')
                     } else {
                         btn.classList.remove('selected-before')
                     }
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const Selectedbox = document.querySelectorAll('.icons-detail');
             Selectedbox.forEach((ele)=>{
                 const Targets = Number(ele.getAttribute('data-score'));
-                console.log(score)
+                //console.log(score)
                 if(Targets <= score) {
                     ele.classList.add('selected')
                 }

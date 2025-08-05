@@ -72,7 +72,7 @@
         z-index: 5;
         width: 100%;
         height: auto;
-        padding: 40px 15px 0;
+        padding: 48px 15px 0;
         aspect-ratio: 375 / 280;
         padding-bottom: 5rem;
         .slider-top-text {
@@ -95,7 +95,7 @@
                 font-size: 1.3rem;
                 box-shadow: 1px 1px 12px rgb(106, 200, 216, 0.5);
                 position: absolute;
-                top: 0;
+                top: -14px;
                 right: 0;
                 z-index: 10;
                 img {
@@ -163,7 +163,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             background-color: var(--main-color-light);
             margin-top: 20px;
-            padding-top: 21px;
+            padding-top: 18px;
         }
     }
     /* section2 */
@@ -263,6 +263,7 @@
     #section3 {
         padding: 40px 15px 65px 15px;
         .title-section {
+            position: relative;
             display: flex;
             gap: 10px;
                 > img {
@@ -273,6 +274,15 @@
                 }
                 .sec3-title {
                     font-size: 2rem;
+                }
+                /* 접근성 고려 요소 */
+                .swiper-btn {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
                 }
             }
 
@@ -507,14 +517,13 @@ header {
             margin-bottom: 13px;
             background-color: rgb(70 69 118);
             transition: all 0.2s;
-            &:hover {
+            &:active {
                 box-shadow: 0 4px 16px var(--point-color);
             }
             > a {
                 position: absolute;
                 top: 0;
                 left: 0;
-                border-radius: 500px;
                 display: inline-block;
                 width: 100%;
                 height: 100%;
@@ -729,7 +738,6 @@ header {
                 font-size: 1.5rem;
                 > div {
                     display: flex;
-                    align-items: center;
                     gap: 5px;
                     .icons-wrap {
                         display: flex;
@@ -745,9 +753,8 @@ header {
                         }
                     }
                     .point-number {
-                        position: relative;
-                        top: 2px;
-                        font-size: 2rem;
+                        font-size: 1.8rem;
+                        font-weight: 600;
                     }
                 }
             }
@@ -921,12 +928,9 @@ header {
     .my-chart-title {
         text-align: center;
         font-size: 2.2rem;
-        #user_name {
+        #user-name {
             font-size: 2.8rem;
         }
-    }
-    .chart-depth {
-
     }
     .background {
         position: absolute;
@@ -1132,6 +1136,9 @@ header {
                     flex-direction: column;
                     align-items: start;
                     justify-content: start;
+                    .book-title {
+                        margin-bottom: 5px;
+                    }
                 }
                 .book-title {
                     font-size: 1.6rem;

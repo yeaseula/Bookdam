@@ -103,7 +103,7 @@ input::placeholder, select::placeholder {
   font-size: 1.6rem;
   color: #bdbdbd;
 }
-input:focus, select:focus {
+input:focus, input:focus-visible, select:focus, select:focus-visible {
   border: 2px solid var(--point-color);
 }
 
@@ -124,7 +124,7 @@ textarea::placeholder {
   font-size: 1.6rem;
   color: #bdbdbd;
 }
-textarea:focus {
+textarea:focus, textarea:focus-visible {
   border: 2px solid var(--point-color);
 }
 
