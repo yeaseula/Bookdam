@@ -79,7 +79,7 @@
   z-index: 5;
   width: 100%;
   height: auto;
-  padding: 40px 15px 0;
+  padding: 48px 15px 0;
   aspect-ratio: 375/280;
   padding-bottom: 5rem;
 }
@@ -104,7 +104,7 @@
   font-size: 1.3rem;
   box-shadow: 1px 1px 12px rgba(106, 200, 216, 0.5);
   position: absolute;
-  top: 0;
+  top: -14px;
   right: 0;
   z-index: 10;
 }
@@ -262,6 +262,7 @@
   position: relative;
   display: flex;
   gap: 10px;
+  /* 접근성 고려 요소 */
 }
 #main #section3 .title-section > img {
   position: relative;
