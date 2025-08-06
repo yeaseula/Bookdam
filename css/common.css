@@ -159,8 +159,12 @@ textarea:focus, textarea:focus-visible {
 }
 
 .sr-only {
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -999;
-}/*# sourceMappingURL=common.css.map */
+}
