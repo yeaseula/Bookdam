@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const contentArea = $('.my-reading-state');
 
         contentArea.innerHTML = `
-            <img src="/assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
+            <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
             <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
             <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
             }
