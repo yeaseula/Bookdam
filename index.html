@@ -14,8 +14,12 @@
         <!--css-->
         <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
-
-
+        <!--javascript-->
+        <script src="js/api-key.js" defer></script>
+        <script src="js/config.js" defer></script>
+        <script src="js/common.js" defer></script>
+        <script src="js/page.js" defer></script>
+        <script src="js/main.js" defer></script>
     </head>
     <body>
         <div class="common-wrap">
@@ -38,7 +42,7 @@
                             <span id="user-name" class="sd-bb">모카</span>님,<br>
                             오늘도 당신의 이야기를 들려주실래요?
 
-                            <a href="/Bookdam/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg">글쓰기</a>
+                            <a href="/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg">글쓰기</a>
                         </p>
                         <div class="my-book-list">
                             <div class="swiper-wrapper" id="mybook-list-wrapper">
@@ -93,11 +97,5 @@
         <script>
             const currentpage = 'home';
         </script>
-        <!--javascript-->
-        <script src="js/api-key.js" defer></script>
-        <script src="js/config.js" defer></script>
-        <script src="js/common.js" defer></script>
-        <script src="js/page.js" defer></script>
-        <script src="js/main.js" defer></script>
     </body>
 </html>

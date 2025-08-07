@@ -6,13 +6,11 @@
         <title>책담-책에 담긴 당신만의 이야기</title>
 
         <!--css-->
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" type="text/css" href="css/reset.css">
-        <link rel="stylesheet" type="text/css" href="css/common.css">
-        <link rel="stylesheet" type="text/css" href="css/page.css">
+        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
         <!--js-->
-        <script src="js/config.js"></script>
-        <script src="js/page.js"></script>
+        <script src="js/config.js" defer></script>
+        <script src="js/page.js" defer></script>
     </head>
     <body>
         <div class="common-wrap">
@@ -21,8 +19,8 @@
                     <div class="search-box">
                         <form action="/search" method="GET">
                             <input type="search" name="search" placeholder="검색어를 입력해주세요..">
-                            <button type="submit" class="submit-btn"><img src="assets/img/search-icon.svg" alt="검색하기"></button>
-                            <button type="reset" class="reset-btn"><img src="assets/img/reset-icon.svg" alt="검색어 초기화"></button>
+                            <button type="submit" class="submit-btn"><img src="./assets/img/search-icon.svg" alt="검색하기"></button>
+                            <button type="reset" class="reset-btn"><img src="./assets/img/reset-icon.svg" alt="검색어 초기화"></button>
                         </form>
                     </div>
                     <div class="icon-box">
@@ -92,7 +90,7 @@
                                 <input type="checkbox" id="latest_0" value="소설">
                                 <label for="latest_0">
                                     <span>천선란</span>
-                                    <span class="closed"><img src="assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
+                                    <span class="closed"><img src="./assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
                                 </label>
 
                             </div>
@@ -100,7 +98,7 @@
                                 <input type="checkbox" id="latest_1" value="에세이">
                                 <label for="latest_1">
                                     <span>에세이</span>
-                                    <span class="closed"><img src="assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
+                                    <span class="closed"><img src="./assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
                                 </label>
                             </div>
                         </div>

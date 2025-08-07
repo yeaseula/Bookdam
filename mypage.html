@@ -6,24 +6,22 @@
         <title>책담-책에 담긴 당신만의 이야기</title>
 
         <!--css-->
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" type="text/css" href="css/reset.css">
-        <link rel="stylesheet" type="text/css" href="css/common.css">
-        <link rel="stylesheet" type="text/css" href="css/page.css">
+        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
 
         <!--cdn-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
         <!--javascript-->
-        <script src="js/config.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/page.js"></script>
+        <script src="js/config.js" defer></script>
+        <script src="js/common.js" defer></script>
+        <script src="js/page.js" defer></script>
     </head>
     <body>
         <div class="common-wrap">
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="assets/img/back-arrow.svg" alt="back"></a>
+                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="./assets/img/back-arrow.svg" alt="back"></a>
                     <p class="page-title sd-b">마이 페이지</p>
                 </div>
             </header>
@@ -31,7 +29,7 @@
                 <div class="my-page-wrap">
                     <section class="my-profile-box">
                         <h2 class="sr-only">프로필 정보</h2>
-                        <div class="profile-img" style="background-image: url('assets/img/profile_thumb.png');"></div>
+                        <div class="profile-img" style="background-image: url('./assets/img/profile_thumb.png');"></div>
                         <div class="profile-cont">
                             <p id="user-name">모카</p>
                             <p class="user-mail">kminea@naver.com</p>
@@ -43,50 +41,50 @@
                             올 해 <span id="total_year_read" class="sd-bb"></span>,<br>
                             이번 달 <span id="total_month_read" class="sd-bb"></span> 읽었어요!
                         </p>
-                        <img src="assets/img/chart-img.png" alt="img">
+                        <img src="./assets/img/chart-img.png" alt="img">
                     </section>
                     <section class="my-menu-box">
-                        <h2 class="menu-title"><img src="assets/img/mypage-icon1.svg" alt="icon"> 나의 활동</h2>
+                        <h2 class="menu-title"><img src="./assets/img/mypage-icon1.svg" alt="icon"> 나의 활동</h2>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/Bookdam/memo.html">
+                                <a href="/memo.html">
                                     <span>기억에 남는 구절</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/Bookdam/review.html">
+                                <a href="/review.html">
                                     <span>리뷰 목록</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/Bookdam/wish-book.html">
+                                <a href="/wish-book.html">
                                     <span>읽고싶은 책</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/Bookdam/reading-book.html">
+                                <a href="/reading-book.html">
                                     <span>읽는중인 책</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                     </section>
                     <section class="my-menu-box">
-                        <h2 class="menu-title"><img src="assets/img/mypage-icon5.svg" alt="icon"> 화면 설정</h2>
+                        <h2 class="menu-title"><img src="./assets/img/mypage-icon5.svg" alt="icon"> 화면 설정</h2>
                         <ul class="menu-depth">
                             <li class="menu-list">
                                 <a href="#">
                                     <span>폰트 설정</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -94,7 +92,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>타이머 설정</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -102,7 +100,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>서재 화면 설정</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -110,18 +108,18 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>캘린더 설정</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                     </section>
                     <section class="my-menu-box">
-                        <div class="menu-title"><img src="assets/img/mypage-icon2.svg" alt="icon"> 내 정보</div>
+                        <div class="menu-title"><img src="./assets/img/mypage-icon2.svg" alt="icon"> 내 정보</div>
                         <ul class="menu-depth">
                             <li class="menu-list">
                                 <a href="#">
                                     <span>로그아웃</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -129,7 +127,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>내 정보 변경</span>
-                                    <img src="assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>

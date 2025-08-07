@@ -6,27 +6,25 @@
         <title>책담-책에 담긴 당신만의 이야기</title>
 
         <!--css-->
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" type="text/css" href="css/reset.css">
-        <link rel="stylesheet" type="text/css" href="css/common.css">
-        <link rel="stylesheet" type="text/css" href="css/page.css">
+        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
 
         <!--cdn-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
         <!--javascript-->
-        <script src="js/common.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/api-key.js"></script>
-        <script src="js/page.js"></script>
+        <script src="js/common.js" defer></script>
+        <script src="js/config.js" defer></script>
+        <script src="js/api-key.js" defer></script>
+        <script src="js/page.js" defer></script>
 
     </head>
     <body>
         <div class="common-wrap">
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="assets/img/back-arrow.svg" alt="뒤로가기"></a>
+                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="./assets/img/back-arrow.svg" alt="뒤로가기"></a>
                     <p class="page-title sd-b">읽고있는 책</p>
                 </div>
             </header>
@@ -40,7 +38,7 @@
                                 <input type="text" name="total-book-page" class="field-input2" placeholder="총 페이지">
                                 <input type="number" name="readed-book-page" class="field-input3" placeholder="읽은 페이지">
                                 <button class="btn-add dark-style-btn" aria-label="읽고있는 책 추가 버튼">
-                                    <img src="assets/img/add-line.svg">
+                                    <img src="./assets/img/add-line.svg">
                                 </button>
                             </div>
                         </form>
