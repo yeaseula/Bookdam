@@ -5,16 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>책담-책에 담긴 당신만의 이야기</title>
 
-        <!--cdn-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
-
         <!--font preload-->
         <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+        <!--cdn-->
+        <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js" defer></script>
+
         <!--css-->
         <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
