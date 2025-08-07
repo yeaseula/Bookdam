@@ -48,7 +48,7 @@
                             <span id="user-name" class="sd-bb">모카</span>님,<br>
                             오늘도 당신의 이야기를 들려주실래요?
 
-                            <a href="/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg">글쓰기</a>
+                            <a href="/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg" alt="펜 모양 아이콘">글쓰기</a>
                         </p>
                         <div class="my-book-list">
                             <div class="swiper-wrapper" id="mybook-list-wrapper">
@@ -69,8 +69,14 @@
                 <!--main contents 시작-->
                 <section id="section1" class="section">
                     <h2 class="sr-only">현재 읽고있는 책 정보</h2>
-                    <div class="my-reading-state"></div>
-                    <div class="my-reading-history"></div>
+                    <div class="my-reading-state">
+                        <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
+                        <p>현재 <span class="reading-name sd-bb">책 이름</span>을 읽고 계시네요!<br>
+                        <span class="reading-page sd-bb">000 페이지</span>까지 읽었어요.</p>
+                    </div>
+                    <div class="my-reading-history">
+                        <p>지금까지 <span class="reading-book sd-bb">0권</span>의 책을 읽었어요!</p>
+                    </div>
                 </section>
                 <section id="section2" class="section">
                     <h2 class="sr-only">나의 독서 스탬프 캘린더</h2>
@@ -90,7 +96,23 @@
                         </div>
                     </div>
                     <div class="my-recomand-book">
-                        <div class="swiper-wrapper" id="bookSliderWrapper"></div>
+                        <div class="swiper-wrapper" id="bookSliderWrapper">
+                            <div class="swiper-slide recomand-slide">
+                                <div class="swiper-depth">
+                                    <div class="book-cover">
+                                        <img src="" alt="책 표지" loading="lazy" />
+                                    </div>
+                                    <div class="book-desc">
+                                        <p class="book-title sd-b">러브 몬스터</p>
+                                        <p class="book-intro">100만 독자의 감동을 이끌어낸 베스트셀러...</p>
+                                        <div class="button-wrap">
+                                            <button class="gray-style-btn wish-btn" data-title="" data-author="" data-price=""><span>Wish</span></button>
+                                            <button class="dark-style-btn"><span>More View</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <!--main contents 종료-->

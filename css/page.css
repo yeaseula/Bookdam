@@ -129,6 +129,7 @@
   opacity: 0.5;
   background-position: center;
   background-size: cover;
+  background: url('../assets/img/cover-thumbnail.svg');
 }
 #main .slider-wrap .my-book-list .swiper-slide-active {
   opacity: 1 !important;
@@ -154,6 +155,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   background-color: var(--main-color);
+  min-height: 135px;
 }
 #main #section1 .my-reading-state > img {
   max-width: 50px;
@@ -170,6 +172,7 @@
   background-color: var(--main-color-light);
   margin-top: 20px;
   padding-top: 18px;
+  min-height: 56px;
 }
 #main #section2 {
   padding-top: 20px;
@@ -359,11 +362,9 @@
   #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-cover {
     width: 75px;
   }
-  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro {
-    width: calc(100% - 85px);
-  }
-  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro .book-title {
+  #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-desc .book-intro {
     -webkit-line-clamp: 2;
+    width: 100%;
   }
   #main #section3 .my-recomand-book .recomand-slide .swiper-depth .book-intro .button-wrap button {
     min-width: 71px;
@@ -1223,7 +1224,7 @@ header .search-box .reset-btn {
 .my-memo-wrap .reading-book-list .list-item .list-infor .author-name,
 .my-memo-wrap .memo-book-list .list-item .list-infor .author-name {
   font-size: 1.5rem;
-  color: #757575;
+  color: #424242;
 }
 .my-wish-wrap .wish-book-list .list-item .list-infor .memo-contents,
 .my-wish-wrap .reading-book-list .list-item .list-infor .memo-contents,
@@ -1518,7 +1519,7 @@ header .search-box .reset-btn {
 }
 #bottom_navigator .navigator_wrap .navigator_cont > a p {
   font-size: 1.3rem;
-  color: #757575;
+  color: #424242;
 }
 #bottom_navigator .navigator_wrap .navigator_cont > a img {
   max-width: 29px;
@@ -1558,7 +1559,7 @@ footer .footer-menu {
 }
 footer .footer-menu li {
   font-size: 1.4rem;
-  color: #757575;
+  color: #424242;
 }
 footer #footer-toggle {
   text-align: center;
@@ -1591,7 +1592,7 @@ footer .copyright-dropdown .copy-depth {
 }
 footer .copyright-dropdown .copy-depth span {
   font-size: 1.4rem;
-  color: #757575;
+  color: #424242;
 }
 
 /* 플로팅 버튼 */
