@@ -129,7 +129,6 @@
   opacity: 0.5;
   background-position: center;
   background-size: cover;
-  background: url('../assets/img/cover-thumbnail.svg');
 }
 #main .slider-wrap .my-book-list .swiper-slide-active {
   opacity: 1 !important;
