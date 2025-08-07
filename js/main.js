@@ -7,19 +7,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const MyReviewThumb = [];
 
     //메인 상단 슬라이드 정의
-    const MyBookList = new Swiper('.my-book-list', {
-        slidesPerView: 'auto',
-        loop: true,
-        centeredSlides : true,
-        autoplay:true,
-        a11y: {
-            enabled: true,
-        },
-        keyboard: {
-            enabled: true,
-            onlyInViewport: true,
-        },
-    });
+    // const MyBookList = new Swiper('.my-book-list', {
+    //     slidesPerView: 'auto',
+    //     loop: true,
+    //     centeredSlides : true,
+    //     autoplay:true,
+    //     a11y: {
+    //         enabled: true,
+    //     },
+    //     keyboard: {
+    //         enabled: true,
+    //         onlyInViewport: true,
+    //     },
+    // });
+    let MyBookList;
 
     //kakao api로 북커버 호출 함수
     async function fetchMyReviewCover(title,author) {
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function StampFunc () {
         let calendarbox = document.querySelectorAll('.fc-scrollgrid-sync-table td');
         let dayList = [...Array.from(calendarbox)];
+         console.count('StampFunc 호출 횟수');
         dayList.forEach((ele,idx)=>{
             let {date:dayValue} = dayList[idx].dataset;
             stampDates.forEach((ele,idx2)=>{
@@ -96,13 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //prev,next 버튼 누를 시 캘린더 초기화
-    window.onload = function(){
-        const CalPrevBtn = document.querySelector('.fc-prev-button')
-        const CalNextBtn = document.querySelector('.fc-next-button')
+    const CalPrevBtn = document.querySelector('.fc-prev-button')
+    const CalNextBtn = document.querySelector('.fc-next-button')
 
-        CalPrevBtn.addEventListener('click',()=>{StampFunc()})
-        CalNextBtn.addEventListener('click',()=>{StampFunc()})
-    }
+    CalPrevBtn.addEventListener('click',()=>{StampFunc()})
+    CalNextBtn.addEventListener('click',()=>{StampFunc()})
 
     //google 시트의 날짜 형식 변환 함수
     function sheetDateFormat(rawDate) {
@@ -142,12 +142,33 @@ document.addEventListener('DOMContentLoaded', function () {
             const thumb = await fetchMyReviewCover(title,author);
             MyReviewThumb.unshift(thumb);
         }
+        // StampFunc();
+        // readHistory();
+        // MainSlideThumb();
+    };
+
+    loadReviewDetail().then(() => {
         StampFunc();
         readHistory();
-        MainSlideThumb();
-    }
+        MyBookList = new Swiper('.my-book-list', {
+            slidesPerView: 'auto',
+            loop: true,
+            centeredSlides : true,
+            autoplay:true,
+            a11y: {
+                enabled: true,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+        });
 
-    loadReviewDetail();
+        MainSlideThumb();
+
+        MyBookList.update();
+    });
+
 
 
     //카카오 api 불러오기
@@ -204,67 +225,67 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     //slider set
     async function initSlider() {
-        const books = await fetchBooks(); //return 배열
+        const books = await fetchBooks();
         const wrapper = document.getElementById('bookSliderWrapper');
         wrapper.innerHTML = books.map(createSlide).join('');
 
-        let recomandedAi = new Swiper('.my-recomand-book', {
-            slidesPerView: 1.15,
-            spaceBetween: 15,
-            autoplay:true,
-            loop: true,
-            a11y: {
-                enabled: true,
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-            navigation: {
-                nextEl: '.next-slide',
-                prevEl: '.prev-slide',
-            },
-        });
-
-        recomandedAi.on('slideChange', function () {
-            updateInertAttribute(this);
-        });
-
-        let wasPlayingBeforeFocus = true;
-
-        //wish 버튼 클릭->로컬에 데이터 저장
-        setTimeout(() => {
-            document.querySelectorAll('.wish-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                const book = {
-                    title: this.dataset.title,
-                    author: this.dataset.author,
-                    totalPrice: parseInt(this.dataset.price, 10),
-                    totalPage: parseInt(this.dataset.page, 10)
-                };
-                saveWishBook(book);
-                window.renderWishList();
-                alert('읽고싶은 책 목록에 추가됐습니다!')
-                });
-                btn.addEventListener('focusin', (e) => {
-                    const swiperWrapper = document.getElementById('bookSliderWrapper')
-                    if (e.target.closest('.swiper-slide')) {
-                        wasPlayingBeforeFocus = recomandedAi.autoplay.running;
-                        if (recomandedAi.autoplay.running) {
-                            recomandedAi.autoplay.stop();
-                            swiperWrapper.setAttribute('aria-live', 'polite');
-                        }
-                    }
-                });
-                btn.addEventListener('focusout', (e) => {
-                    if (!btn.contains(e.relatedTarget) && wasPlayingBeforeFocus) {
-                        recomandedAi.autoplay.start();
-                        swiperWrapper.setAttribute('aria-live', 'off');
-                    }
-                });
+        // 렌더링이 완료된 후에 Swiper 초기화
+        requestAnimationFrame(() => {
+            let recomandedAi = new Swiper('.my-recomand-book', {
+                slidesPerView: 1.15,
+                spaceBetween: 15,
+                autoplay: true,
+                loop: true,
+                a11y: { enabled: true },
+                keyboard: { enabled: true, onlyInViewport: true },
+                navigation: {
+                    nextEl: '.next-slide',
+                    prevEl: '.prev-slide',
+                },
             });
 
-        }, 0);
+            recomandedAi.on('slideChange', function () {
+                updateInertAttribute(this);
+            });
+
+            let wasPlayingBeforeFocus = true;
+
+            // wish 버튼 핸들러는 한 템포 더 늦게
+            setTimeout(() => {
+                document.querySelectorAll('.wish-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const book = {
+                            title: this.dataset.title,
+                            author: this.dataset.author,
+                            totalPrice: parseInt(this.dataset.price, 10),
+                            totalPage: parseInt(this.dataset.page, 10),
+                        };
+                        saveWishBook(book);
+                        window.renderWishList();
+                        alert('읽고싶은 책 목록에 추가됐습니다!');
+                    });
+
+                    btn.addEventListener('focusin', (e) => {
+                        const swiperWrapper = document.getElementById('bookSliderWrapper');
+                        if (e.target.closest('.swiper-slide')) {
+                            wasPlayingBeforeFocus = recomandedAi.autoplay.running;
+                            if (recomandedAi.autoplay.running) {
+                                recomandedAi.autoplay.stop();
+                                swiperWrapper.setAttribute('aria-live', 'polite');
+                            }
+                        }
+                    });
+
+                    btn.addEventListener('focusout', (e) => {
+                        if (!btn.contains(e.relatedTarget) && wasPlayingBeforeFocus) {
+                            recomandedAi.autoplay.start();
+                            const swiperWrapper = document.getElementById('bookSliderWrapper');
+                            swiperWrapper.setAttribute('aria-live', 'off');
+                        }
+                    });
+                });
+            }, 0);
+        });
     }
 
     function getBooks(key, sample = []) {
@@ -280,7 +301,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    initSlider();
+    requestAnimationFrame(() => {
+        initSlider();
+    });
 
 
     //section1 관련 함수
@@ -309,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
             <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
             <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
-            }
+        }
 
     readingBookmark();
 
