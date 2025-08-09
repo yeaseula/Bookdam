@@ -20,9 +20,9 @@ export default {
     visualizer({ filename: './dist/stats.html' }),
     copy({
       targets: [
-        { src: '*.html', dest: 'dist' },        // index.html + 서브페이지들
-        { src: 'css/**/*', dest: 'dist/css' },  // css 전체
-        { src: 'assets/**/*', dest: 'dist/assets' }, // 이미지, 폰트 등
+        { src: '*.html', dest: 'dist' },
+        { src: 'css/**/*', dest: 'dist/css' },
+        { src: 'assets/**/*', dest: 'dist/assets' },
         { src: 'fonts/**/*', dest: 'dist/fonts'},
         { src: 'js/**/*', dest: 'dist/js' },
         { src: 'nav-animation', dest: 'dist/nav-animation'}
