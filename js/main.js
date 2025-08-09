@@ -51,24 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
         })
     }
-    if (!FullCalendar || !FullCalendar.DayGrid) {
-        console.error('FullCalendar 또는 dayGrid 플러그인이 로드되지 않았습니다.');
-        return;
-    }
+
     //캘린더 북 스탬프
     var calendarEl = document.getElementById('calendar');
     var initialLocaleCode = 'en';
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        headerToolbar: {
-            left:'',
-            right: 'prev,next',
-            center: 'title',
-        },
-        locale:initialLocaleCode,
+    let calendar;
 
-    });
-    calendar.render();
 
     //기록 날짜를 불러와 캘린더 객체의 date키 값과 일치하는지 확인한 후 스탬프를 찍습니다.
     const stampDates = [];
@@ -88,11 +76,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //prev,next 버튼 누를 시 캘린더 초기화
-    const CalPrevBtn = document.querySelector('.fc-prev-button')
-    const CalNextBtn = document.querySelector('.fc-next-button')
+    requestAnimationFrame(()=>{
+        const CalPrevBtn = document.querySelector('.fc-prev-button')
+        const CalNextBtn = document.querySelector('.fc-next-button')
 
-    CalPrevBtn.addEventListener('click',()=>{StampFunc()})
-    CalNextBtn.addEventListener('click',()=>{StampFunc()})
+        CalPrevBtn.addEventListener('click',()=>{StampFunc()})
+        CalNextBtn.addEventListener('click',()=>{StampFunc()})
+    })
+
 
     //google 시트의 날짜 형식 변환 함수
     function sheetDateFormat(rawDate) {
@@ -135,6 +126,19 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     loadReviewDetail().then(() => {
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left:'',
+                right: 'prev,next',
+                center: 'title',
+            },
+            locale:initialLocaleCode,
+        });
+        requestAnimationFrame(()=>{
+
+        })
+        calendar.render();
         StampFunc();
         readHistory();
         MyBookList = new Swiper('.my-book-list', {
