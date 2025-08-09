@@ -56,6 +56,7 @@ Bookdam을 기획하고, 직접 개발하며 느낀 점들을 정리한 개발 �
 pc 화면에서도 문제 없이 확인 가능하며, 화면은 모바일 뷰로 고정되어있습니다.<br />
 
 아래 링크에서 실행해볼 수 있습니다. <br />
-👉 [Bookdam 바로가기](https://yeaseula.github.io/Bookdam/)
+👉 [Bookdam 바로가기](https://bookdam.vercel.app/)
+
 
 
