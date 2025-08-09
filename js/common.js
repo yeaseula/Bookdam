@@ -1,4 +1,4 @@
-import lottie from 'lottie-web';
+
 document.addEventListener('DOMContentLoaded', function () {
     const $ = (node) => document.querySelector(node);
 
