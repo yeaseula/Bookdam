@@ -6,20 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const MyReviewThumb = [];
 
-    //메인 상단 슬라이드 정의
-    // const MyBookList = new Swiper('.my-book-list', {
-    //     slidesPerView: 'auto',
-    //     loop: true,
-    //     centeredSlides : true,
-    //     autoplay:true,
-    //     a11y: {
-    //         enabled: true,
-    //     },
-    //     keyboard: {
-    //         enabled: true,
-    //         onlyInViewport: true,
-    //     },
-    // });
     let MyBookList;
 
     //kakao api로 북커버 호출 함수
@@ -65,11 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // ele.style.backgroundImage = `url('${MyReviewThumb[index]}')`;
         })
     }
-
+    if (!FullCalendar || !FullCalendar.DayGrid) {
+        console.error('FullCalendar 또는 dayGrid 플러그인이 로드되지 않았습니다.');
+        return;
+    }
     //캘린더 북 스탬프
     var calendarEl = document.getElementById('calendar');
     var initialLocaleCode = 'en';
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
         headerToolbar: {
             left:'',
             right: 'prev,next',
@@ -86,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function StampFunc () {
         let calendarbox = document.querySelectorAll('.fc-scrollgrid-sync-table td');
         let dayList = [...Array.from(calendarbox)];
-         console.count('StampFunc 호출 횟수');
+        //console.count('StampFunc 호출 횟수');
         dayList.forEach((ele,idx)=>{
             let {date:dayValue} = dayList[idx].dataset;
             stampDates.forEach((ele,idx2)=>{
@@ -142,9 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const thumb = await fetchMyReviewCover(title,author);
             MyReviewThumb.unshift(thumb);
         }
-        // StampFunc();
-        // readHistory();
-        // MainSlideThumb();
     };
 
     loadReviewDetail().then(() => {
@@ -165,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         MainSlideThumb();
-
         MyBookList.update();
     });
 

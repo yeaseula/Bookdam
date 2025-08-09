@@ -7,15 +7,23 @@
 
         <!--font preload-->
         <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <noscript><link rel="stylesheet" href="fonts/AppleSDGothicNeoR00.woff2"></noscript>
         <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <noscript><link rel="stylesheet" href="fonts/AppleSDGothicNeoB00.woff2"></noscript>
         <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <noscript><link rel="stylesheet" href="fonts/AppleSDGothicNeoEB00.woff2"></noscript>
 
         <!--cdn-->
         <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js" defer></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.18/index.global.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.18/index.global.min.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.18/index.global.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.18/index.global.min.js"></script>
 
         <!--css-->
         <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -70,7 +78,7 @@
                 <section id="section1" class="section">
                     <h2 class="sr-only">현재 읽고있는 책 정보</h2>
                     <div class="my-reading-state">
-                        <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
+                        <img src="./assets/img/bulb-img.webp" alt="전구모양 3d 아이콘">
                         <p>현재 <span class="reading-name sd-bb">책 이름</span>을 읽고 계시네요!<br>
                         <span class="reading-page sd-bb">000 페이지</span>까지 읽었어요.</p>
                     </div>
