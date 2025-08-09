@@ -13,7 +13,7 @@ export default {
     sourcemap: true
   },
   treeshake : {
-    moduleSideEffects: true,
+    moduleSideEffects: false,
   },
   plugins: [
     resolve(),
