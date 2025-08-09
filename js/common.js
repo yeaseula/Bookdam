@@ -12,35 +12,35 @@ document.addEventListener('DOMContentLoaded', function () {
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'home'),
-                    path: '/nav-animation/nav-animation/home.json'
+                    path: '/nav-animation/home.json'
                 }),
                 search: lottie.loadAnimation({
                     container: document.getElementById('review-icon'),
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'review'),
-                    path: '/nav-animation/nav-animation/review.json'
+                    path: '/nav-animation/review.json'
                 }),
                 review: lottie.loadAnimation({
                     container: document.getElementById('memo-icon'),
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'memo'),
-                    path: '/nav-animation/nav-animation/Heart.json'
+                    path: '/nav-animation/Heart.json'
                 }),
                 review: lottie.loadAnimation({
                     container: document.getElementById('reading-icon'),
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'reading'),
-                    path: '/nav-animation/nav-animation/review2.json'
+                    path: '/nav-animation/review2.json'
                 }),
                 mypage: lottie.loadAnimation({
                     container: document.getElementById('mypage-icon'),
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'mypage'),
-                    path: '/nav-animation/nav-animation/profile.json',
+                    path: '/nav-animation/profile.json',
                 }),
             };
 

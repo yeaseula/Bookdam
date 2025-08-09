@@ -2,7 +2,6 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import Swiper from 'swiper';
 import { Autoplay, Keyboard, A11y, Navigation } from 'swiper/modules';
-import lottie from 'lottie-web';
 import './common.js';
 
 window.FullCalendar = { Calendar, dayGridPlugin };
