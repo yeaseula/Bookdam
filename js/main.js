@@ -1,5 +1,9 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import Swiper from 'swiper';
+import { Autoplay, Keyboard, A11y, Navigation } from 'swiper/modules';
+import lottie from 'lottie-web';
+import './common.js';
 
 window.FullCalendar = { Calendar, dayGridPlugin };
 
@@ -41,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function MainSlideThumb(){
         //기본 슬라이드 10장
         const slideContainer = MyBookList.slides;
-
         //console.log(slideContainer)
         slideContainer.forEach((ele)=>{
             const {swiperSlideIndex:targetindex} = ele.dataset;
@@ -148,10 +151,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         readHistory();
         MyBookList = new Swiper('.my-book-list', {
+            modules: [Autoplay, Keyboard, A11y],
             slidesPerView: 'auto',
             loop: true,
             centeredSlides : true,
-            autoplay:true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             a11y: {
                 enabled: true,
             },
@@ -228,9 +235,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // 렌더링이 완료된 후에 Swiper 초기화
         requestAnimationFrame(() => {
             let recomandedAi = new Swiper('.my-recomand-book', {
+                modules: [Autoplay, Keyboard, A11y, Navigation],
                 slidesPerView: 1.15,
                 spaceBetween: 15,
-                autoplay: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
                 loop: true,
                 a11y: { enabled: true },
                 keyboard: { enabled: true, onlyInViewport: true },

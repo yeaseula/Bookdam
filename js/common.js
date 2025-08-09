@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const $ = (node) => document.querySelector(node);
 
