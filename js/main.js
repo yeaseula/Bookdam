@@ -1,3 +1,8 @@
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+window.FullCalendar = { Calendar, dayGridPlugin };
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const $ = (node) => document.querySelector(node);
@@ -57,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var initialLocaleCode = 'en';
     let calendar;
 
-
     //기록 날짜를 불러와 캘린더 객체의 date키 값과 일치하는지 확인한 후 스탬프를 찍습니다.
     const stampDates = [];
 
@@ -74,16 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         })
     }
-
-    //prev,next 버튼 누를 시 캘린더 초기화
-    requestAnimationFrame(()=>{
-        const CalPrevBtn = document.querySelector('.fc-prev-button')
-        const CalNextBtn = document.querySelector('.fc-next-button')
-
-        CalPrevBtn.addEventListener('click',()=>{StampFunc()})
-        CalNextBtn.addEventListener('click',()=>{StampFunc()})
-    })
-
 
     //google 시트의 날짜 형식 변환 함수
     function sheetDateFormat(rawDate) {
@@ -126,8 +120,9 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     loadReviewDetail().then(() => {
-        calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
+        calendar = new Calendar(calendarEl, {
+        plugins: [dayGridPlugin],
+        initialView: 'dayGridMonth',
             headerToolbar: {
                 left:'',
                 right: 'prev,next',
@@ -135,11 +130,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             locale:initialLocaleCode,
         });
-        requestAnimationFrame(()=>{
-
-        })
         calendar.render();
         StampFunc();
+
+        const addCalBtnListeners = () => {
+            const CalPrevBtn = document.querySelector('.fc-prev-button');
+            const CalNextBtn = document.querySelector('.fc-next-button');
+            if (CalPrevBtn && CalNextBtn) {
+                CalPrevBtn.addEventListener('click', () => { StampFunc() });
+                CalNextBtn.addEventListener('click', () => { StampFunc() });
+            } else {
+                // 버튼이 아직 없으면 다음 프레임에 재시도
+                requestAnimationFrame(addCalBtnListeners);
+            }
+        };
+        addCalBtnListeners();
+
         readHistory();
         MyBookList = new Swiper('.my-book-list', {
             slidesPerView: 'auto',

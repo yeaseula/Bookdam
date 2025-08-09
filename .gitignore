@@ -1,1 +1,4 @@
-# assets/img 폴더 안 이미지 파일만 무시
+node_modules/
+dist/
+.vscode/
+.DS_Store
