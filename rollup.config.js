@@ -13,11 +13,11 @@ export default {
     sourcemap: true
   },
   treeshake : {
-    moduleSideEffects: false,
+    moduleSideEffects: true,
   },
   plugins: [
     resolve(),
-    commonjs(),
+    commonjs({ ignoreGlobal: true }),
     terser(),
     visualizer({ filename: './dist/stats.html' }),
     copy({
