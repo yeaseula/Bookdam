@@ -17,7 +17,7 @@ export default {
   },
   plugins: [
     resolve(),
-    commonjs({ ignoreGlobal: true }),
+    commonjs(),
     terser(),
     visualizer({ filename: './dist/stats.html' }),
     copy({
