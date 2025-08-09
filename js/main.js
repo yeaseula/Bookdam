@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="swiper-slide recomand-slide">
             <div class="swiper-depth">
                 <div class="book-cover">
-                    <img src="${book.thumbnail}" alt="${book.title} 표지" />
+                    <img src="${book.thumbnail}" alt="${book.title} 표지" loading="lazy" />
                 </div>
                 <div class="book-desc">
                     <p class="book-title sd-b">${book.title}</p>
