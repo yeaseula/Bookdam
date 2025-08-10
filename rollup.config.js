@@ -11,7 +11,18 @@ export default {
     format: 'esm',       // ESM 포맷 (동적 import 지원)
     sourcemap: true,
     entryFileNames: '[name].js',
-    chunkFileNames: '[name]-[hash].js'
+    chunkFileNames: '[name]-[hash].js',
+    manualChunks(id) {
+      if (id.includes('node_modules')) {
+        if (id.includes('swiper')) {
+          return 'vendor-swiper';
+        }
+        if (id.includes('fullcalendar')) {
+          return 'vendor-fullcalendar';
+        }
+        return 'vendor'; // 나머지 라이브러리 공통 묶음
+      }
+    }
   },
   treeshake : {
     moduleSideEffects: false,

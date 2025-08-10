@@ -72,9 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
     //메인 상단 스와이퍼 초기화
     async function sliderView() {
         let MyBookList;
-        const SwiperModule = await import('swiper');
-        const { Autoplay, Keyboard, A11y } = await import('swiper/modules');
-        MyBookList = new SwiperModule.default('.my-book-list', {
+        const [{ default: Swiper }, { Autoplay, Keyboard, A11y }] = await Promise.all([
+            import('swiper'),
+            import('swiper/modules')
+        ]);
+        MyBookList = new Swiper('.my-book-list', {
             modules: [Autoplay, Keyboard, A11y],
             slidesPerView: 'auto',
             loop: true,
@@ -118,9 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const stampDates = [];
 
     async function Calendarview () {
-        const { Calendar } = await import('@fullcalendar/core');
-        const dayGridPlugin = (await import('@fullcalendar/daygrid')).default;
-
+        const [{ Calendar }, { default: dayGridPlugin }] = await Promise.all([
+            import('@fullcalendar/core'),
+            import('@fullcalendar/daygrid')
+        ]);
         calendar = new Calendar(calendarEl, {
         plugins: [dayGridPlugin],
         initialView: 'dayGridMonth',
@@ -268,31 +271,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
 
     async function recomandSwiperView () {
-        const SwiperModule = await import('swiper');
-        const { Autoplay, Keyboard, A11y, Navigation } = await import('swiper/modules');
-        return new Promise((resolve,reject)=>{
-            try {
-                let recomandedAi = new SwiperModule.default('.my-recomand-book', {
-                    modules: [Autoplay, Keyboard, A11y, Navigation],
-                    slidesPerView: 1.15,
-                    spaceBetween: 15,
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    },
-                    loop: true,
-                    a11y: { enabled: true },
-                    keyboard: { enabled: true, onlyInViewport: true },
-                    navigation: {
-                        nextEl: '.next-slide',
-                        prevEl: '.prev-slide',
-                    },
-                });
-                resolve(recomandedAi);
-            } catch (error) {
-                reject(error);
-            }
-        })
+        const [{ default: Swiper }, { Autoplay, Keyboard, A11y, Navigation }] = await Promise.all([
+            import('swiper'),
+            import('swiper/modules')
+        ]);
+        try {
+            return new Swiper('.my-recomand-book', {
+                modules: [Autoplay, Keyboard, A11y, Navigation],
+                slidesPerView: 1.15,
+                spaceBetween: 15,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                a11y: { enabled: true },
+                keyboard: { enabled: true, onlyInViewport: true },
+                navigation: {
+                    nextEl: '.next-slide',
+                    prevEl: '.prev-slide',
+                },
+            });
+        } catch (error) {
+            throw error;
+        }
     }
     //slider set
     async function initSlider() {
@@ -301,46 +303,30 @@ document.addEventListener('DOMContentLoaded', function () {
         wrapper.innerHTML = books.map(createSlide).join('');
 
         // 렌더링이 완료된 후에 Swiper 초기화
-        requestAnimationFrame(() => {
-            recomandSwiperView()
-                .then(recomandedAi => {
-                    console.log('swiper 초기화 완료',recomandedAi)
-                })
-                .catch(error => {
-                    console.error('swiper 초기화 실패',error)
-                })
-            // wish 버튼 핸들러는 한 템포 더 늦게
-            // setTimeout(() => {
-            //     document.querySelectorAll('.wish-btn').forEach(btn => {
-            //         btn.addEventListener('click', function () {
-            //             const book = {
-            //                 title: this.dataset.title,
-            //                 author: this.dataset.author,
-            //                 totalPrice: parseInt(this.dataset.price, 10),
-            //                 totalPage: parseInt(this.dataset.page, 10),
-            //             };
-            //             saveWishBook(book);
-            //             window.renderWishList();
-            //             alert('읽고싶은 책 목록에 추가됐습니다!');
-            //         });
-            //     });
-            // }, 0);
+        await new Promise(requestAnimationFrame);
+        try {
+            const recomandedAi = await recomandSwiperView();
+            console.log('swiper 초기화 완료', recomandedAi);
+        } catch (error) {
+            console.error('swiper 초기화 실패', error);
+        }
 
-            wrapper.addEventListener('click',(e)=>{
-                if(e.target.closest('.wish-btn')) {
-                    const btn = e.target.closest('.wish-btn');
-                    const book = {
-                        title:btn.dataset.title,
-                        author:btn.dataset.author,
-                        totalPrice:parseInt(btn.dataset.price,10),
-                        totalPage: parseInt(btn.dataset.page, 10)
-                    };
-                    saveWishBook(book);
-                    window.renderWishList();
-                    alert('읽고싶은 책 목록에 추가됐습니다!');
-                }
-            })
-        });
+        wrapper.addEventListener('click',(e)=>{
+            if(e.target.closest('.wish-btn')) {
+                const btn = e.target.closest('.wish-btn');
+                if(!btn) return;
+
+                const book = {
+                    title:btn.dataset.title,
+                    author:btn.dataset.author,
+                    totalPrice:parseInt(btn.dataset.price,10),
+                    totalPage: parseInt(btn.dataset.page, 10)
+                };
+                saveWishBook(book);
+                window.renderWishList();
+                alert('읽고싶은 책 목록에 추가됐습니다!');
+            }
+        })
     }
 
     function getBooks(key, sample = []) {
@@ -359,8 +345,6 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(() => {
         initSlider();
     });
-
-
 
 });
 
