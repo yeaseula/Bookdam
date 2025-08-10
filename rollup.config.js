@@ -7,10 +7,11 @@ import copy from 'rollup-plugin-copy';
 export default {
   input: 'js/main.js',
   output: {
-    file: 'dist/app.bundle.min.js',
-    format: 'iife',           // 브라우저에서 바로 실행 가능
-    name: 'appBundle',
-    sourcemap: true
+    dir: 'dist',         // 여러 청크를 dist 폴더에 생성
+    format: 'esm',       // ESM 포맷 (동적 import 지원)
+    sourcemap: true,
+    entryFileNames: '[name].js',
+    chunkFileNames: '[name]-[hash].js'
   },
   treeshake : {
     moduleSideEffects: false,
@@ -26,7 +27,6 @@ export default {
         { src: 'css/**/*', dest: 'dist/css' },
         { src: 'assets/**/*', dest: 'dist/assets' },
         { src: 'fonts/**/*', dest: 'dist/fonts'},
-        { src: 'js/**/*', dest: 'dist/js' },
         { src: 'nav-animation/**/*', dest: 'dist/nav-animation'}
       ],
       verbose: true
