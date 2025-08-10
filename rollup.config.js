@@ -5,7 +5,10 @@ import visualizer from 'rollup-plugin-visualizer';
 import copy from 'rollup-plugin-copy';
 
 export default {
-  input: 'js/main.js',
+  input: {
+    main: 'js/main.js',
+    common: 'js/common.js',
+  },
   output: {
     dir: 'dist',         // 여러 청크를 dist 폴더에 생성
     format: 'esm',       // ESM 포맷 (동적 import 지원)
@@ -19,6 +22,9 @@ export default {
         }
         if (id.includes('fullcalendar')) {
           return 'vendor-fullcalendar';
+        }
+        if (id.includes('lottie-web')) {
+          return 'vendor-lottie';
         }
         return 'vendor'; // 나머지 라이브러리 공통 묶음
       }
