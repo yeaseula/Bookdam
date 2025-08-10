@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>책담-책에 담긴 당신만의 이야기</title>
         <!--font preload-->
-        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="css/fonts.css"></noscript>
         <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -23,8 +24,8 @@
         <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
         <!--my javascript-->
-        <script src="js/api-key.js"></script>
-        <script src="js/config.js"></script>
+        <script src="js/api-key.js" defer></script>
+        <script src="js/config.js" defer></script>
         <script type="module" src="./main.js"></script>
         <script type="module" src="./common.js"></script>
         <script src="js/page.js" defer></script>
@@ -51,7 +52,7 @@
                             <span id="user-name" class="sd-bb">모카</span>님,<br>
                             오늘도 당신의 이야기를 들려주실래요?
 
-                            <a href="/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg" alt="펜 모양 아이콘">글쓰기</a>
+                            <a href="/write.html" class="go-write-btn" aria-label="리뷰 쓰기 버튼"><img src="./assets/img/pen-fill.svg" alt="펜 모양 아이콘" width="18" height="18">글쓰기</a>
                         </p>
                         <div class="my-book-list">
                             <div class="swiper-wrapper" id="mybook-list-wrapper">
@@ -73,7 +74,7 @@
                 <section id="section1" class="section">
                     <h2 class="sr-only">현재 읽고있는 책 정보</h2>
                     <div class="my-reading-state">
-                        <img src="./assets/img/bulb-img.webp" alt="전구모양 3d 아이콘">
+                        <img src="./assets/img/bulb-img.webp" alt="전구모양 3d 아이콘" width="50" height="50">
                         <p>현재 <span class="reading-name sd-bb">책 이름</span>을 읽고 계시네요!<br>
                         <span class="reading-page sd-bb">000 페이지</span>까지 읽었어요.</p>
                     </div>
@@ -88,7 +89,7 @@
                 <section id="section3" class="section">
                     <h2 class="sr-only">AI가 추천하는 책 리스트</h2>
                     <div class="title-section">
-                        <img src="./assets/img/heart-chat.webp" alt="AI추천 3d 아이콘">
+                        <img src="./assets/img/heart-chat.webp" alt="AI추천 3d 아이콘" loading="lazy">
                         <p class="sec3-title sd-m">
                             <span id="slider-user-name" class="sd-bb">모카</span>님을 위해<br>
                             AI가 추천해드려요!
