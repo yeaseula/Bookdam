@@ -27,6 +27,7 @@ export default {
         { src: 'css/**/*', dest: 'dist/css' },
         { src: 'assets/**/*', dest: 'dist/assets' },
         { src: 'fonts/**/*', dest: 'dist/fonts'},
+        { src: 'js/**/*', dest: 'dist/js' },
         { src: 'nav-animation/**/*', dest: 'dist/nav-animation'}
       ],
       verbose: true

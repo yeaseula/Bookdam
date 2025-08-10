@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //메인 상단 슬라이드 노드 구성
-    function MainSlideThumb(){
+    function MainSlideThumb(MyBookList){
         const slideContainer = MyBookList.slides;
         slideContainer.forEach((ele)=>{
             const {swiperSlideIndex:targetindex} = ele.dataset;
@@ -208,8 +208,8 @@ document.addEventListener('DOMContentLoaded', function () {
             addCalBtnListeners();
         })
 
-        sliderView().then(()=>{
-            MainSlideThumb();
+        sliderView().then((MyBookList)=>{
+            MainSlideThumb(MyBookList);
         })
     });
 
