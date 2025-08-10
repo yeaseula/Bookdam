@@ -15,6 +15,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let MyBookList;
 
+    //읽고있는 책 정보 로컬스토리지에서 불러오기
+    function readingBookmark(){
+        //json문자열을 객체로 가져오기
+        const books = JSON.parse(localStorage.getItem('readingBooks') || '[]');
+
+        //console.log(books) //books 배열 첫번째의 제목을 가져옴
+        let readingBooktitle = books[0].title;
+        let readingBookpage = books[0].readPage;
+        const booknextparticle = pickObjectParticle(readingBooktitle)
+        const contentArea = $('.my-reading-state');
+
+        contentArea.innerHTML = `
+            <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
+            <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
+            <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
+        }
+
+    readingBookmark();
+
     //kakao api로 북커버 호출 함수
     async function fetchMyReviewCover(title,author) {
         try {
@@ -321,25 +340,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (uni < 0xac00 || uni > 0xd7a3) return '를'; // 한글이 아니면 '를'
         return ((uni - 0xac00) % 28) ? '을' : '를';
     }
-
-    //읽고있는 책 정보 로컬스토리지에서 불러오기
-    function readingBookmark(){
-        //json문자열을 객체로 가져오기
-        const books = JSON.parse(localStorage.getItem('readingBooks') || '[]');
-
-        //console.log(books) //books 배열 첫번째의 제목을 가져옴
-        let readingBooktitle = books[0].title;
-        let readingBookpage = books[0].readPage;
-        const booknextparticle = pickObjectParticle(readingBooktitle)
-        const contentArea = $('.my-reading-state');
-
-        contentArea.innerHTML = `
-            <img src="./assets/img/bulb-img.webp" loading="lazy" alt="전구모양 3d 아이콘">
-            <p>현재 <span class="reading-name sd-bb">${readingBooktitle}</span>${booknextparticle} 읽고 계시네요!<br>
-            <span class="reading-page sd-bb">${readingBookpage}페이지</span>까지 읽었어요.</p>`
-        }
-
-    readingBookmark();
 
     //지금까지 n권의 책을 읽었어요.
     function readHistory(){
