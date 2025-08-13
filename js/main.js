@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         calendar.render();
         document.getElementById('calendar-skeleton').style.display = 'none';
-        calendarEl.style.display = 'block';
     }
 
     function StampFunc () {
@@ -308,7 +307,9 @@ document.addEventListener('DOMContentLoaded', function () {
         await new Promise(requestAnimationFrame);
         try {
             const recomandedAi = await recomandSwiperView();
-            console.log('swiper 초기화 완료', recomandedAi);
+            document.getElementById('slider-skeleton').style.display = 'none';
+            calendarEl.style.display = 'block';
+            // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
         }
