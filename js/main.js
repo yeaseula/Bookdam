@@ -135,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
             locale:initialLocaleCode,
         });
         calendar.render();
+        document.getElementById('calendar-skeleton').style.display = 'none';
+        calendarEl.style.display = 'block';
     }
 
     function StampFunc () {
