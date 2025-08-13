@@ -4,6 +4,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>책담-책에 담긴 당신만의 이야기</title>
+        <meta name="description" content="독서를 습관으로 만들어주는 한 걸음, 책담이 도와드려요.">
+        <meta property="og:title" content="책담 - 나의 독서 기록을 되돌아보는 여정">
+        <meta property="og:description" content="내 삶에 영향을 준 책들을 책담과 함께 기록할 수 있습니다.">
+        <meta property="og:image" content="https://bookdam.vercel.app/assets/img/og-image.jpg">
+        <meta property="og:url" content="https://bookdam.vercel.app/">
+        <meta property="og:type" content="website">
+
+        <!--font preload-->
+        <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
         <!--css-->
         <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -11,12 +22,45 @@
 
         <!--cdn-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
 
         <!--javascript-->
         <script src="js/config.js" defer></script>
         <script src="js/common.js" defer></script>
         <script src="js/page.js" defer></script>
+        <style>
+            @font-face {
+                font-family: 'AppleSDGothicNeoR00';
+                src: url('../fonts/AppleSDGothicNeoR00.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'AppleSDGothicNeoB00';
+                src: url('../fonts/AppleSDGothicNeoB00.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'AppleSDGothicNeoM00';
+                src: url('../fonts/AppleSDGothicNeoM00.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'AppleSDGothicNeoEB00';
+                src: url('../fonts/AppleSDGothicNeoEB00.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            body {font-family: 'AppleSDGothicNeoR00', sans-serif;}
+            .sd-m {font-family: 'AppleSDGothicNeoM00', sans-serif;}
+            .sd-b {font-family: 'AppleSDGothicNeoB00', sans-serif;}
+            .sd-bb {font-family: 'AppleSDGothicNeoEB00', sans-serif;}
+        </style>
     </head>
     <body>
         <div class="common-wrap" >
