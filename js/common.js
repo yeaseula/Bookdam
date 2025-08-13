@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             document.getElementById('bottom_navigator').innerHTML = data;
 
-            import('lottie-web').then(lottie => {
+            import('lottie-web-light').then(lottie => {
                 const animations = {
                     home: lottie.loadAnimation({
                         container: document.getElementById('home-icon'),

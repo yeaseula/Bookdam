@@ -23,8 +23,8 @@ export default {
         if (id.includes('fullcalendar')) {
           return 'vendor-fullcalendar';
         }
-        if (id.includes('lottie-web')) {
-          return 'vendor-lottie';
+        if (id.includes('lottie-web-light')) {
+          return 'vendor-lottie-light';
         }
         return 'vendor'; // 나머지 라이브러리 공통 묶음
       }
