@@ -15,13 +15,6 @@
         <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-
-        <!--css-->
-        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
-        <!--js-->
-        <script src="js/config.js" defer></script>
-        <script src="js/page.js" defer></script>
         <style>
             @font-face {
                 font-family: 'AppleSDGothicNeoR00';
@@ -29,6 +22,7 @@
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
+                ascent-override: 100%;
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoB00';
@@ -36,6 +30,7 @@
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
+                ascent-override: 100%;
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoM00';
@@ -43,6 +38,7 @@
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
+                ascent-override: 100%;
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoEB00';
@@ -50,12 +46,19 @@
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
+                ascent-override: 100%;
             }
             body {font-family: 'AppleSDGothicNeoR00', sans-serif;}
             .sd-m {font-family: 'AppleSDGothicNeoM00', sans-serif;}
             .sd-b {font-family: 'AppleSDGothicNeoB00', sans-serif;}
             .sd-bb {font-family: 'AppleSDGothicNeoEB00', sans-serif;}
         </style>
+        <!--css-->
+        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
+        <!--js-->
+        <script src="js/config.js" defer></script>
+        <script src="js/page.js" defer></script>
     </head>
     <body>
         <div class="common-wrap">

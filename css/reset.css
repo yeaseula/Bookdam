@@ -47,7 +47,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+button,input,textarea,a { font-family: 'AppleSDGothicNeoR00', sans-serif; }
 a {
 	text-decoration: unset;
 	color: inherit;
