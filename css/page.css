@@ -299,7 +299,7 @@
 #main #section3 .my-recomand-book {
   margin-top: 13px;
 }
-#main #section3 .my-recomand-book .slider-skeleton {
+#main #section3 .slider-skeleton {
   width: 100%;
   aspect-ratio: 362 / 164;
   background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
