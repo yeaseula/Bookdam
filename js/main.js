@@ -309,7 +309,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const recomandedAi = await recomandSwiperView();
             document.getElementById('slider-skeleton').style.display = 'none';
             calendarEl.style.display = 'block';
-            updateInertAttribute(recomandedAi);
+            recomandedAi.on('slideChange',function(){
+                updateInertAttribute(this);
+            })
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
