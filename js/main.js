@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sliderView().then((MyBookList)=>{
             MainSlideThumb(MyBookList);
             document.getElementById('my-book-skeleton').style.display = 'none';
+            document.getElementById('my-book-list').style.opacity = '1';
         })
     });
 
