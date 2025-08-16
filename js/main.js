@@ -261,15 +261,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //swiper active 외의 slide는 키보드 포커스 금지
-    // function updateInertAttribute(swiper) {
-    //     swiper.slides.forEach((slide, index) => {
-    //         if (index === swiper.activeIndex) {
-    //             slide.removeAttribute('inert');
-    //         } else {
-    //             slide.setAttribute('inert', '');
-    //         }
-    //     });
-    // }
+    function updateInertAttribute(swiper) {
+        swiper.slides.forEach((slide, index) => {
+            if (index === swiper.activeIndex) {
+                slide.removeAttribute('inert');
+            } else {
+                slide.setAttribute('inert', '');
+            }
+        });
+    }
 
     async function recomandSwiperView () {
         const [{ default: Swiper }, { Autoplay, Keyboard, A11y, Navigation }] = await Promise.all([
@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const recomandedAi = await recomandSwiperView();
             document.getElementById('slider-skeleton').style.display = 'none';
             calendarEl.style.display = 'block';
+            updateInertAttribute(recomandedAi);
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
