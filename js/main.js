@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const MyReviewThumb = [];
 
     //section1 관련 함수
+    //skeleton loading
+
+    async function loadingSkeleton () {
+        const { gsap } = await import("gsap");
+        const tl = gsap.timeline({ repeat: -1, yoyo:true });
+        tl.to("#circle1", {scale: 0.2, x: "+=5",duration:0.5, transformOrigin:"50% 50%"})
+    }
+    loadingSkeleton()
+
     //조사 을/를 선택
     function pickObjectParticle(word) {
         if (!word) return '';

@@ -26,6 +26,9 @@ export default {
         if (id.includes('lottie-web-light')) {
           return 'vendor-lottie-light';
         }
+        if (id.includes('gsap')) {
+          return 'gsap';
+        }
         return 'vendor'; // 나머지 라이브러리 공통 묶음
       }
     }
