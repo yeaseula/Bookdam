@@ -12,10 +12,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function loadingSkeleton () {
         const { gsap } = await import("gsap");
-        const tl = gsap.timeline({ repeat: -1, yoyo:true });
-        tl.to("#circle1", {scale: 0.2, x: "+=5",duration:0.5, transformOrigin:"50% 50%"})
+        gsap.registerEffect({
+            name: 'skeleton',
+            effect: (targets, config) => {
+                return gsap.to(targets,
+                { scale: config.scale, x:config.x, duration:config.duration, transformOrigin:config.transformOrigin });
+            },
+            defaults: {scale: 0.2, x: '+=5', duration:0.5, transformOrigin: '50% 50%'},
+            extendTimeline: true
+        })
+
+        let tl = gsap.timeline({ repeat: -1, yoyo:true });
+        tl.skeleton('#circle1')
+        tl.skeleton('#circle1',{x:'-=5'})
+        tl.skeleton('#circle2',{x:'-=5'},0)
+        tl.skeleton('#circle2',0.5)
     }
-    loadingSkeleton()
+    loadingSkeleton();
 
     //조사 을/를 선택
     function pickObjectParticle(word) {
