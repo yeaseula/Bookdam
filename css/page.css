@@ -502,7 +502,7 @@ header .search-box .reset-btn {
 }
 
 /* 나의 리뷰 */
-.my-review-wrap .review-skeleton {
+.my-review-wrap #review-skeleton {
   width: 100%;
   height: 100%;
   position: absolute;
