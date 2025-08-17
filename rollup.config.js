@@ -8,6 +8,7 @@ export default {
   input: {
     main: 'js/main.js',
     common: 'js/common.js',
+    page: 'js/page.js'
   },
   output: {
     dir: 'dist',         // 여러 청크를 dist 폴더에 생성
