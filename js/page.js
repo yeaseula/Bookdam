@@ -199,6 +199,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     if(currentpage == 'review') {
+        function loadingSkeleton () {
+            gsap.registerEffect({
+                name: 'skeleton',
+                effect: (targets, config) => {
+                    return gsap.to(targets,
+                    { scale: config.scale, x:config.x, duration:config.duration, transformOrigin:config.transformOrigin });
+                },
+                defaults: {scale: 0.5, x: '+=5', duration:0.2, transformOrigin: '50% 50%'},
+                extendTimeline: true
+            })
+
+            let tl = gsap.timeline({ repeat: -1, yoyo:true });
+            tl.skeleton('#circle1')
+            tl.skeleton('#circle1',{x:'-=5'})
+            tl.skeleton('#circle2',{x:'-=5'},0)
+            tl.skeleton('#circle2',0.5)
+        }
+        loadingSkeleton();
+
         //구글 시트에서 데이터 불러오기
         async function loadReviews() {
             const rows = await loadGoogle(sheetId, gid);
@@ -262,6 +281,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p class="list-date">${formattedDate}</p>
                     </div>`;
                 container.appendChild(item);
+
+                //로딩 스켈레톤 삭제
+                const reviewRoading = $('#review-skeleton');
+                reviewRoading.style.display = 'none';
+                const myReviewList = $('.my-review-list');
+                myReviewList.style.opacity = '1';
             }
             //총 게시물 수
             const listcount = document.querySelectorAll('.list-item');
