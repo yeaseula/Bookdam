@@ -11,22 +11,26 @@ document.addEventListener('DOMContentLoaded', function () {
     //skeleton loading
 
     async function loadingSkeleton () {
-        const { gsap } = await import("gsap");
-        gsap.registerEffect({
-            name: 'skeleton',
-            effect: (targets, config) => {
-                return gsap.to(targets,
-                { scale: config.scale, x:config.x, duration:config.duration, transformOrigin:config.transformOrigin });
-            },
-            defaults: {scale: 0.2, x: '+=5', duration:0.5, transformOrigin: '50% 50%'},
-            extendTimeline: true
-        })
+        try {
+            const { gsap } = await import("gsap");
+            gsap.registerEffect({
+                name: 'skeleton',
+                effect: (targets, config) => {
+                    return gsap.to(targets,
+                    { scale: config.scale, x:config.x, duration:config.duration, transformOrigin:config.transformOrigin });
+                },
+                defaults: {scale: 0.2, x: '+=5', duration:0.5, transformOrigin: '50% 50%'},
+                extendTimeline: true
+            })
 
-        let tl = gsap.timeline({ repeat: -1, yoyo:true });
-        tl.skeleton('#circle1')
-        tl.skeleton('#circle1',{x:'-=5'})
-        tl.skeleton('#circle2',{x:'-=5'},0)
-        tl.skeleton('#circle2',0.5)
+            let tl = gsap.timeline({ repeat: -1, yoyo:true });
+            tl.skeleton('#circle1')
+            tl.skeleton('#circle1',{x:'-=5'})
+            tl.skeleton('#circle2',{x:'-=5'},0)
+            tl.skeleton('#circle2',0.5)
+        } catch(err) {
+            console.error('Skeleton 생성 실패', err)
+        }
     }
     loadingSkeleton();
 
@@ -93,29 +97,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     //메인 상단 스와이퍼 초기화
     async function sliderView() {
-        let MyBookList;
-        const [{ default: Swiper }, { Autoplay, Keyboard, A11y }] = await Promise.all([
-            import('swiper'),
-            import('swiper/modules')
-        ]);
-        MyBookList = new Swiper('.my-book-list', {
-            modules: [Autoplay, Keyboard, A11y],
-            slidesPerView: 'auto',
-            loop: true,
-            centeredSlides : true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            a11y: {
-                enabled: true,
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-        });
-        return MyBookList;
+        try {
+            let MyBookList;
+            const [{ default: Swiper }, { Autoplay, Keyboard, A11y }] = await Promise.all([
+                import('swiper'),
+                import('swiper/modules')
+            ]);
+            MyBookList = new Swiper('.my-book-list', {
+                modules: [Autoplay, Keyboard, A11y],
+                slidesPerView: 'auto',
+                loop: true,
+                centeredSlides : true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                a11y: {
+                    enabled: true,
+                },
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true,
+                },
+            });
+            return MyBookList;
+        } catch(err) {
+            console.error('Swiper 초기화 실패:',err)
+        }
     }
 
     //메인 상단 슬라이드 노드 구성
@@ -142,22 +150,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const stampDates = [];
 
     async function Calendarview () {
-        const [{ Calendar }, { default: dayGridPlugin }] = await Promise.all([
-            import('@fullcalendar/core'),
-            import('@fullcalendar/daygrid')
-        ]);
-        calendar = new Calendar(calendarEl, {
-        plugins: [dayGridPlugin],
-        initialView: 'dayGridMonth',
-            headerToolbar: {
-                left:'',
-                right: 'prev,next',
-                center: 'title',
-            },
-            locale:initialLocaleCode,
-        });
-        calendar.render();
-        document.getElementById('calendar-skeleton').style.display = 'none';
+        try {
+            const [{ Calendar }, { default: dayGridPlugin }] = await Promise.all([
+                import('@fullcalendar/core'),
+                import('@fullcalendar/daygrid')
+            ]);
+            calendar = new Calendar(calendarEl, {
+            plugins: [dayGridPlugin],
+            initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left:'',
+                    right: 'prev,next',
+                    center: 'title',
+                },
+                locale:initialLocaleCode,
+            });
+            calendar.render();
+            document.getElementById('calendar-skeleton').style.display = 'none';
+        } catch(err) {
+            console.error('fullcalendar 로딩 실패 :',err)
+        }
     }
 
     function StampFunc () {
@@ -186,31 +198,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //google 시트에 기록된 데이터 불러오기
     async function loadReviewDetail() {
-        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-        const text = await fetch(url).then(r => r.text());
-        const json = JSON.parse(
-            text
-                .replace("/*O_o*/", "")
-                .replace("google.visualization.Query.setResponse(", "")
-                .slice(0, -2)
-        );
+        try {
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+            const text = await fetch(url).then(r => r.text());
+            const json = JSON.parse(
+                text
+                    .replace("/*O_o*/", "")
+                    .replace("google.visualization.Query.setResponse(", "")
+                    .slice(0, -2)
+            );
 
-        const rows = json.table.rows;
+            const rows = json.table.rows;
 
-        for(const row of rows) {
-            //캘린더에 필요한 데이터
-            const endDateRaw = row.c[5]?.v || '';
+            for(const row of rows) {
+                //캘린더에 필요한 데이터
+                const endDateRaw = row.c[5]?.v || '';
 
-            // 날짜 형식 변환
-            const endDate = sheetDateFormat(endDateRaw);
-            stampDates.push(endDate);
+                // 날짜 형식 변환
+                const endDate = sheetDateFormat(endDateRaw);
+                stampDates.push(endDate);
 
-            //메인 슬라이드에 필요한 데이터
-            const title = row.c[2]?.v || '';
-            const author = row.c[3]?.v || '';
+                //메인 슬라이드에 필요한 데이터
+                const title = row.c[2]?.v || '';
+                const author = row.c[3]?.v || '';
 
-            const thumb = await fetchMyReviewCover(title,author);
-            MyReviewThumb.unshift(thumb);
+                const thumb = await fetchMyReviewCover(title,author);
+                MyReviewThumb.unshift(thumb);
+            }
+        }catch(err) {
+            console.error('google 데이터 로드 실패:',err)
         }
     };
 
@@ -248,15 +264,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //마지막 섹션 AI 추천
     async function fetchBooks() {
-        const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
-        const response = await fetch(`https://dapi.kakao.com/v3/search/book?query=${randomKeyword}&size=15`, {
-            headers: {
-                Authorization: `KakaoAK ${kakaoKey}`
-            }
-        });
-        const data = await response.json();
-        //console.log(data)
-        return data.documents.sort(() => 0.5 - Math.random()).slice(0, slideCount);
+        try {
+            const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
+            const response = await fetch(`https://dapi.kakao.com/v3/search/book?query=${randomKeyword}&size=15`, {
+                headers: {
+                    Authorization: `KakaoAK ${kakaoKey}`
+                }
+            });
+            const data = await response.json();
+            //console.log(data)
+            return data.documents.sort(() => 0.5 - Math.random()).slice(0, slideCount);
+        } catch(err) {
+            console.error('kakao api 로드 실패:',err)
+        }
     }
 
 
