@@ -200,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadReviewDetail() {
         try {
             const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-            const text = await fetch(url).then(r => r.text());
+            const res = await fetch(url);
+            const text = await res.text();
             const json = JSON.parse(
                 text
                     .replace("/*O_o*/", "")
