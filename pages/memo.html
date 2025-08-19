@@ -15,9 +15,9 @@
         <meta property="og:type" content="website">
 
         <!--font preload-->
-        <link rel="preload" href="assets/fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="assets/fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="assets/fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <style>
             @font-face {
                 font-family: 'AppleSDGothicNeoR00';
@@ -57,14 +57,14 @@
             .sd-bb {font-family: 'AppleSDGothicNeoEB00', sans-serif;}
         </style>
         <!--css-->
-        <link rel="preload" as="style" href="assets/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="assets/css/all.min.css"></noscript>
+        <link rel="preload" as="style" href="../assets/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="../assets/css/all.min.css"></noscript>
 
         <!--cdn-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
 
         <!--javascript-->
-        <script src="js/config.js" defer></script>
+        <script src="../js/config.js" defer></script>
         <script type="module" src="./common.js"></script>
         <script type="module" src="./page.js"></script>
     </head>
@@ -72,7 +72,7 @@
         <div class="common-wrap" >
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="./assets/img/back-arrow.svg" alt="뒤로가기"></a>
+                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="../assets/img/back-arrow.svg" alt="뒤로가기"></a>
                     <p class="page-title sd-b">기억에 남는 구절</p>
                 </div>
             </header>
@@ -85,7 +85,7 @@
                                 <input type="text" name="memo-book-title" class="field-input4" placeholder="책 제목">
                                 <input type="number" name="memo-book-page" class="field-input5" placeholder="페이지">
                                 <button class="btn-add dark-style-btn" aria-label="기억에 남는 구절 추가 버튼">
-                                    <img src="./assets/img/add-line.svg">
+                                    <img src="../assets/img/add-line.svg">
                                 </button>
                                 <textarea name="memo-book-line" class="field-text" maxlength="100" placeholder="100자 이내로 입력하세요."></textarea>
                             </div>

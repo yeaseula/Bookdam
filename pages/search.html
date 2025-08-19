@@ -12,13 +12,13 @@
         <meta property="og:type" content="website">
 
         <!--font preload-->
-        <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <style>
             @font-face {
                 font-family: 'AppleSDGothicNeoR00';
-                src: url('../fonts/AppleSDGothicNeoR00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoR00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -26,7 +26,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoB00';
-                src: url('../fonts/AppleSDGothicNeoB00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoB00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -34,7 +34,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoM00';
-                src: url('../fonts/AppleSDGothicNeoM00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoM00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -42,7 +42,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoEB00';
-                src: url('../fonts/AppleSDGothicNeoEB00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoEB00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -54,10 +54,10 @@
             .sd-bb {font-family: 'AppleSDGothicNeoEB00', sans-serif;}
         </style>
         <!--css-->
-        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
+        <link rel="preload" as="style" href="../assets/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="../assets/css/all.min.css"></noscript>
         <!--js-->
-        <script src="js/config.js" defer></script>
+        <script src="../js/config.js" defer></script>
         <script type="module" src="./page.js"></script>
     </head>
     <body>
@@ -65,14 +65,14 @@
             <header>
                 <div class="header-depth">
                     <div class="search-box">
-                        <form action="/search" method="GET">
+                        <form action="/pages/search" method="GET">
                             <input type="search" name="search" placeholder="검색어를 입력해주세요..">
-                            <button type="submit" class="submit-btn"><img src="./assets/img/search-icon.svg" alt="검색하기"></button>
-                            <button type="reset" class="reset-btn"><img src="./assets/img/reset-icon.svg" alt="검색어 초기화"></button>
+                            <button type="submit" class="submit-btn"><img src="../assets/img/search-icon.svg" alt="검색하기"></button>
+                            <button type="reset" class="reset-btn"><img src="../assets/img/reset-icon.svg" alt="검색어 초기화"></button>
                         </form>
                     </div>
                     <div class="icon-box">
-                        <a href="javascript:void(0)" onclick="window.history.back()"><img src="assets/img/close-icon.svg" alt="창 닫기"></a>
+                        <a href="javascript:void(0)" onclick="window.history.back()"><img src="../assets/img/close-icon.svg" alt="창 닫기"></a>
                     </div>
                 </div>
             </header>
@@ -138,7 +138,7 @@
                                 <input type="checkbox" id="latest_0" value="소설">
                                 <label for="latest_0">
                                     <span>천선란</span>
-                                    <span class="closed"><img src="./assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
+                                    <span class="closed"><img src="../assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
                                 </label>
 
                             </div>
@@ -146,7 +146,7 @@
                                 <input type="checkbox" id="latest_1" value="에세이">
                                 <label for="latest_1">
                                     <span>에세이</span>
-                                    <span class="closed"><img src="./assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
+                                    <span class="closed"><img src="../assets/img/close-icon.svg" alt="해당 검색어 삭제"></span>
                                 </label>
                             </div>
                         </div>

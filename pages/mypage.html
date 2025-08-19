@@ -12,13 +12,13 @@
         <meta property="og:type" content="website">
 
         <!--font preload-->
-        <link rel="preload" href="fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoR00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="../assets/fonts/AppleSDGothicNeoEB00.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <style>
             @font-face {
                 font-family: 'AppleSDGothicNeoR00';
-                src: url('../fonts/AppleSDGothicNeoR00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoR00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -26,7 +26,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoB00';
-                src: url('../fonts/AppleSDGothicNeoB00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoB00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -34,7 +34,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoM00';
-                src: url('../fonts/AppleSDGothicNeoM00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoM00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -42,7 +42,7 @@
             }
             @font-face {
                 font-family: 'AppleSDGothicNeoEB00';
-                src: url('../fonts/AppleSDGothicNeoEB00.woff2') format('woff2');
+                src: url('../assets/fonts/AppleSDGothicNeoEB00.woff2') format('woff2');
                 font-weight: normal;
                 font-style: normal;
                 font-display: swap;
@@ -54,11 +54,11 @@
             .sd-bb {font-family: 'AppleSDGothicNeoEB00', sans-serif;}
         </style>
         <!--css-->
-        <link rel="preload" as="style" href="css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="css/all.min.css"></noscript>
+        <link rel="preload" as="style" href="../assets/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="../assets/css/all.min.css"></noscript>
 
         <!--javascript-->
-        <script src="js/config.js" defer></script>
+        <script src="../js/config.js" defer></script>
         <script type="module" src="./common.js"></script>
         <script type="module" src="./page.js"></script>
     </head>
@@ -66,7 +66,7 @@
         <div class="common-wrap">
             <header>
                 <div class="header-depth mypage-head">
-                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="./assets/img/back-arrow.svg" alt="back"></a>
+                    <a href="javascript:void(0)" onclick="window.history.back()"><img src="../assets/img/back-arrow.svg" alt="back"></a>
                     <p class="page-title sd-b">마이 페이지</p>
                 </div>
             </header>
@@ -74,7 +74,7 @@
                 <div class="my-page-wrap">
                     <section class="my-profile-box">
                         <h2 class="sr-only">프로필 정보</h2>
-                        <div class="profile-img" style="background-image: url('./assets/img/profile_thumb.png');"></div>
+                        <div class="profile-img" style="background-image: url('../assets/img/profile_thumb.png');"></div>
                         <div class="profile-cont">
                             <p id="user-name">모카</p>
                             <p class="user-mail">kminea@naver.com</p>
@@ -86,50 +86,50 @@
                             올 해 <span id="total_year_read" class="sd-bb"></span>,<br>
                             이번 달 <span id="total_month_read" class="sd-bb"></span> 읽었어요!
                         </p>
-                        <img src="./assets/img/chart-img.png" alt="img">
+                        <img src="../assets/img/chart-img.png" alt="img">
                     </section>
                     <section class="my-menu-box">
-                        <h2 class="menu-title"><img src="./assets/img/mypage-icon1.svg" alt="icon"> 나의 활동</h2>
+                        <h2 class="menu-title"><img src="../assets/img/mypage-icon1.svg" alt="icon"> 나의 활동</h2>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/memo.html">
+                                <a href="/pages/memo.html">
                                     <span>기억에 남는 구절</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/review.html">
+                                <a href="/pages/review.html">
                                     <span>리뷰 목록</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/wish-book.html">
+                                <a href="/pages/wish-book.html">
                                     <span>읽고싶은 책</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                         <ul class="menu-depth">
                             <li class="menu-list">
-                                <a href="/reading-book.html">
+                                <a href="/pages/reading-book.html">
                                     <span>읽는중인 책</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                     </section>
                     <section class="my-menu-box">
-                        <h2 class="menu-title"><img src="./assets/img/mypage-icon5.svg" alt="icon"> 화면 설정</h2>
+                        <h2 class="menu-title"><img src="../assets/img/mypage-icon5.svg" alt="icon"> 화면 설정</h2>
                         <ul class="menu-depth">
                             <li class="menu-list">
                                 <a href="#">
                                     <span>폰트 설정</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -137,7 +137,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>타이머 설정</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -145,7 +145,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>서재 화면 설정</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -153,18 +153,18 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>캘린더 설정</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
                     </section>
                     <section class="my-menu-box">
-                        <div class="menu-title"><img src="./assets/img/mypage-icon2.svg" alt="icon"> 내 정보</div>
+                        <div class="menu-title"><img src="../assets/img/mypage-icon2.svg" alt="icon"> 내 정보</div>
                         <ul class="menu-depth">
                             <li class="menu-list">
                                 <a href="#">
                                     <span>로그아웃</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
@@ -172,7 +172,7 @@
                             <li class="menu-list">
                                 <a href="#">
                                     <span>내 정보 변경</span>
-                                    <img src="./assets/img/arrow-up.svg" alt="arrow">
+                                    <img src="../assets/img/arrow-up.svg" alt="arrow">
                                 </a>
                             </li>
                         </ul>
