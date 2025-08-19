@@ -44,12 +44,13 @@ export default {
     visualizer({ filename: './dist/stats.html' }),
     copy({
       targets: [
-        { src: '*.html', dest: 'dist' },
-        { src: 'css/**/*', dest: 'dist/css' },
-        { src: 'assets/**/*', dest: 'dist/assets' },
-        { src: 'fonts/**/*', dest: 'dist/fonts'},
-        { src: 'js/**/*', dest: 'dist/js' },
-        { src: 'nav-animation/**/*', dest: 'dist/nav-animation'}
+        { src: 'index.html', dest: 'dist' },
+        { src: 'pages/**/*.html', dest: 'dist/pages' },
+        { src: "assets/css/**/*", dest: "dist/assets/css" },
+        { src: "assets/fonts/**/*", dest: "dist/assets/fonts" },
+        { src: "assets/img/**/*", dest: "dist/assets/img" },
+        { src: "assets/nav-animation/**/*", dest: "dist/assets/nav-animation" },
+        { src: 'js/**/*', dest: 'dist/js' }
       ],
       verbose: true
     })
