@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const $ = (node) => document.querySelector(node);
 
-    fetch('./navigation.html')
+    fetch('../pages/navigation.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('bottom_navigator').innerHTML = data;
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('파일 로딩 오류:', error);
     });
 
-    fetch('./footer.html')
+    fetch('../pages/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;
