@@ -231,32 +231,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    loadReviewDetail().then(() => {
+    //google 데이터 로드 후 순차적 실행
+    async function MainLoad () {
+        await loadReviewDetail();
         readHistory();
 
-        Calendarview().then(()=>{
-            StampFunc();
+        await Calendarview();
+        StampFunc();
 
-            const addCalBtnListeners = () => {
-                const CalPrevBtn = document.querySelector('.fc-prev-button');
-                const CalNextBtn = document.querySelector('.fc-next-button');
-                if (CalPrevBtn && CalNextBtn) {
-                    CalPrevBtn.addEventListener('click', () => { StampFunc() });
-                    CalNextBtn.addEventListener('click', () => { StampFunc() });
-                } else {
-                    // 버튼이 아직 없으면 다음 프레임에 재시도
-                    requestAnimationFrame(addCalBtnListeners);
-                }
-            };
-            addCalBtnListeners();
-        })
+        const addCalBtnListeners = () => {
+            const CalPrevBtn = document.querySelector('.fc-prev-button');
+            const CalNextBtn = document.querySelector('.fc-next-button');
+            if (CalPrevBtn && CalNextBtn) {
+                CalPrevBtn.addEventListener('click', () => { StampFunc() });
+                CalNextBtn.addEventListener('click', () => { StampFunc() });
+            } else {
+                // 버튼이 아직 없으면 다음 프레임에 재시도
+                requestAnimationFrame(addCalBtnListeners);
+            }
+        };
+        addCalBtnListeners();
 
-        sliderView().then((MyBookList)=>{
-            MainSlideThumb(MyBookList);
-            document.getElementById('my-book-skeleton').style.display = 'none';
-            document.getElementById('my-book-list').style.opacity = '1';
-        })
-    });
+        const MyBookList = await sliderView();
+        MainSlideThumb(MyBookList);
+        //data 로드 완료+슬라이드 초기화 후 스켈레톤 UI 숨김처리
+        document.getElementById('my-book-skeleton').style.display = 'none';
+        document.getElementById('my-book-list').style.opacity = '1';
+    }
+
+    MainLoad().catch(error => console.error('메인데이터 호출 실패:',error))
 
 
     //카카오 api 불러오기
