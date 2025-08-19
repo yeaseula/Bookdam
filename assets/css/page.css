@@ -279,7 +279,7 @@
   display: block;
   width: 70%;
   height: 70%;
-  background: url("../assets/img/stamp.svg") no-repeat;
+  background: url("../img/stamp.svg") no-repeat;
   background-size: contain;
   background-position: center;
   position: absolute;
