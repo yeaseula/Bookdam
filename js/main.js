@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Skeleton 생성 실패', err)
         }
     }
-    loadingSkeleton();
+    requestAnimationFrame(loadingSkeleton())
 
     //조사 을/를 선택
     function pickObjectParticle(word) {
