@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //접근성 기능
     //swiper 재생 및 정지
     function playPauseSlider (swiper,playPauseButton,wrapper) {
+        const swiper = swiper;
         playPauseButton.addEventListener('click',function(swiper){
             if(swiper.autoplay.running) {
                 swiper.autoplay.stop();
