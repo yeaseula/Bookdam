@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
             })
-            playPauseSlider(this,playPauseButton,wrapper)
+            playPauseSlider(recomandedAi,playPauseButton,wrapper)
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
