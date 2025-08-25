@@ -337,6 +337,33 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    //접근성 기능
+    //포커스 이벤트 : 포커싱 중 슬라이드 이탈 방지
+    function focusVisiable (swiper,playPauseButton,wrapper) {
+        const TargetSwiper = swiper;
+        let Focus = true;
+
+        TargetSwiper.el.addEventListener('focusin',e => {
+            if(e.target.closest('.swiper-slide')){
+                Focus = TargetSwiper.autoplay.running;
+                if(TargetSwiper.autoplay.running) {
+                    TargetSwiper.autoplay.stop();
+                    wrapper.setAttribute('aria-live','polite');
+                    playPauseButton.textContent = '재생';
+                    playPauseButton.setAttribute('aria-label', '슬라이드를 재생합니다');
+                }
+            }
+        })
+        TargetSwiper.el.addEventListener('focusout',e => {
+            if (!TargetSwiper.el.contains(e.relatedTarget) && Focus) {
+                TargetSwiper.autoplay.start();
+                wrapper.setAttribute('aria-live','off');
+                playPauseButton.textContent = '정지';
+
+            }
+        })
+    }
+
     async function recomandSwiperView () {
         const { default: Swiper } = await import('swiper');
         const { Autoplay, Keyboard, A11y, Navigation } = await import('swiper/modules');
