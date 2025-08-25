@@ -99,12 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
     async function sliderView() {
         try {
             let MyBookList;
-            const [{ default: Swiper }, { Autoplay, Keyboard, A11y }] = await Promise.all([
-                import('swiper'),
-                import('swiper/modules')
-            ]);
+            const { default: Swiper } = await import('swiper');
+            const { Autoplay, Keyboard, A11y, Navigation } = await import('swiper/modules');
             MyBookList = new Swiper('.my-book-list', {
-                modules: [Autoplay, Keyboard, A11y],
+                modules: [Autoplay, Keyboard, A11y, Navigation],
                 slidesPerView: 'auto',
                 loop: true,
                 centeredSlides : true,
@@ -115,9 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 a11y: {
                     enabled: true,
                 },
-                keyboard: {
-                    enabled: true,
-                    onlyInViewport: true,
+                keyboard: { enabled: true, onlyInViewport: true },
+                navigation: {
+                    nextEl: '.next-slide-mybook',
+                    prevEl: '.prev-slide-mybook',
                 },
             });
             return MyBookList;
@@ -254,6 +253,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const MyBookList = await sliderView();
         MainSlideThumb(MyBookList);
+        const playPauseButton = document.querySelector('.swiper-play-pause-btn-mybook');
+        const wrapper = document.getElementById('mybook-list-wrapper');
+        MyBookList.on('slideChange',function(){
+            updateInertAttribute(this);
+        })
+        MyBookList.on('slideChangeTransitionEnd',function(){
+            focusFirstSlider(MyBookList);
+        })
+        playPauseSlider(MyBookList,playPauseButton,wrapper);
+        focusVisiable(MyBookList,playPauseButton,wrapper);
         //data 로드 완료+슬라이드 초기화 후 스켈레톤 UI 숨김처리
         document.getElementById('my-book-skeleton').style.display = 'none';
         document.getElementById('my-book-list').style.opacity = '1';
@@ -368,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //포커스 이벤트 : 첫 슬라이드에 포커싱
     function focusFirstSlider (swiper){
         const activeSlide = swiper.slides[swiper.activeIndex];
-        const focusFirstEle = activeSlide.querySelector('button');
+        const focusFirstEle = activeSlide.querySelector('button, [tabindex]:not([tabindex="-1"])');
         if(focusFirstEle) {
             focusFirstEle.focus();
         }
