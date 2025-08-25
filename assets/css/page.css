@@ -338,6 +338,9 @@
 #main #section3 .my-recomand-book .swiper-slide {
   opacity: 0.5;
 }
+#main #section3 .my-recomand-book .swiper-slide:focus {
+  outline: 2px solid var(--point-color);
+}
 #main #section3 .my-recomand-book .swiper-slide-active {
   opacity: 1;
 }
