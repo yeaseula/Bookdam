@@ -364,6 +364,16 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    //접근성 기능
+    //포커스 이벤트 : 첫 슬라이드에 포커싱
+    function focusFirstSlider (swiper){
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        const focusFirstEle = activeSlide.querySelector('button');
+        if(focusFirstEle) {
+            focusFirstEle.focus();
+        }
+    }
+
     async function recomandSwiperView () {
         const { default: Swiper } = await import('swiper');
         const { Autoplay, Keyboard, A11y, Navigation } = await import('swiper/modules');
@@ -406,6 +416,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             playPauseSlider(recomandedAi,playPauseButton,wrapper);
             focusVisiable(recomandedAi,playPauseButton,wrapper);
+            focusFirstSlider(recomandedAi);
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
