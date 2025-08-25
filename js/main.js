@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const {swiperSlideIndex:targetindex} = ele.dataset;
             const index = Number(targetindex);
             const thumb = MyReviewThumb[index];
-            ele.setAttribute('tabindex',index)
+            ele.setAttribute('tabindex',0)
             if (thumb) {
                 ele.style.backgroundImage = `url('${thumb}')`;
             } else {
@@ -258,8 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const wrapper = document.getElementById('mybook-list-wrapper');
         MyBookList.on('slideChange',function(){
             updateInertAttribute(this);
-        })
-        MyBookList.on('slideChangeTransitionEnd',function(){
             focusFirstSlider(MyBookList);
         })
         playPauseSlider(MyBookList,playPauseButton,wrapper);
@@ -299,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const link = Math.random() > 0.5 ? yes24Link : kyoboLink;
 
         return `
-        <div class="swiper-slide recomand-slide">
+        <div class="swiper-slide recomand-slide" tabindex="0">
             <div class="swiper-depth">
                 <div class="book-cover">
                     <img src="${book.thumbnail}" alt="${book.title} 표지" loading="lazy" />
@@ -377,11 +375,20 @@ document.addEventListener('DOMContentLoaded', function () {
     //접근성 기능
     //포커스 이벤트 : 첫 슬라이드에 포커싱
     function focusFirstSlider (swiper){
-        const activeSlide = swiper.slides[swiper.activeIndex];
-        const focusFirstEle = activeSlide.querySelector('button, [tabindex]:not([tabindex="-1"])');
-        if(focusFirstEle) {
-            focusFirstEle.focus();
-        }
+        // const activeSlide = swiper.slides[swiper.activeIndex];
+        // const focusFirstEle = activeSlide.querySelector('button, [tabindex]:not([tabindex="-1"])');
+        // if(focusFirstEle) {
+        //     focusFirstEle.focus();
+        // }
+        const TargetSwiper = swiper;
+        const slideItems = TargetSwiper.slides;
+        slideItems.forEach((el, index) => {
+            if(index === TargetSwiper.activeIndex){
+                el.setAttribute('tabindex', '0'); // 활성 슬라이드만 tab
+            } else {
+                el.setAttribute('tabindex', '-1');
+            }
+        });
     }
 
     async function recomandSwiperView () {
@@ -423,8 +430,6 @@ document.addEventListener('DOMContentLoaded', function () {
             calendarEl.style.display = 'block';
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
-            })
-            recomandedAi.on('slideChangeTransitionEnd',function(){
                 focusFirstSlider(recomandedAi);
             })
             playPauseSlider(recomandedAi,playPauseButton,wrapper);
