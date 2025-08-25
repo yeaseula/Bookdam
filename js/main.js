@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 TargetSwiper.autoplay.start();
                 wrapper.setAttribute('aria-live','off');
                 playPauseButton.textContent = '정지';
-
+                playPauseButton.setAttribute('aria-label', '슬라이드를 정지합니다');
             }
         })
     }
@@ -404,7 +404,8 @@ document.addEventListener('DOMContentLoaded', function () {
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
             })
-            playPauseSlider(recomandedAi,playPauseButton,wrapper)
+            playPauseSlider(recomandedAi,playPauseButton,wrapper);
+            focusVisiable(recomandedAi,playPauseButton,wrapper);
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
