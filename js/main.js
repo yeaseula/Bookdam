@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //접근성 기능
     //swiper 재생 및 정지
-    function playPauseSlider (swiper) {
+    function playPauseSlider (swiper,playPauseButton,wrapper) {
         playPauseButton.addEventListener('click',function(swiper){
             if(swiper.autoplay.running) {
                 swiper.autoplay.stop();
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
             })
-            playPauseSlider(this)
+            playPauseSlider(this,playPauseButton,wrapper)
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
