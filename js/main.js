@@ -321,15 +321,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //접근성 기능
     //swiper 재생 및 정지
     function playPauseSlider (swiper,playPauseButton,wrapper) {
-        const swiper = swiper;
-        playPauseButton.addEventListener('click',function(swiper){
-            if(swiper.autoplay.running) {
-                swiper.autoplay.stop();
+        const targetswiper = swiper;
+        playPauseButton.addEventListener('click',function(){
+            if(targetswiper.autoplay.running) {
+                targetswiper.autoplay.stop();
                 wrapper.setAttribute('aria-live','polite');
                 this.textContent = '재생';
                 this.setAttribute('aria-label', '슬라이드를 재생합니다')
             } else {
-                swiper.autoplay.start();
+                targetswiper.autoplay.start();
                 wrapper.setAttribute('aria-live','off');
                 this.textContent = '정지';
                 this.setAttribute('aria-label','슬라이드 정지합니다')
