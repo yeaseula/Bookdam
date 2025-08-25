@@ -151,6 +151,9 @@
   background-position: center;
   background-size: cover;
 }
+#main .slider-wrap .my-book-list .swiper-slide:focus {
+  outline: 2px solid var(--point-color);
+}
 #main .slider-wrap .my-book-list .swiper-slide-active {
   opacity: 1 !important;
   width: 105px !important;

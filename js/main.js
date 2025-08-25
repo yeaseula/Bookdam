@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const {swiperSlideIndex:targetindex} = ele.dataset;
             const index = Number(targetindex);
             const thumb = MyReviewThumb[index];
+            ele.setAttribute('tabindex',index)
             if (thumb) {
                 ele.style.backgroundImage = `url('${thumb}')`;
             } else {
