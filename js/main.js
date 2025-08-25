@@ -255,6 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const MyBookList = await sliderView();
         MainSlideThumb(MyBookList);
         const playPauseButton = document.querySelector('.swiper-play-pause-btn-mybook');
+        const prevBtn = document.querySelector('.prev-slide-mybook');
+        const nextBtn =document.querySelector('.next-slide-mybook');
         const wrapper = document.getElementById('mybook-list-wrapper');
         MyBookList.on('slideChange',function(){
             updateInertAttribute(this);
@@ -262,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         playPauseSlider(MyBookList,playPauseButton,wrapper);
         focusVisiable(MyBookList,playPauseButton,wrapper);
+        BtnFocusEvent(playPauseButton,prevBtn,nextBtn)
         //data 로드 완료+슬라이드 초기화 후 스켈레톤 UI 숨김처리
         document.getElementById('my-book-skeleton').style.display = 'none';
         document.getElementById('my-book-list').style.opacity = '1';
@@ -345,6 +348,14 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
+    //키보드, 스크린리더 접근성 고려
+    function BtnFocusEvent(playPauseBtn,prevBtn,nextBtn){
+        [playPauseBtn, prevBtn, nextBtn].forEach(btn => {
+            btn.addEventListener('focus', () => btn.classList.add('focus-visible'));
+            btn.addEventListener('blur', () => btn.classList.remove('focus-visible'));
+        });
+    }
+
     //접근성 기능
     //포커스 이벤트 : 포커싱 중 슬라이드 이탈 방지
     function focusVisiable (swiper,playPauseButton,wrapper) {
@@ -375,11 +386,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //접근성 기능
     //포커스 이벤트 : 첫 슬라이드에 포커싱
     function focusFirstSlider (swiper){
-        // const activeSlide = swiper.slides[swiper.activeIndex];
-        // const focusFirstEle = activeSlide.querySelector('button, [tabindex]:not([tabindex="-1"])');
-        // if(focusFirstEle) {
-        //     focusFirstEle.focus();
-        // }
         const TargetSwiper = swiper;
         const slideItems = TargetSwiper.slides;
         slideItems.forEach((el, index) => {
@@ -419,6 +425,8 @@ document.addEventListener('DOMContentLoaded', function () {
     async function initSlider() {
         const books = await fetchBooks();
         const playPauseButton = document.querySelector('.swiper-play-pause-btn');
+        const prevBtn = document.querySelector('.prev-slide');
+        const nextBtn = document.querySelector('.next-slide');
         const wrapper = document.getElementById('bookSliderWrapper');
         wrapper.innerHTML = books.map(createSlide).join('');
 
@@ -434,6 +442,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             playPauseSlider(recomandedAi,playPauseButton,wrapper);
             focusVisiable(recomandedAi,playPauseButton,wrapper);
+            BtnFocusEvent(playPauseButton,prevBtn,nextBtn)
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
