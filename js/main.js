@@ -337,8 +337,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function recomandSwiperView () {
-        const { default: Swiper, Autoplay, Keyboard, A11y, Navigation } = await import('swiper');
-
+        const { default: Swiper } = await import('swiper');
+        const { Autoplay, Keyboard, A11y, Navigation } = await import('swiper/modules');
         try {
             return new Swiper('.my-recomand-book', {
                 modules: [Autoplay, Keyboard, A11y, Navigation],
