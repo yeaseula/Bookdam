@@ -414,9 +414,11 @@ document.addEventListener('DOMContentLoaded', function () {
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
             })
+            recomandedAi.on('slideChangeTransitionEnd',function(){
+                focusFirstSlider(recomandedAi);
+            })
             playPauseSlider(recomandedAi,playPauseButton,wrapper);
             focusVisiable(recomandedAi,playPauseButton,wrapper);
-            focusFirstSlider(recomandedAi);
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
