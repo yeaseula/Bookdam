@@ -261,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     MainLoad().catch(error => console.error('메인데이터 호출 실패:',error))
 
-
     //카카오 api 불러오기
     const keywords = ['소설', '러브', '사랑', '우정', '희망'];
     const slideCount = 7;
@@ -282,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('kakao api 로드 실패:',err)
         }
     }
-
 
     //각 slider 의 구조
     function createSlide(book) {
@@ -308,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>`;
     }
 
+    //접근성 기능
     //swiper active 외의 slide는 키보드 포커스 금지
     function updateInertAttribute(swiper) {
         swiper.slides.forEach((slide, index) => {
@@ -317,6 +316,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 slide.setAttribute('inert', '');
             }
         });
+    }
+
+    //접근성 기능
+    //swiper 재생 및 정지
+    function playPauseSlider (swiper) {
+        playPauseButton.addEventListener('click',function(swiper){
+            if(swiper.autoplay.running) {
+                swiper.autoplay.stop();
+                wrapper.setAttribute('aria-live','polite');
+                this.textContent = '재생';
+                this.setAttribute('aria-label', '슬라이드를 재생합니다')
+            } else {
+                swiper.autoplay.start();
+                wrapper.setAttribute('aria-live','off');
+                this.textContent = '정지';
+                this.setAttribute('aria-label','슬라이드 정지합니다')
+            }
+        })
     }
 
     async function recomandSwiperView () {
@@ -348,6 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //slider set
     async function initSlider() {
         const books = await fetchBooks();
+        const playPauseButton = document.querySelector('.swiper-play-pause-btn');
         const wrapper = document.getElementById('bookSliderWrapper');
         wrapper.innerHTML = books.map(createSlide).join('');
 
@@ -360,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
             recomandedAi.on('slideChange',function(){
                 updateInertAttribute(this);
             })
+            playPauseSlider(this)
             // console.log('swiper 초기화 완료', recomandedAi);
         } catch (error) {
             console.error('swiper 초기화 실패', error);
