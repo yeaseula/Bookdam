@@ -13,35 +13,35 @@ document.addEventListener('DOMContentLoaded', function () {
                         renderer: 'svg',
                         loop: false,
                         autoplay: (currentpage === 'home'),
-                        path: '../assets/nav-animation/home.json'
+                        path: '/assets/nav-animation/home.json'
                     }),
                     search: lottie.loadAnimation({
                         container: document.getElementById('review-icon'),
                         renderer: 'svg',
                         loop: false,
                         autoplay: (currentpage === 'review'),
-                        path: '../assets/nav-animation/review.json'
+                        path: '/assets/nav-animation/review.json'
                     }),
                     memo: lottie.loadAnimation({
                         container: document.getElementById('memo-icon'),
                         renderer: 'svg',
                         loop: false,
                         autoplay: (currentpage === 'memo'),
-                        path: '../assets/nav-animation/Heart.json'
+                        path: '/assets/nav-animation/Heart.json'
                     }),
                     review: lottie.loadAnimation({
                         container: document.getElementById('reading-icon'),
                         renderer: 'svg',
                         loop: false,
                         autoplay: (currentpage === 'reading'),
-                        path: '../assets/nav-animation/review2.json'
+                        path: '/assets/nav-animation/review2.json'
                     }),
                     mypage: lottie.loadAnimation({
                         container: document.getElementById('mypage-icon'),
                         renderer: 'svg',
                         loop: false,
                         autoplay: (currentpage === 'mypage'),
-                        path: '../assets/nav-animation/profile.json',
+                        path: '/assets/nav-animation/profile.json',
                     }),
                 };
 

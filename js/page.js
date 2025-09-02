@@ -452,14 +452,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div>
                             <p class="book-title">${book.title}</p>
                             <p class="reading-number" ondblclick="editField(this, 'reading', ${idx})">
-                                <img src="../assets/img/pencil-fill.svg" alt="읽은 페이지 수정">
+                                <img src="/assets/img/pencil-fill.svg" alt="읽은 페이지 수정">
                                 <span>${book.readPage}페이지 읽는 중</span>
                             </p>
                         </div>
                         <div>
                             <p class="reading-progress">${Math.round(book.readPage / book.totalPage * 100)}%</p>
                             <p class="total-number" ondblclick="editField(this, 'total', ${idx})">
-                                <img src="../assets/img/pencil-fill.svg" alt="총 페이지 수정">
+                                <img src="/assets/img/pencil-fill.svg" alt="총 페이지 수정">
                                 <span>총 ${book.totalPage}페이지</span>
                             </p>
                         </div>
