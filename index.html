@@ -75,35 +75,61 @@
         <style>
             .skeleton-overlay {
                 position: fixed;
-                top: 0; left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: #f2f2f2;
-                z-index: 9999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                /* shimmer 효과 */
-                background: linear-gradient(90deg, #f2f2f2 0%, #e0e0e0 50%, #f2f2f2 100%);
-                background-size: 200% 100%;
-                animation: shimmer 1.5s linear infinite;
-            }
-            .skeleton-overlay > p {
-                font-size: 24px;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                width:100vw;
+                height:100vh;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex-direction: column;
+                gap: 25px;
+                background-color:#fffadf;
+                transition: all 0.3s;
             }
             .skeleton-overlay.off {
                 display: none;
             }
-            /* shimmer keyframe */
-            @keyframes shimmer {
-                0% { background-position: -200% 0; }
-                100% { background-position: 200% 0; }
+            .skeleton-overlay > p {
+                font-size: 16px;
+                font-weight: bold;
+                color: #3a3967;
+            }
+            .loading-bar {
+                width: 130px;
+                height: 5px;
+                margin: 0 auto;
+                border-radius: 2px;
+                background-color: #fff;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                transform: rotateY(0);
+                transition: transform .3s ease-in
+            }
+            .blue-bar {
+                height: 100%;
+                width: 68px;
+                position: absolute;
+                transform: translate(-34px);
+                background-color: #3a3967;
+                border-radius: 2px;
+                animation: initial-loading 1.5s ease infinite
+            }
+            @keyframes initial-loading {
+                0% {transform: translate(-34px)}
+                50% {transform: translate(96px)}
+                to {transform: translate(-34px)}
             }
         </style>
     </head>
     <body>
         <div class="skeleton-overlay">
-            <p>Loading..</p>
+            <div class="loading-bar">
+                <div class="blue-bar"></div>
+            </div>
+            <p>Loading...</p>
         </div>
         <script>
             const skeleton = document.querySelector('.skeleton-overlay')
