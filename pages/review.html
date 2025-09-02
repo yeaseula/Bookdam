@@ -63,8 +63,71 @@
         <script src="../js/config.js" defer></script>
         <script type="module" src="../common.js"></script>
         <script type="module" src="../page.js"></script>
+        <style>
+            .skeleton-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                width:100vw;
+                height:100vh;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex-direction: column;
+                gap: 25px;
+                background-color:#fffadf;
+                transition: all 0.3s;
+            }
+            .skeleton-overlay.off {
+                display: none;
+            }
+            .skeleton-overlay > p {
+                font-size: 16px;
+                font-weight: bold;
+                color: #3a3967;
+            }
+            .loading-bar {
+                width: 130px;
+                height: 5px;
+                margin: 0 auto;
+                border-radius: 2px;
+                background-color: #fff;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                transform: rotateY(0);
+                transition: transform .3s ease-in
+            }
+            .blue-bar {
+                height: 100%;
+                width: 68px;
+                position: absolute;
+                transform: translate(-34px);
+                background-color: #3a3967;
+                border-radius: 2px;
+                animation: initial-loading 1.5s ease infinite
+            }
+            @keyframes initial-loading {
+                0% {transform: translate(-34px)}
+                50% {transform: translate(96px)}
+                to {transform: translate(-34px)}
+            }
+        </style>
     </head>
     <body>
+        <div class="skeleton-overlay">
+            <div class="loading-bar">
+                <div class="blue-bar"></div>
+            </div>
+            <p>Loading...</p>
+        </div>
+        <script>
+            const skeleton = document.querySelector('.skeleton-overlay')
+            setTimeout(()=>{
+                skeleton.classList.add('off')
+            },1200)
+        </script>
         <div class="common-wrap">
             <header>
                 <div class="header-depth">
