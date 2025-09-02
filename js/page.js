@@ -665,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     renderer: 'svg',
                     loop: false,
                     autoplay: (currentpage === 'done'),
-                    path: 'nav-animation/Celebrations.json'
+                    path: '/assets/nav-animation/Celebrations.json'
                 }),
             };
         })
