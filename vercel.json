@@ -18,5 +18,9 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/footer.html", "destination": "/pages/footer.html" },
+    { "source": "/navigation.html", "destination": "/pages/navigation.html" }
   ]
 }
